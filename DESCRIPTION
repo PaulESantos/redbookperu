@@ -1,18 +1,24 @@
 Package: redbookperu
-Title: A package to access and analyze the data from the Red Book of Endemic Plants of Peru.
+Title: A Package To Access And Analyze The Data From The Red Book Of Endemic Plants Of Peru
 Version: 0.0.0.1
 Authors@R: 
-    person("Paul Efren", "Santos Andrade", "paulefrens@gmail.com",
-    role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-6635-0375"))
+      c(person(given = "Paul Efren",
+                 family = "Santos Andrade",
+                 role = c("aut", "cre"),
+                 email = "paulefrens@gmail.com",
+                 comment = c(ORCID = "0000-0002-6635-0375")),
+          person(given = "Lucely L.",
+                 family = "Vilca Bustamante",
+                 role = "aut",
+                 email = "vilca.lu01@gmail.com")) 
 Description: This data package contains the information from "The Red Book of Endemic Plants of Peru," which provides valuable insights into the endemic plant species found in Peru. It includes taxonomic details, geographic distribution, and conservation status of these plants.
 License: MIT + file LICENSE
 Suggests: 
-    covr,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
+LazyData: true
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3

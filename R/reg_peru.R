@@ -18,11 +18,13 @@
 #' regions of Peru. It includes information such as the name of the region, the
 #' WOE name, the GN name, and the geometry in MULTIPOLYGON format.
 #'
+#' @name reg_peru
+#' @docType data
+#'
 #' @examples
 #' data(reg_peru)
 #'
 #'
 #' @keywords dataset, spatial data, geospatial, Peru, administrative regions, sf
 #'
-#' @export
 "reg_peru"

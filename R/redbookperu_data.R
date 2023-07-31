@@ -31,10 +31,11 @@
 #' @references
 #' [Red Book of Endemic Plants of Peru](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153)
 #'
+#' @name redbook_tab
+#' @docType data
+#'
 #' @examples
 #' # Example of how to load and explore the database
 #' data(redbook_tab)
 #' head(redbook_tab)
-#'
-#' @export
 "redbook_tab"

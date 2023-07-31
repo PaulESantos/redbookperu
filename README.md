@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# redbookperu
+# redbookperu <a href='https://github.com/PaulESantos/redbookperu'><img src='man/figures/cover_ppendemic.jpg' align="right" height="250" width="170" /></a>
 
 <!-- badges: start -->
 
@@ -9,8 +9,10 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/redbookperu)](https://CRAN.R-project.org/package=redbookperu)
+
 [![Codecov test
 coverage](https://codecov.io/gh/PaulESantos/redbookperu/branch/main/graph/badge.svg)](https://app.codecov.io/gh/PaulESantos/redbookperu?branch=main)
+
 [![R-CMD-check](https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 

@@ -23,13 +23,12 @@
 #' The data has been extracted and compiled from the Red Book of Endemic Plants of Peru,
 #' and subsequently standardized with the assistance of TNRS and WCVP.
 #'
-#' @references
-#' Add relevant references here (e.g., link to the Red Book of Endemic Plants of Peru).
+#' @name redbook_names
+#' @docType data
 #'
 #' @examples
-#' data(ppendemic_names)
+#' data(redbook_names)
 #'
 #' @keywords dataset, taxonomy, endemic plants, Peru, TNRS, WCVP
 #'
-#' @export
-"ppendemic_names"
+"redbook_names"

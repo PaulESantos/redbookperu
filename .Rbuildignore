@@ -7,3 +7,5 @@
 ^\.github$
 ^code_preparation.R
 ^clean_data
+^data/code\\.R
+^data/botanical_country_definitions\\.csv
