@@ -19,10 +19,11 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 LazyData: true
+LazyDataCompression: xz
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-URL: https://github.com/PaulESantos/redbookperu
+URL: https://github.com/PaulESantos/redbookperu, https://paulesantos.github.io/redbookperu/
 BugReports: https://github.com/PaulESantos/redbookperu/issues
 VignetteBuilder: knitr
 Depends: 

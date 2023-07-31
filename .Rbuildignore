@@ -9,3 +9,6 @@
 ^clean_data
 ^data/code\\.R
 ^data/botanical_country_definitions\\.csv
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
