@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/404.html</loc>
+    <loc>/404.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/LICENSE-text.html</loc>
+    <loc>/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/LICENSE.html</loc>
+    <loc>/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/articles/index.html</loc>
+    <loc>/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/articles/taxonomic_status.html</loc>
+    <loc>/articles/taxonomic_status.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/authors.html</loc>
+    <loc>/authors.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/index.html</loc>
+    <loc>/index.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/reference/index.html</loc>
+    <loc>/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/reference/redbook_distribution.html</loc>
+    <loc>/reference/redbook_distribution.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/reference/redbook_names.html</loc>
+    <loc>/reference/redbook_names.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/reference/redbook_tab.html</loc>
+    <loc>/reference/redbook_tab.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/reference/reg_peru.html</loc>
+    <loc>/reference/reg_peru.html</loc>
   </url>
 </urlset>
