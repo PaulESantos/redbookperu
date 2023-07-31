@@ -13,44 +13,35 @@ knitr::opts_chunk$set(
 )
 ```
 
-# ppendemic.data
+# redbookperu
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![CRAN status](https://www.r-pkg.org/badges/version/ppendemic.data)](https://CRAN.R-project.org/package=ppendemic.data)
+[![CRAN status](https://www.r-pkg.org/badges/version/redbookperu)](https://CRAN.R-project.org/package=redbookperu)
+[![Codecov test coverage](https://codecov.io/gh/PaulESantos/redbookperu/branch/main/graph/badge.svg)](https://app.codecov.io/gh/PaulESantos/redbookperu?branch=main)
+[![R-CMD-check](https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of ppendemic.data is to ...
+The `redbookperu` R package provides easy access to the data presented in the Red Book of Endemic Plants of Peru (León et al., 2006), a publication that compiles information about Peru's endemic plant species. The book encompasses detailed records of 5,508 taxa, highlighting their distribution, taxonomic status, conservation assessments, and ecological regions.
 
-## Installation
+### Objective:
 
-You can install the development version of ppendemic.data like so:
+The main objective of `redbookperu` is to make the data from the Red Book of Endemic Plants of Peru more accessible and useful for researchers, botanists, ecologists, and anyone interested in studying Peru's unique and diverse flora. The dataset included in the redbookperu package allows users to explore specific taxa information, examine their geographic distribution, analyze their conservation status based on IUCN criteria, and study their presence in various regions of Peru. By providing a documented and user-friendly package, we aim to streamline the process of accessing and analyzing the endemic plant data, thus promoting further research and conservation efforts.
+
+### Relevance:
+
+The Red Book of Endemic Plants of Peru represents a significant resource for understanding the distribution and conservation status of Peru's endemic plant species at the time of its publication. However, accessing and working with the data from the original book can be challenging for researchers, especially due to the large number of taxa and the need for taxonomic standardization.
+
+The `redbookperu` package addresses these challenges by first standardizing the taxonomic names of the plant species using the Taxonomic Name Resolution Service (TNRS) with the help of the World Checklist of Vascular Plants (WCVP) database. This ensures consistent and accurate naming conventions throughout the dataset, enhancing its usability and reliability for research purposes.
+
+By developing the `redbookperu` package, we aim to democratize access to this essential botanical knowledge and foster more in-depth studies and conservation initiatives focused on Peru's endemic plants. Researchers can now explore the data with ease, conduct spatial analyses, and gain a better understanding of the ecological importance of Peru's diverse and unique flora.
+
+We believe that by making this valuable information available to the scientific community, we can strengthen biodiversity research, inform conservation strategies, and contribute to a better understanding of the ecological significance of Peru's diverse plant species.
+
+### Installation
+
+You can install the development version of `redbookperu` from GitHub:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+pak::pak("PaulESantos/redbookperu")
 ```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
-library(ppendemic.data)
-## basic example code
-```
-
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
-```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

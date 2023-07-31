@@ -1,5 +1,9 @@
-^ppendemic\.data\.Rproj$
+^redbookperu\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^README\.Rmd$
 ^cran-comments\.md$
+^codecov\.yml$
+^\.github$
+^code_preparation.R
+^clean_data

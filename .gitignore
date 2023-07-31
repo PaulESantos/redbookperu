@@ -3,3 +3,6 @@
 .Rdata
 .httr-oauth
 .DS_Store
+^code_preparation.R
+inst/doc
+.quarto
