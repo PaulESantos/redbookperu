@@ -128,17 +128,53 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>splist <span class="op">=</span> <span class="va">splist</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">mutate</span><span class="op">(</span>endemic_tax_status <span class="op">=</span> <span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>                endemic <span class="op">=</span> <span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 7 × 3</span></span>
-<span><span class="co">#&gt;   splist                endemic_tax_status                               endemic</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;                 &lt;chr&gt;                                            &lt;chr&gt;  </span></span>
-<span><span class="co">#&gt; 1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy m… Aphela…</span></span>
-<span><span class="co">#&gt; 2 Sanchezia capitata    Sanchezia ovata - Updated name                   Sanche…</span></span>
-<span><span class="co">#&gt; 3 Sanchezia ovata       Sanchezia ovata - Accepted name                  Sanche…</span></span>
-<span><span class="co">#&gt; 4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match       Piper …</span></span>
-<span><span class="co">#&gt; 5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy m… Verbes…</span></span>
-<span><span class="co">#&gt; 6 Verbesina andina      Verbesina andina - No info. available            Verbes…</span></span>
-<span><span class="co">#&gt; 7 Weinmania nubigena    Weinmania nubigena - Not endemic                 Weinma…</span></span></code></pre></div>
+<span>                endemic <span class="op">=</span> <span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 7 × 3</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  splist                endemic_tax_status                                  endemic                                       </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>                 <span class="er">&lt;</span>chr<span class="sc">&gt;</span>                                               <span class="er">&lt;</span>chr<span class="sc">&gt;</span>                                         </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> Aphelandra cuscoenses Aphelandra cuscoensis <span class="sc">-</span> Accepted name <span class="sc">-</span> Fuzzy match Aphelandra cuscoensis is endemic <span class="sc">-</span> fuzzy macth</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> Sanchezia capitata    Sanchezia ovata <span class="sc">-</span> Updated name                      Sanchezia ovata is endemic                    </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> Sanchezia ovata       Sanchezia ovata <span class="sc">-</span> Accepted name                     Sanchezia ovata is endemic                    </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> Piper stevensi        Piper stevensii <span class="sc">-</span> No opinion <span class="sc">-</span> Fuzzy match          Piper stevensii is endemic <span class="sc">-</span> fuzzy macth      </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> Verbesina andinaa     Verbesina andina <span class="sc">-</span> No info. available <span class="sc">-</span> Fuzzy match Verbesina andina is endemic <span class="sc">-</span> fuzzy match     </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> Verbesina andina      Verbesina andina <span class="sc">-</span> No info. available               Verbesina andina is endemic                   </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> Weinmania nubigena    Weinmania nubigena <span class="sc">-</span> Not endemic                    Weinmania nubigena <span class="sc">-</span> Not endemic  </span></code></pre></div>
+<p>If you intend to access the information provided for each of the species listed in the Red Book of Endemic Plants of Peru, you have the option to use the <code><a href="reference/get_redbook_data.html">get_redbook_data()</a></code> function. This function facilitates the association of updated taxonomic information with the details concerning conservation status, distribution, and descriptions presented in the original publication.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/get_redbook_data.html">get_redbook_data</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sanchecia capitata"</span>,</span>
+<span>                   <span class="st">"Weinmania nubigena"</span>,</span>
+<span>                   <span class="st">"Macroclinium christensonii"</span>,</span>
+<span>                   <span class="st">"Weberbauera violacea"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                name_subitted               name_matched</span></span>
+<span><span class="co">#&gt; 1         Sanchecia capitata         Sanchezia capitata</span></span>
+<span><span class="co">#&gt; 2         Weinmania nubigena                       nill</span></span>
+<span><span class="co">#&gt; 3 Macroclinium christensonii Macroclinium christensonii</span></span>
+<span><span class="co">#&gt; 4       Weberbauera violacea       Weberbauera violacea</span></span>
+<span><span class="co">#&gt;                accepted_name accepted_family accepted_name_author        iucn</span></span>
+<span><span class="co">#&gt; 1            Sanchezia ovata     Acanthaceae          Ruiz &amp; Pav.          DD</span></span>
+<span><span class="co">#&gt; 2                       nill            nill                 nill        nill</span></span>
+<span><span class="co">#&gt; 3 Macroclinium christensonii     Orchidaceae            D.E.Benn. CR, B1abiii</span></span>
+<span><span class="co">#&gt; 4       Weberbauera violacea    Brassicaceae           Al-Shehbaz          DD</span></span>
+<span><span class="co">#&gt;                                   publication</span></span>
+<span><span class="co">#&gt; 1 Bull. Herb. Boissier, ser. 2, 4: 315. 1904.</span></span>
+<span><span class="co">#&gt; 2                                        nill</span></span>
+<span><span class="co">#&gt; 3    Brittonia 46(3): 249 - 251, f. 13. 1994.</span></span>
+<span><span class="co">#&gt; 4         Novon 14(3): 266 - 268, f. 3. 2004.</span></span>
+<span><span class="co">#&gt;                              collector herbariums  common_name dep_registry</span></span>
+<span><span class="co">#&gt; 1                  A. Mathews 1230 (K)       &lt;NA&gt; Desconocido.      JU - PA</span></span>
+<span><span class="co">#&gt; 2                                 nill       nill         nill         nill</span></span>
+<span><span class="co">#&gt; 3 O. del Castillo ex D.E. Bennett 5160        NY. Desconocido.           JU</span></span>
+<span><span class="co">#&gt; 4        A. Sagástegui A. et al. 11175  MO; HUT!. Desconocido.           CA</span></span>
+<span><span class="co">#&gt;                ecological_regions      sinampe peruvian_herbariums</span></span>
+<span><span class="co">#&gt; 1 BMHP, BHA; altitud desconocida. Sin registro            Ninguno.</span></span>
+<span><span class="co">#&gt; 2                            nill         nill                nill</span></span>
+<span><span class="co">#&gt; 3                   BMHM; 1800 m. Sin registro            Ninguno.</span></span>
+<span><span class="co">#&gt; 4                    PAR; 3800 m. Sin registro      HUT (isotipo).</span></span>
+<span><span class="co">#&gt;                                                                                                                                                                                                                                             remarks</span></span>
+<span><span class="co">#&gt; 1               Esta especie arbustiva es conocida de dos localidades. La colección tipo fue recolectada en la cuenca del Pangoa en el siglo XVIII. Probablemente la expansión urbana y las actividades agrícolas sean problemas para esta especie.</span></span>
+<span><span class="co">#&gt; 2                                                                                                                                                                                                                                              nill</span></span>
+<span><span class="co">#&gt; 3 Esta hierba epífita es conocida sólo de la colección tipo, proveniente del valle de Chanchamayo, en una subcuenca del Perené. Esta región ha sufrido continuas reducciones de sus áreas naturales debido a la ampliación de la frontera agrícola.</span></span>
+<span><span class="co">#&gt; 4                                                            Esta hierba paramuna es conocida de la localidad tipo, en la cuenca del Crisnejas, un tributario del Marañón. El ejemplar tipo fue recolectado en 1983, de una jalca poco herborizada.</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
