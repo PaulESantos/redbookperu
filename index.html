@@ -92,7 +92,7 @@
 <code>check_redbook(splist, tax_status == TRUE)</code>: The resulting information is structured as follows: “species name” - “taxonomic status” - “validation information”.
 <ul>
 <li>Species Name: Provides the currently accepted name for the species.</li>
-<li>Taxonomic Status: Includes the following categories: “Accepted name” when the species name recorded remains valid currently, “Updated name” for species whose scientific name recorded at the time of publication is now considered synonymous, “No opinion” for species whose name presents difficulties in determining their current taxonomic status, and “Non info. available” for species for which updated information hasn’t been found in the WCVP database. When the species of interest doesn’t match the species list, the response is “Not recorded in the Red Book”.</li>
+<li>Taxonomic Status: Includes the following categories: “Accepted name” when the species name recorded remains valid currently, “Updated name” for species whose scientific name recorded at the time of publication is now considered synonymous, “No opinion” for species whose name presents difficulties in determining their current taxonomic status, and “Non info. available” for species for which updated information hasn’t been found in the WCVP database. When the species of interest doesn’t match the species list, the response is “Not endemic”.</li>
 </ul>
 </li>
 </ul>
@@ -109,7 +109,7 @@
 <span><span class="co">#&gt; [4] "Piper stevensii - No opinion - Fuzzy match"         </span></span>
 <span><span class="co">#&gt; [5] "Verbesina andina - No info. available - Fuzzy match"</span></span>
 <span><span class="co">#&gt; [6] "Verbesina andina - No info. available"              </span></span>
-<span><span class="co">#&gt; [7] "Not recorded in the Red Book"</span></span></code></pre></div>
+<span><span class="co">#&gt; [7] "Weinmania nubigena - Not endemic"</span></span></code></pre></div>
 <ul>
 <li>
 <code>check_redbook(splist, tax_status == FALSE)</code>: The result indicates whether the species is endemic or not, based on its match with the species present in the database.</li>
@@ -122,8 +122,23 @@
 <span><span class="co">#&gt; [4] "Piper stevensii is endemic - fuzzy macth"      </span></span>
 <span><span class="co">#&gt; [5] "Verbesina andina is endemic - fuzzy match"     </span></span>
 <span><span class="co">#&gt; [6] "Verbesina andina is endemic"                   </span></span>
-<span><span class="co">#&gt; [7] "Not recorded in the Red Book"</span></span></code></pre></div>
+<span><span class="co">#&gt; [7] "Weinmania nubigena - Not endemic"</span></span></code></pre></div>
 <p>Both functions indicate the presence of partial matches (fuzzy match) when the name of the species of interest varies compared to the information present in the database.</p>
+<p><code><a href="reference/check_redbook.html">check_redbook()</a></code> function is designed to work seamlessly with tibbles, allowing users to easily analyze species data within a tabular format.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>splist <span class="op">=</span> <span class="va">splist</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">mutate</span><span class="op">(</span>endemic_tax_status <span class="op">=</span> <span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>                endemic <span class="op">=</span> <span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 7 × 3</span></span>
+<span><span class="co">#&gt;   splist                endemic_tax_status                               endemic</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                 &lt;chr&gt;                                            &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy m… Aphela…</span></span>
+<span><span class="co">#&gt; 2 Sanchezia capitata    Sanchezia ovata - Updated name                   Sanche…</span></span>
+<span><span class="co">#&gt; 3 Sanchezia ovata       Sanchezia ovata - Accepted name                  Sanche…</span></span>
+<span><span class="co">#&gt; 4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match       Piper …</span></span>
+<span><span class="co">#&gt; 5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy m… Verbes…</span></span>
+<span><span class="co">#&gt; 6 Verbesina andina      Verbesina andina - No info. available            Verbes…</span></span>
+<span><span class="co">#&gt; 7 Weinmania nubigena    Weinmania nubigena - Not endemic                 Weinma…</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
