@@ -75,7 +75,7 @@ book’s species list. The function comes in two variations:
     taxonomic status, and “Non info. available” for species for which
     updated information hasn’t been found in the WCVP database. When the
     species of interest doesn’t match the species list, the response is
-    “Not recorded in the Red Book”.
+    “Not endemic”.
 
 ``` r
 
@@ -90,7 +90,7 @@ check_redbook(splist, tax_status = TRUE)
 #> [4] "Piper stevensii - No opinion - Fuzzy match"         
 #> [5] "Verbesina andina - No info. available - Fuzzy match"
 #> [6] "Verbesina andina - No info. available"              
-#> [7] "Not recorded in the Red Book"
+#> [7] "Weinmania nubigena - Not endemic"
 ```
 
 - `check_redbook(splist, tax_status == FALSE)`: The result indicates
@@ -105,9 +105,28 @@ check_redbook(splist, tax_status = FALSE)
 #> [4] "Piper stevensii is endemic - fuzzy macth"      
 #> [5] "Verbesina andina is endemic - fuzzy match"     
 #> [6] "Verbesina andina is endemic"                   
-#> [7] "Not recorded in the Red Book"
+#> [7] "Weinmania nubigena - Not endemic"
 ```
 
 Both functions indicate the presence of partial matches (fuzzy match)
 when the name of the species of interest varies compared to the
 information present in the database.
+
+`check_redbook()` function is designed to work seamlessly with tibbles,
+allowing users to easily analyze species data within a tabular format.
+
+``` r
+tibble::tibble(splist = splist) |> 
+  dplyr::mutate(endemic_tax_status = check_redbook(splist, tax_status = TRUE),
+                endemic = check_redbook(splist, tax_status = FALSE))
+#> # A tibble: 7 × 3
+#>   splist                endemic_tax_status                               endemic
+#>   <chr>                 <chr>                                            <chr>  
+#> 1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy m… Aphela…
+#> 2 Sanchezia capitata    Sanchezia ovata - Updated name                   Sanche…
+#> 3 Sanchezia ovata       Sanchezia ovata - Accepted name                  Sanche…
+#> 4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match       Piper …
+#> 5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy m… Verbes…
+#> 6 Verbesina andina      Verbesina andina - No info. available            Verbes…
+#> 7 Weinmania nubigena    Weinmania nubigena - Not endemic                 Weinma…
+```

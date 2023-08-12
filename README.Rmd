@@ -67,3 +67,12 @@ check_redbook(splist, tax_status = FALSE)
 
 Both functions indicate the presence of partial matches (fuzzy match) when the name of the species of interest varies compared to the information present in the database.
 
+
+`check_redbook()` function is designed to work seamlessly with tibbles, allowing users to easily analyze species data within a tabular format.
+
+```{r}
+tibble::tibble(splist = splist) |> 
+  dplyr::mutate(endemic_tax_status = check_redbook(splist, tax_status = TRUE),
+                endemic = check_redbook(splist, tax_status = FALSE))
+```
+

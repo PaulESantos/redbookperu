@@ -26,32 +26,6 @@ standardize_names <- function(splist) {
 }
 
 #-------------------------------------------------------#
-# Function to check list of names input
-#' @keywords internal
-check_names <- function(splist,
-                        argument_name) {
-
-  # Check if it is a character
-  if (!is.character(splist) | !is.vector(splist)) {
-    stop(paste0(argument_name,
-                " should be a character vector, not '",
-                paste(class(splist), collapse = " "), "'"),
-         call. = FALSE)
-  }
-  enc_valid <- !validEnc(splist)
-
-  # Check if it has invalid encoding
-  if (any(enc_valid)) {
-    stop(paste(argument_name,
-               "should include only valid characters,",
-               "please check the name(s) at position(s):",
-               paste(which(enc_valid), collapse = ", ")),
-         call. = FALSE)
-  }
-}
-
-
-#-------------------------------------------------------#
 # Check if names are binomial
 #' @keywords internal
 simple_cap <- function (x) {

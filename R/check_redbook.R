@@ -59,6 +59,7 @@ check_redbook <- function(splist, tax_status = TRUE, max_distance = 0.1) {
   splist_std <- standardize_names(splist)
   # Remove any NA values from splist_std
   splist_std <- splist_std[!is.na(splist_std)]
+
   # Create an output data container
   output_vector <- character(length(splist_std))
   # Loop code to find the matching string
