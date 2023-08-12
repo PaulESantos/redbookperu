@@ -38,6 +38,21 @@
 #' @name get_redbook_data
 #' @export
 get_redbook_data <- function(splist, max_distance = 0.1) {
+  output_names <- c( "name_subitted",
+                     "name_matched",
+                     "accepted_name",
+                     "accepted_family",
+                     "accepted_name_author",
+                     "iucn",
+                     "publication",
+                     "collector",
+                     "herbariums",
+                     "common_name",
+                     "dep_registry",
+                     "ecological_regions",
+                     "sinampe",
+                     "peruvian_herbariums",
+                     "remarks")
   # Review text class
   if (is.factor(splist)) {
     splist <- as.character(splist)
@@ -61,33 +76,20 @@ get_redbook_data <- function(splist, max_distance = 0.1) {
     matches_i <- matches[which(match_dist <= max_distance_fixed)]
     # Output selection
     if (length(matches_i) == 0) {
-      output <- matrix(c(splist_std[i], rep("nill", 14)),
-                       ncol = 15)
+      output <- matrix(c(splist_std[i], rep("nill", 14)), nrow = 1)
+      #colnames(output) <- output_names
     } else if (length(matches_i) != 0) {
       row_data <- redbookperu::redbook_taxonomy[redbookperu::redbook_taxonomy$redbook_name %in% matches_i, ]
       book_data <- redbookperu::redbook_tab[redbookperu::redbook_tab$redbook_id == row_data$redbook_id,]
       outputmatrix <- cbind(row_data[, c(2:5)],
                             book_data[, -c(1, 2)])
-      output <- cbind(name_submitted = splist_std[i],
-                      outputmatrix)
+      output <- as.matrix(cbind(name_submitted = splist_std[i],
+                      outputmatrix))
     }
     output_list[[i]] <- output
   }
-  output_df <- do.call(rbind, output_list)
-  colnames(output_df) <- c( "name_subitted",
-                            "name_matched",
-                            "accepted_name",
-                            "accepted_family",
-                            "accepted_name_author",
-                            "iucn",
-                            "publication",
-                            "collector",
-                            "herbariums",
-                            "common_name",
-                            "dep_registry",
-                            "ecological_regions",
-                            "sinampe",
-                            "peruvian_herbariums",
-                            "remarks")
+  output_df <- as.data.frame(do.call(rbind, output_list))
+  colnames(output_df) <- output_names
+  row.names(output_df) <- NULL
   return(output_df)
 }

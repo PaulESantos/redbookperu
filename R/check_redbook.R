@@ -73,8 +73,8 @@ check_redbook <- function(splist, tax_status = TRUE, max_distance = 0.1) {
     match_dist <- utils::adist(splist_std[i], matches)
     matches_i <- matches[which(match_dist <= max_distance_fixed)]
     # Output selection
-    if (length(matches_i) == 0) {
-      output <- "Not recorded in the Red Book"
+    if (length(matches_i) == 0 ) {
+      output <- paste0(splist_std[i] , " - Not endemic")
     }
     else if (length(matches_i) != 0){
       row_data <- redbookperu::redbook_taxonomy[redbookperu::redbook_taxonomy$redbook_name %in% matches_i, ]
