@@ -1,6 +1,6 @@
 Package: redbookperu
 Title: A Package To Access And Analyze The Data From The Red Book Of Endemic Plants Of Peru
-Version: 0.0.0.1
+Version: 0.0.0.2
 Authors@R: 
       c(person(given = "Paul Efren",
                  family = "Santos Andrade",
