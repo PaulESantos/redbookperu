@@ -69,28 +69,61 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><a href="https://app.codecov.io/gh/PaulESantos/redbookperu?branch=main" class="external-link"><img src="https://codecov.io/gh/PaulESantos/redbookperu/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></p>
-<p><a href="https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <!-- badges: end --></p>
-<p>The <code>redbookperu</code> R package provides easy access to the data presented in the Red Book of Endemic Plants of Peru (León et al., 2006), a publication that compiles information about Peru’s endemic plant species. The book encompasses detailed records of 5,508 taxa, highlighting their distribution, taxonomic status, conservation assessments, and ecological regions.</p>
-<div class="section level3">
-<h3 id="objective">Objective:<a class="anchor" aria-label="anchor" href="#objective"></a>
-</h3>
-<p>The main objective of <code>redbookperu</code> is to make the data from the Red Book of Endemic Plants of Peru more accessible and useful for researchers, botanists, ecologists, and anyone interested in studying Peru’s unique and diverse flora. The dataset included in the redbookperu package allows users to explore specific taxa information, examine their geographic distribution, analyze their conservation status based on IUCN criteria, and study their presence in various regions of Peru. By providing a documented and user-friendly package, we aim to streamline the process of accessing and analyzing the endemic plant data, thus promoting further research and conservation efforts.</p>
-</div>
-<div class="section level3">
-<h3 id="relevance">Relevance:<a class="anchor" aria-label="anchor" href="#relevance"></a>
-</h3>
-<p>The Red Book of Endemic Plants of Peru represents a significant resource for understanding the distribution and conservation status of Peru’s endemic plant species at the time of its publication. However, accessing and working with the data from the original book can be challenging for researchers, especially due to the large number of taxa and the need for taxonomic standardization.</p>
-<p>The <code>redbookperu</code> package addresses these challenges by first standardizing the taxonomic names of the plant species using the Taxonomic Name Resolution Service (TNRS) with the help of the World Checklist of Vascular Plants (WCVP) database. This ensures consistent and accurate naming conventions throughout the dataset, enhancing its usability and reliability for research purposes.</p>
-<p>By developing the <code>redbookperu</code> package, we aim to democratize access to this essential botanical knowledge and foster more in-depth studies and conservation initiatives focused on Peru’s endemic plants. Researchers can now explore the data with ease, conduct spatial analyses, and gain a better understanding of the ecological importance of Peru’s diverse and unique flora.</p>
-<p>We believe that by making this valuable information available to the scientific community, we can strengthen biodiversity research, inform conservation strategies, and contribute to a better understanding of the ecological significance of Peru’s diverse plant species.</p>
-</div>
+<p>The R package <code>redbookperu</code> provides convenient access to the information contained in the <a href="https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153" class="external-link">Red Book of Endemic Plants of Peru</a>. This book represents a comprehensive compilation of data on Peru’s endemic plant species, encompassing records of 5,508 distinct taxa. Although this document marked a milestone by consolidating an ambitious initiative focused on understanding the diversity of Peru’s endemic plant species at the time of its publication, it currently requires a review and update of the presented taxonomic information.</p>
+<p>The process of accessing data from the original publication can pose challenges for researchers, particularly due to the large number of taxa presented within it. The <code>redbookperu</code> package has the primary objective of addressing these challenges by providing updated taxonomic information. Additionally, it introduces functions designed to enhance the accessibility and usefulness of the data presented in the Red Book of Endemic Plants of Peru.</p>
+<p>The information included in the <code>redbookperu</code> package is built with the support of the <a href="https://tnrs.biendata.org/" class="external-link">Taxonomic Name Resolution Service TNRS</a>, in collaboration with the <a href="https://powo.science.kew.org/about-wcvp" class="external-link">World Checklist of Vascular Plants WCVP</a> database. These resources are utilized to ensure the validity and standardization of the taxonomic information that we provide.</p>
 <div class="section level3">
 <h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h3>
 <p>You can install the development version of <code>redbookperu</code> from GitHub:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="http://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"PaulESantos/redbookperu"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
+</h3>
+<p>After installing the ppendemic package, you can load it into your R session using:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PaulESantos/redbookperu" class="external-link">redbookperu</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; This is redbookperu 0.0.0.2</span></span></code></pre></div>
+<p>To determine if a species of interest is listed in the Red Book of Endemic Plants of Peru, we provide the <code><a href="reference/check_redbook.html">check_redbook()</a></code> function. This function verifies whether the species of interest is included in the book’s species list. The function comes in two variations:</p>
+<ul>
+<li>
+<code>check_redbook(splist, tax_status == TRUE)</code>: The resulting information is structured as follows: “species name” - “taxonomic status” - “validation information”.
+<ul>
+<li>Species Name: Provides the currently accepted name for the species.</li>
+<li>Taxonomic Status: Includes the following categories: “Accepted name” when the species name recorded remains valid currently, “Updated name” for species whose scientific name recorded at the time of publication is now considered synonymous, “No opinion” for species whose name presents difficulties in determining their current taxonomic status, and “Non info. available” for species for which updated information hasn’t been found in the WCVP database. When the species of interest doesn’t match the species list, the response is “Not recorded in the Red Book”.</li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="va">splist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aphelandra cuscoenses"</span>, <span class="st">"Sanchezia capitata"</span>,</span>
+<span>            <span class="st">"Sanchezia ovata"</span>, <span class="st">"Piper stevensi"</span>,</span>
+<span>            <span class="st">"Verbesina andinaa"</span>, <span class="st">"Verbesina andina"</span>, <span class="st">"Weinmania nubigena"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Aphelandra cuscoensis - Accepted name - Fuzzy match"</span></span>
+<span><span class="co">#&gt; [2] "Sanchezia ovata - Updated name"                     </span></span>
+<span><span class="co">#&gt; [3] "Sanchezia ovata - Accepted name"                    </span></span>
+<span><span class="co">#&gt; [4] "Piper stevensii - No opinion - Fuzzy match"         </span></span>
+<span><span class="co">#&gt; [5] "Verbesina andina - No info. available - Fuzzy match"</span></span>
+<span><span class="co">#&gt; [6] "Verbesina andina - No info. available"              </span></span>
+<span><span class="co">#&gt; [7] "Not recorded in the Red Book"</span></span></code></pre></div>
+<ul>
+<li>
+<code>check_redbook(splist, tax_status == FALSE)</code>: The result indicates whether the species is endemic or not, based on its match with the species present in the database.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Aphelandra cuscoensis is endemic - fuzzy macth"</span></span>
+<span><span class="co">#&gt; [2] "Sanchezia ovata is endemic"                    </span></span>
+<span><span class="co">#&gt; [3] "Sanchezia ovata is endemic"                    </span></span>
+<span><span class="co">#&gt; [4] "Piper stevensii is endemic - fuzzy macth"      </span></span>
+<span><span class="co">#&gt; [5] "Verbesina andina is endemic - fuzzy match"     </span></span>
+<span><span class="co">#&gt; [6] "Verbesina andina is endemic"                   </span></span>
+<span><span class="co">#&gt; [7] "Not recorded in the Red Book"</span></span></code></pre></div>
+<p>Both functions indicate the presence of partial matches (fuzzy match) when the name of the species of interest varies compared to the information present in the database.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -128,8 +161,10 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-green.svg" alt="Lifecycle: stable"></a></li>
 <li><a href="https://CRAN.R-project.org/package=redbookperu" class="external-link"><img src="https://www.r-pkg.org/badges/version/redbookperu" alt="CRAN status"></a></li>
+<li><a href="https://app.codecov.io/gh/PaulESantos/redbookperu?branch=main" class="external-link"><img src="https://codecov.io/gh/PaulESantos/redbookperu/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 
