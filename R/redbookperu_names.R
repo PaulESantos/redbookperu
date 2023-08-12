@@ -1,34 +1,35 @@
-#' Red Book of Endemic Plants of Peru Database
+# -------------------------------------------------------------------------
+#' Redbook Taxonomy Database
 #'
-#' This database contains taxonomic information of endemic plant species from Peru,
-#' including possible names, accepted names, accepted family, name authors, taxonomic status, and full taxon name.
 #'
-#' @format A data frame with 10 columns and multiple rows.
-#' \describe{
-#'   \item{possible_names}{Possible alternative names for the species.}
-#'   \item{accepted_name}{Accepted name of the species.}
-#'   \item{accepted_family}{Accepted family of the species.}
-#'   \item{accepted_name_author}{Author(s) of the accepted name.}
-#'   \item{taxonomic_status}{Taxonomic status of the species (e.g., Accepted, Synonym, etc.).}
-#'   \item{taxon_name}{Full taxonomic name of the species.}
-#' }
+#' This database contains taxonomic information of endemic plant species from Peru.
 #'
 #' @details
 #' This database serves as the primary reference for conducting partial and exact
-#' searches of species listed in the Red Book of Endemic Plants of Peru. The information
-#' in this database has been standardized using the Taxonomic Name Resolution Service (TNRS)
-#' and the World Checklist of Vascular Plants (WCVP) to ensure consistency and accuracy.
+#' searches of species listed in the Red Book of Endemic Plants of Peru. The
+#' information in this database has been standardized using the Taxonomic Name
+#' Resolution Service (TNRS) and the World Checklist of Vascular Plants (WCVP)
+#' to ensure consistency and accuracy.
 #'
-#' @source
-#' The data has been extracted and compiled from the Red Book of Endemic Plants of Peru,
-#' and subsequently standardized with the assistance of TNRS and WCVP.
 #'
-#' @name redbook_names
+#' @format A tibble:
+#'   \describe{
+#'     \item{redbook_id}{Unique identifier for each species in the Red Book of Endemic Plants of Peru.}
+#'     \item{redbook_name}{The species name registered in the original dataset.}
+#'     \item{accepted_name}{The updated accepted scientific name of each species.}
+#'     \item{accepted_family}{The accepted family of the species.}
+#'     \item{accepted_name_author}{The author of the accepted scientific name.}
+#'     \item{taxonomic_status}{The taxonomic status of the species (Accepted, Synonym, No opinion).}
+#'   }
+#'
+#' @keywords dataset, taxonomy, endemic plants, Peru, TNRS, WCVP
+#' @usage data(redbook_taxonomy)
+#'
 #' @docType data
 #'
 #' @examples
-#' data(redbook_names)
-#'
-#' @keywords dataset, taxonomy, endemic plants, Peru, TNRS, WCVP
-#'
-"redbook_names"
+#' \dontrun{
+#' data(redbook_taxonomy)
+#' head(redbook_taxonomy)
+#' }
+"redbook_taxonomy"
