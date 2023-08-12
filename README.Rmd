@@ -70,9 +70,34 @@ Both functions indicate the presence of partial matches (fuzzy match) when the n
 
 `check_redbook()` function is designed to work seamlessly with tibbles, allowing users to easily analyze species data within a tabular format.
 
-```{r}
+```{r, eval=FALSE}
 tibble::tibble(splist = splist) |> 
   dplyr::mutate(endemic_tax_status = check_redbook(splist, tax_status = TRUE),
                 endemic = check_redbook(splist, tax_status = FALSE))
+```
+
+```r
+# A tibble: 7 × 3
+  splist                endemic_tax_status                                  endemic                                       
+  <chr>                 <chr>                                               <chr>                                         
+1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy match Aphelandra cuscoensis is endemic - fuzzy macth
+2 Sanchezia capitata    Sanchezia ovata - Updated name                      Sanchezia ovata is endemic                    
+3 Sanchezia ovata       Sanchezia ovata - Accepted name                     Sanchezia ovata is endemic                    
+4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match          Piper stevensii is endemic - fuzzy macth      
+5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy match Verbesina andina is endemic - fuzzy match     
+6 Verbesina andina      Verbesina andina - No info. available               Verbesina andina is endemic                   
+7 Weinmania nubigena    Weinmania nubigena - Not endemic                    Weinmania nubigena - Not endemic  
+```
+
+
+If you intend to access the information provided for each of the species listed in the Red Book of Endemic Plants of Peru, you have the option to use the `get_redbook_data()` function. This function facilitates the association of updated taxonomic information with the details concerning conservation status, distribution, and descriptions presented in the original publication.
+
+
+```{r}
+get_redbook_data(c("Sanchecia capitata",
+                   "Weinmania nubigena",
+                   "Macroclinium christensonii",
+                   "Weberbauera violacea"))
+
 ```
 

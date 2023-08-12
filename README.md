@@ -119,14 +119,61 @@ allowing users to easily analyze species data within a tabular format.
 tibble::tibble(splist = splist) |> 
   dplyr::mutate(endemic_tax_status = check_redbook(splist, tax_status = TRUE),
                 endemic = check_redbook(splist, tax_status = FALSE))
-#> # A tibble: 7 × 3
-#>   splist                endemic_tax_status                               endemic
-#>   <chr>                 <chr>                                            <chr>  
-#> 1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy m… Aphela…
-#> 2 Sanchezia capitata    Sanchezia ovata - Updated name                   Sanche…
-#> 3 Sanchezia ovata       Sanchezia ovata - Accepted name                  Sanche…
-#> 4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match       Piper …
-#> 5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy m… Verbes…
-#> 6 Verbesina andina      Verbesina andina - No info. available            Verbes…
-#> 7 Weinmania nubigena    Weinmania nubigena - Not endemic                 Weinma…
+```
+
+``` r
+# A tibble: 7 × 3
+  splist                endemic_tax_status                                  endemic                                       
+  <chr>                 <chr>                                               <chr>                                         
+1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy match Aphelandra cuscoensis is endemic - fuzzy macth
+2 Sanchezia capitata    Sanchezia ovata - Updated name                      Sanchezia ovata is endemic                    
+3 Sanchezia ovata       Sanchezia ovata - Accepted name                     Sanchezia ovata is endemic                    
+4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match          Piper stevensii is endemic - fuzzy macth      
+5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy match Verbesina andina is endemic - fuzzy match     
+6 Verbesina andina      Verbesina andina - No info. available               Verbesina andina is endemic                   
+7 Weinmania nubigena    Weinmania nubigena - Not endemic                    Weinmania nubigena - Not endemic  
+```
+
+If you intend to access the information provided for each of the species
+listed in the Red Book of Endemic Plants of Peru, you have the option to
+use the `get_redbook_data()` function. This function facilitates the
+association of updated taxonomic information with the details concerning
+conservation status, distribution, and descriptions presented in the
+original publication.
+
+``` r
+get_redbook_data(c("Sanchecia capitata",
+                   "Weinmania nubigena",
+                   "Macroclinium christensonii",
+                   "Weberbauera violacea"))
+#>                name_subitted               name_matched
+#> 1         Sanchecia capitata         Sanchezia capitata
+#> 2         Weinmania nubigena                       nill
+#> 3 Macroclinium christensonii Macroclinium christensonii
+#> 4       Weberbauera violacea       Weberbauera violacea
+#>                accepted_name accepted_family accepted_name_author        iucn
+#> 1            Sanchezia ovata     Acanthaceae          Ruiz & Pav.          DD
+#> 2                       nill            nill                 nill        nill
+#> 3 Macroclinium christensonii     Orchidaceae            D.E.Benn. CR, B1abiii
+#> 4       Weberbauera violacea    Brassicaceae           Al-Shehbaz          DD
+#>                                   publication
+#> 1 Bull. Herb. Boissier, ser. 2, 4: 315. 1904.
+#> 2                                        nill
+#> 3    Brittonia 46(3): 249 - 251, f. 13. 1994.
+#> 4         Novon 14(3): 266 - 268, f. 3. 2004.
+#>                              collector herbariums  common_name dep_registry
+#> 1                  A. Mathews 1230 (K)       <NA> Desconocido.      JU - PA
+#> 2                                 nill       nill         nill         nill
+#> 3 O. del Castillo ex D.E. Bennett 5160        NY. Desconocido.           JU
+#> 4        A. Sagástegui A. et al. 11175  MO; HUT!. Desconocido.           CA
+#>                ecological_regions      sinampe peruvian_herbariums
+#> 1 BMHP, BHA; altitud desconocida. Sin registro            Ninguno.
+#> 2                            nill         nill                nill
+#> 3                   BMHM; 1800 m. Sin registro            Ninguno.
+#> 4                    PAR; 3800 m. Sin registro      HUT (isotipo).
+#>                                                                                                                                                                                                                                             remarks
+#> 1               Esta especie arbustiva es conocida de dos localidades. La colección tipo fue recolectada en la cuenca del Pangoa en el siglo XVIII. Probablemente la expansión urbana y las actividades agrícolas sean problemas para esta especie.
+#> 2                                                                                                                                                                                                                                              nill
+#> 3 Esta hierba epífita es conocida sólo de la colección tipo, proveniente del valle de Chanchamayo, en una subcuenca del Perené. Esta región ha sufrido continuas reducciones de sus áreas naturales debido a la ampliación de la frontera agrícola.
+#> 4                                                            Esta hierba paramuna es conocida de la localidad tipo, en la cuenca del Crisnejas, un tributario del Marañón. El ejemplar tipo fue recolectado en 1983, de una jalca poco herborizada.
 ```
