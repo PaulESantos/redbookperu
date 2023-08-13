@@ -30,7 +30,7 @@ descriptions recorded in the original publication."><!-- mathjax --><script src=
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/taxonomic_status.html">Explorando la Consistencia Taxonómica de las Plantas Endémicas del Perú</a>
+    <a class="dropdown-item" href="../articles/intro_redbook.html">Una revisión del Libro Rojo de Plantas Endémicas del Perú</a>
   </div>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
@@ -114,14 +114,14 @@ and additional remarks).</p>
 <span class="r-in"><span><span class="va">species_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aphelandra cuscoensis"</span>, <span class="st">"Sanchezia ovata"</span>, <span class="st">"Piper stevensii"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">redbook_data</span> <span class="op">&lt;-</span> <span class="fu">get_redbook_data</span><span class="op">(</span><span class="va">species_list</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">redbook_data</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           name_subitted          name_matched         accepted_name</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Aphelandra cuscoensis Aphelandra cuscoensis Aphelandra cuscoensis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2       Sanchezia ovata       Sanchezia ovata       Sanchezia ovata</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3       Piper stevensii       Piper stevensii       Piper stevensii</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   accepted_family accepted_name_author    iucn</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     Acanthaceae               Wassh. EN, B1a</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     Acanthaceae          Ruiz &amp; Pav.      DD</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3      Piperaceae                Trel.    &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           name_subitted         accepted_name accepted_family</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Aphelandra cuscoensis Aphelandra cuscoensis     Acanthaceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2       Sanchezia ovata       Sanchezia ovata     Acanthaceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       Piper stevensii       Piper stevensii      Piperaceae</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   accepted_name_author          redbook_name    iucn</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1               Wassh. Aphelandra cuscoensis EN, B1a</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2          Ruiz &amp; Pav.    Sanchezia capitata      DD</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                Trel.       Piper stevensii    &lt;NA&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                          publication           collector</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1                 Phytologia 25(7): 469 - 470. 1973.  C. Vargas C. 15415</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2        Bull. Herb. Boissier, ser. 2, 4: 315. 1904. A. Mathews 1230 (K)</span>

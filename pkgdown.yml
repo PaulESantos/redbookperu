@@ -2,8 +2,8 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
-  taxonomic_status: taxonomic_status.html
-last_built: 2023-08-12T20:47Z
+  intro_redbook: intro_redbook.html
+last_built: 2023-08-13T02:49Z
 urls:
   reference: https://paulesantos.github.io/redbookperu/reference
   article: https://paulesantos.github.io/redbookperu/articles
