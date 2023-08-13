@@ -10,7 +10,8 @@ Authors@R:
           person(given = "Lucely L.",
                  family = "Vilca Bustamante",
                  role = "aut",
-                 email = "vilca.lu01@gmail.com")) 
+                 email = "vilca.lu01@gmail.com",
+                 comment = c(ORCID = "0000-0002-5559-1296"))) 
 Description: This data package contains the information from "The Red Book of Endemic Plants of Peru," which provides valuable insights into the endemic plant species found in Peru. It includes taxonomic details, geographic distribution, and conservation status of these plants.
 License: MIT + file LICENSE
 Suggests: 
