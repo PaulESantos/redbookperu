@@ -50,7 +50,7 @@ pak::pak("PaulESantos/redbookperu")
 
 ### Getting Started
 
-After installing the ppendemic package, you can load it into your R
+After installing the `redbookperu` package, you can load it into your R
 session using:
 
 ``` r
@@ -146,16 +146,16 @@ get_redbook_data(c("Sanchecia capitata",
                    "Weinmania nubigena",
                    "Macroclinium christensonii",
                    "Weberbauera violacea"))
-#>                name_subitted               name_matched
-#> 1         Sanchecia capitata         Sanchezia capitata
-#> 2         Weinmania nubigena                       nill
-#> 3 Macroclinium christensonii Macroclinium christensonii
-#> 4       Weberbauera violacea       Weberbauera violacea
-#>                accepted_name accepted_family accepted_name_author        iucn
-#> 1            Sanchezia ovata     Acanthaceae          Ruiz & Pav.          DD
-#> 2                       nill            nill                 nill        nill
-#> 3 Macroclinium christensonii     Orchidaceae            D.E.Benn. CR, B1abiii
-#> 4       Weberbauera violacea    Brassicaceae           Al-Shehbaz          DD
+#>                name_subitted              accepted_name accepted_family
+#> 1         Sanchecia capitata            Sanchezia ovata     Acanthaceae
+#> 2         Weinmania nubigena                       nill            nill
+#> 3 Macroclinium christensonii Macroclinium christensonii     Orchidaceae
+#> 4       Weberbauera violacea       Weberbauera violacea    Brassicaceae
+#>   accepted_name_author               redbook_name        iucn
+#> 1          Ruiz & Pav.         Sanchezia capitata          DD
+#> 2                 nill                       nill        nill
+#> 3            D.E.Benn. Macroclinium christensonii CR, B1abiii
+#> 4           Al-Shehbaz       Weberbauera violacea          DD
 #>                                   publication
 #> 1 Bull. Herb. Boissier, ser. 2, 4: 315. 1904.
 #> 2                                        nill

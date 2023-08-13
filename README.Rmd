@@ -37,7 +37,8 @@ pak::pak("PaulESantos/redbookperu")
 ```
 
 ### Getting Started
-After installing the ppendemic package, you can load it into your R session using:
+
+After installing the `redbookperu` package, you can load it into your R session using:
 
 ```{r}
 library(redbookperu)
