@@ -70,7 +70,8 @@ check_redbook <- function(splist, tax_status = TRUE, max_distance = 0.1) {
     matches <- agrep(splist_std[i],
                      redbookperu::redbook_taxonomy$redbook_name, # base data column
                      max.distance = max_distance_fixed,
-                     value = TRUE)
+                     value = TRUE) |>
+      unique()
     match_dist <- utils::adist(splist_std[i], matches)
     matches_i <- matches[which(match_dist <= max_distance_fixed)]
     # Output selection
@@ -79,45 +80,45 @@ check_redbook <- function(splist, tax_status = TRUE, max_distance = 0.1) {
     }
     else if (length(matches_i) != 0){
       row_data <- redbookperu::redbook_taxonomy[redbookperu::redbook_taxonomy$redbook_name %in% matches_i, ]
-      taxonomic_status <- row_data$taxonomic_status
+      taxonomic_status <- unique(row_data$taxonomic_status)
       if(tax_status == TRUE){
         if(taxonomic_status == "Accepted" & match_dist == 0){
-          output <- paste0(row_data$accepted_name, " - Accepted name")
+          output <- paste0(unique(row_data$accepted_name), " - Accepted name")
         }
         else if(taxonomic_status == "Accepted" & match_dist != 0){
-          output <- paste0(row_data$accepted_name, " - Accepted name - Fuzzy match")
+          output <- paste0(unique(row_data$accepted_name), " - Accepted name - Fuzzy match")
         }
         else if(taxonomic_status == "Synonym" & match_dist == 0){
-          output <- paste0(row_data$accepted_name, " - Updated name")
+          output <- paste0(unique(row_data$accepted_name), " - Updated name")
         }
         else if(taxonomic_status == "Synonym" & match_dist != 0){
-          output <- paste0(row_data$accepted_name, " - Updated name - Fuzzy match")
+          output <- paste0(unique(row_data$accepted_name), " - Updated name - Fuzzy match")
         }
         else if(taxonomic_status == "No opinion" & match_dist == 0){
-          output <- paste0(row_data$accepted_name, " - No opinion")
+          output <- paste0(unique(row_data$accepted_name), " - No opinion")
         }
         else if(taxonomic_status == "No opinion" & match_dist != 0){
-          output <- paste0(row_data$accepted_name, " - No opinion - Fuzzy match")
+          output <- paste0(unique(row_data$accepted_name), " - No opinion - Fuzzy match")
         }
         else if(taxonomic_status == "nill" & match_dist == 0){
-          output <- paste0(row_data$redbook_name, " - No info. available")
+          output <- paste0(unique(row_data$redbook_name), " - No info. available")
         }
         else if(taxonomic_status == "nill" & match_dist != 0){
-          output <- paste0(row_data$redbook_name, " - No info. available - Fuzzy match")
+          output <- paste0(unique(row_data$redbook_name), " - No info. available - Fuzzy match")
         }
       }
       else if (tax_status == FALSE){
         if(match_dist == 0 & taxonomic_status != "nill"){
-          output <-  paste0(row_data$accepted_name, " is endemic")
+          output <-  paste0(unique(row_data$accepted_name), " is endemic")
         }
         else  if(match_dist != 0 & taxonomic_status != "nill"){
-          output <- paste0(row_data$accepted_name, " is endemic - fuzzy macth")
+          output <- paste0(unique(row_data$accepted_name), " is endemic - fuzzy macth")
         }
         else  if(match_dist == 0 & taxonomic_status == "nill"){
-          output <- paste0(row_data$redbook_name, " is endemic")
+          output <- paste0(unique(row_data$redbook_name), " is endemic")
         }
         else  if(match_dist != 0 & taxonomic_status == "nill"){
-          output <- paste0(row_data$redbook_name, " is endemic - fuzzy match")
+          output <- paste0(unique(row_data$redbook_name), " is endemic - fuzzy match")
         }
       }
     }

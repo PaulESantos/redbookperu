@@ -1,0 +1,35 @@
+---
+title: "Una revisión del Libro Rojo de Plantas Endémicas del Perú"
+author: "Paul E. Santos Andrade"
+date: "13 August, 2023"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(redbookperu)
+```
+
+`redbookperu` presenta los resultados de la construcción y actualización de una base de datos que alberga información detallada sobre las especies de plantas endémicas del Perú, tal como fueron presentadas en el [Libro Rojo de Plantas Endémicas del Perú](). La conservación y estudio de la flora endémica es de vital importancia debido a su singularidad y su contribución al equilibrio ecológico. En este contexto, contar con una base de datos actualizada que recoja información taxonómica y estado de conservación de estas especies se convierte en una herramienta esencial para la toma de decisiones informadas en el ámbito de la conservación biológica y la investigación científica.
+
+El Libro Rojo de Plantas Endémicas del Perú, una referencia valiosa en el campo de la botánica y la conservación fue publicado con el objetivo de catalogar y evaluar el estado de amenaza de las especies endémicas de plantas en el país. Sin embargo, la dinámica naturaleza de la taxonomía y la evolución de la investigación requieren de una base de datos actualizada que refleje los últimos resultados de las diferentes revisiones taxonómicas. La falta de acceso rápido y sencillo a esta información puede limitar los esfuerzos de conservación y dificultar la planificación de estrategias efectivas para la protección de estas especies únicas.
+
+La base de datos sobre la cual se construye `redbookperu` reúne información taxonómica actualizada sobre las especies endémicas del Perú, mediante la implementación de técnicas de recopilación de datos y validación taxonómica contrastada con la información disponible en [World Checklist of Vascular Plants WCVP](https://powo.science.kew.org/about-wcvp), esta base de datos busca ser una fuente confiable y actualizada que sirva como recurso fundamental para científicos, conservacionistas y tomadores de decisiones.
+
+### Resultados:
+
+- En el listado original, se identificó el nombre `Guevaria micrantha` en dos registros, y se mantuvo el registro para el cual se pudo encontrar coincidencia en la información brindada respecto de la publicación original de esta especie.
+
+- En cuanto a la validez taxonómica de los diferentes nombres de especies, se observa que un total de 4,510 especies (81.9 %) están registradas como aceptadas en la base de datos de WCVP. Además, 942 registros (17.1 %) corresponden actualmente a nombres que se consideran sinónimos. Por otro lado, 18 nombres científicos (0.3 %) presentan ciertas complicaciones en la determinación de su validez taxonómica. Por último, se encontraron 37 registros (0.7 %) que no pudieron ser validados en la base de datos de WCVP.
+
+- Como resultado de la validación de la información utilizando los datos de WCVP y la ayuda de TNRS, se informa un listado de 5,244 nombres aceptados. Esto representa una reducción del tamaño de la base de datos del 4.8 % en comparación con el listado original.
+
+ 
+
+ 
+ 

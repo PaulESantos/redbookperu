@@ -4,4 +4,5 @@ bibentry(
   title    = "redbookperu - A Package To Access And Analyze The Data From The Red Book Of Endemic Plants Of Peru",
   author   = "Paul E. Santos Andrade, Lucely L. Vilca Bustamante",
  url = "https://paulesantos.github.io/redbookperu/",
+ year = "2023",
 )

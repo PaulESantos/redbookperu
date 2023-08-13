@@ -39,10 +39,10 @@
 #' @export
 get_redbook_data <- function(splist, max_distance = 0.1) {
   output_names <- c( "name_subitted",
-                     "name_matched",
                      "accepted_name",
                      "accepted_family",
                      "accepted_name_author",
+                     "redbook_name",
                      "iucn",
                      "publication",
                      "collector",
@@ -80,9 +80,9 @@ get_redbook_data <- function(splist, max_distance = 0.1) {
       #colnames(output) <- output_names
     } else if (length(matches_i) != 0) {
       row_data <- redbookperu::redbook_taxonomy[redbookperu::redbook_taxonomy$redbook_name %in% matches_i, ]
-      book_data <- redbookperu::redbook_tab[redbookperu::redbook_tab$redbook_id == row_data$redbook_id,]
-      outputmatrix <- cbind(row_data[, c(2:5)],
-                            book_data[, -c(1, 2)])
+      book_data <- redbookperu::redbook_tab[redbookperu::redbook_tab$redbook_id %in% row_data$redbook_id,]
+      outputmatrix <- cbind(row_data[, c(3:5)],
+                            book_data[, -c(1)])
       output <- as.matrix(cbind(name_submitted = splist_std[i],
                       outputmatrix))
     }
