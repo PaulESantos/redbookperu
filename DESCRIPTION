@@ -2,7 +2,7 @@ Package: redbookperu
 Title: A Package To Access And Analyze The Data From The Red Book Of Endemic Plants Of Peru
 Version: 0.0.0.2
 Authors@R: 
-      c(person(given = "Paul Efren",
+      c(person(given = "Paul E.",
                  family = "Santos Andrade",
                  role = c("aut", "cre"),
                  email = "paulefrens@gmail.com",
@@ -29,4 +29,4 @@ BugReports: https://github.com/PaulESantos/redbookperu/issues
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
-Maintainer: Paul Efren Santos Andrade <paulefrens@gmail.com>
+Maintainer: Paul E. Santos Andrade <paulefrens@gmail.com>

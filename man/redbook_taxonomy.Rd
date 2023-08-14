@@ -34,10 +34,4 @@ data(redbook_taxonomy)
 head(redbook_taxonomy)
 }
 }
-\keyword{Peru,}
-\keyword{TNRS,}
-\keyword{WCVP}
-\keyword{dataset,}
-\keyword{endemic}
-\keyword{plants,}
-\keyword{taxonomy,}
+\keyword{dataset}

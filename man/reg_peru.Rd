@@ -32,11 +32,4 @@ data(reg_peru)
 
 
 }
-\keyword{Peru,}
-\keyword{administrative}
-\keyword{data,}
-\keyword{dataset,}
-\keyword{geospatial,}
-\keyword{regions,}
-\keyword{sf}
-\keyword{spatial}
+\keyword{dataset}

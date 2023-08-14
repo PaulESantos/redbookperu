@@ -25,6 +25,6 @@
 #' data(reg_peru)
 #'
 #'
-#' @keywords dataset, spatial data, geospatial, Peru, administrative regions, sf
+#' @keywords dataset
 #'
 "reg_peru"

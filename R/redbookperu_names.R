@@ -22,7 +22,7 @@
 #'     \item{taxonomic_status}{The taxonomic status of the species (Accepted, Synonym, No opinion).}
 #'   }
 #'
-#' @keywords dataset, taxonomy, endemic plants, Peru, TNRS, WCVP
+#' @keywords dataset
 #' @usage data(redbook_taxonomy)
 #'
 #' @docType data
