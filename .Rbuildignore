@@ -5,11 +5,8 @@
 ^cran-comments\.md$
 ^codecov\.yml$
 ^\.github$
-^code_preparation.R
-^clean_data
-^data/code\\.R
-^data/botanical_country_definitions\\.csv
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
 ^vignettes/articles$
+^build/vignettes.rds$

@@ -16,12 +16,12 @@ test_that("check_redbook returns correct output for tax_status = FALSE", {
   splist <- c("Aphelandra cuscoenses", "Sanchezia capitata",
               "Sanchezia ovata", "Piper stevensi",
               "Verbesina andinaa", "Verbesina andina")
-  expected_output <- c("Aphelandra cuscoensis is endemic - fuzzy macth",
-                       "Sanchezia ovata is endemic",
-                       "Sanchezia ovata is endemic",
-                       "Piper stevensii is endemic - fuzzy macth",
-                       "Verbesina andina is endemic - fuzzy match",
-                       "Verbesina andina is endemic" )
+  expected_output <- c("Endemic - fuzzy match",
+                       "Endemic",
+                       "Endemic",
+                       "Endemic - fuzzy match",
+                       "Endemic - fuzzy match",
+                       "Endemic" )
 
   actual_output <- check_redbook(splist, tax_status = FALSE)
 

@@ -4,7 +4,7 @@
 \alias{check_redbook}
 \title{Check Species Names in the Red Book of Endemic Plants of Peru}
 \usage{
-check_redbook(splist, tax_status = TRUE, max_distance = 0.1)
+check_redbook(splist, tax_status = FALSE, max_distance = 0.1)
 }
 \arguments{
 \item{splist}{A character vector containing the species names to be checked.}

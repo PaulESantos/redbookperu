@@ -50,7 +50,7 @@
 #' @name check_redbook
 #'
 #' @export
-check_redbook <- function(splist, tax_status = TRUE, max_distance = 0.1) {
+check_redbook <- function(splist, tax_status = FALSE, max_distance = 0.1) {
   # review text class
   if (is.factor(splist)) {
     splist <- as.character(splist)
@@ -75,8 +75,13 @@ check_redbook <- function(splist, tax_status = TRUE, max_distance = 0.1) {
     match_dist <- utils::adist(splist_std[i], matches)
     matches_i <- matches[which(match_dist <= max_distance_fixed)]
     # Output selection
-    if (length(matches_i) == 0 ) {
+    if (length(matches_i) == 0 & tax_status == TRUE ) {
       output <- paste0(splist_std[i] , " - Not endemic")
+
+    }
+    else if (length(matches_i) == 0 & tax_status == FALSE) {
+      output <- "Not endemic"
+
     }
     else if (length(matches_i) != 0){
       row_data <- redbookperu::redbook_taxonomy[redbookperu::redbook_taxonomy$redbook_name %in% matches_i, ]
@@ -108,18 +113,24 @@ check_redbook <- function(splist, tax_status = TRUE, max_distance = 0.1) {
         }
       }
       else if (tax_status == FALSE){
-        if(match_dist == 0 & taxonomic_status != "nill"){
-          output <-  paste0(unique(row_data$accepted_name), " is endemic")
+        if(match_dist == 0){
+          output <- "Endemic"
         }
-        else  if(match_dist != 0 & taxonomic_status != "nill"){
-          output <- paste0(unique(row_data$accepted_name), " is endemic - fuzzy macth")
+        else if (match_dist != 0){
+          output <- "Endemic - fuzzy match"
         }
-        else  if(match_dist == 0 & taxonomic_status == "nill"){
-          output <- paste0(unique(row_data$redbook_name), " is endemic")
-        }
-        else  if(match_dist != 0 & taxonomic_status == "nill"){
-          output <- paste0(unique(row_data$redbook_name), " is endemic - fuzzy match")
-        }
+      #  if(match_dist == 0 & taxonomic_status != "nill"){
+      #    output <-  paste0(unique(row_data$accepted_name), " is endemic")
+      #  }
+      #  else  if(match_dist != 0 & taxonomic_status != "nill"){
+      #    output <- paste0(unique(row_data$accepted_name), " is endemic - fuzzy macth")
+      #  }
+      #  else  if(match_dist == 0 & taxonomic_status == "nill"){
+      #    output <- paste0(unique(row_data$redbook_name), " is endemic")
+      #  }
+      #  else  if(match_dist != 0 & taxonomic_status == "nill"){
+      #    output <- paste0(unique(row_data$redbook_name), " is endemic - fuzzy match")
+      #  }
       }
     }
     output_vector[i] <- output
