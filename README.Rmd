@@ -79,15 +79,15 @@ tibble::tibble(splist = splist) |>
 
 ```r
 # A tibble: 7 × 3
-  splist                endemic_tax_status                                  endemic                                       
-  <chr>                 <chr>                                               <chr>                                         
-1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy match Aphelandra cuscoensis is endemic - fuzzy macth
-2 Sanchezia capitata    Sanchezia ovata - Updated name                      Sanchezia ovata is endemic                    
-3 Sanchezia ovata       Sanchezia ovata - Accepted name                     Sanchezia ovata is endemic                    
-4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match          Piper stevensii is endemic - fuzzy macth      
-5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy match Verbesina andina is endemic - fuzzy match     
-6 Verbesina andina      Verbesina andina - No info. available               Verbesina andina is endemic                   
-7 Weinmania nubigena    Weinmania nubigena - Not endemic                    Weinmania nubigena - Not endemic  
+  splist                endemic_tax_status                                  endemic              
+  <chr>                 <chr>                                               <chr>                
+1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy match Endemic - fuzzy match
+2 Sanchezia capitata    Sanchezia ovata - Updated name                      Endemic              
+3 Sanchezia ovata       Sanchezia ovata - Accepted name                     Endemic              
+4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match          Endemic - fuzzy match
+5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy match Endemic - fuzzy match
+6 Verbesina andina      Verbesina andina - No info. available               Endemic              
+7 Weinmania nubigena    Weinmania nubigena - Not endemic                    Not endemic   
 ```
 
 

@@ -99,13 +99,9 @@ check_redbook(splist, tax_status = TRUE)
 
 ``` r
 check_redbook(splist, tax_status = FALSE)
-#> [1] "Aphelandra cuscoensis is endemic - fuzzy macth"
-#> [2] "Sanchezia ovata is endemic"                    
-#> [3] "Sanchezia ovata is endemic"                    
-#> [4] "Piper stevensii is endemic - fuzzy macth"      
-#> [5] "Verbesina andina is endemic - fuzzy match"     
-#> [6] "Verbesina andina is endemic"                   
-#> [7] "Weinmania nubigena - Not endemic"
+#> [1] "Endemic - fuzzy match" "Endemic"               "Endemic"              
+#> [4] "Endemic - fuzzy match" "Endemic - fuzzy match" "Endemic"              
+#> [7] "Not endemic"
 ```
 
 Both functions indicate the presence of partial matches (fuzzy match)
@@ -123,15 +119,15 @@ tibble::tibble(splist = splist) |>
 
 ``` r
 # A tibble: 7 × 3
-  splist                endemic_tax_status                                  endemic                                       
-  <chr>                 <chr>                                               <chr>                                         
-1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy match Aphelandra cuscoensis is endemic - fuzzy macth
-2 Sanchezia capitata    Sanchezia ovata - Updated name                      Sanchezia ovata is endemic                    
-3 Sanchezia ovata       Sanchezia ovata - Accepted name                     Sanchezia ovata is endemic                    
-4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match          Piper stevensii is endemic - fuzzy macth      
-5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy match Verbesina andina is endemic - fuzzy match     
-6 Verbesina andina      Verbesina andina - No info. available               Verbesina andina is endemic                   
-7 Weinmania nubigena    Weinmania nubigena - Not endemic                    Weinmania nubigena - Not endemic  
+  splist                endemic_tax_status                                  endemic              
+  <chr>                 <chr>                                               <chr>                
+1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy match Endemic - fuzzy match
+2 Sanchezia capitata    Sanchezia ovata - Updated name                      Endemic              
+3 Sanchezia ovata       Sanchezia ovata - Accepted name                     Endemic              
+4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match          Endemic - fuzzy match
+5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy match Endemic - fuzzy match
+6 Verbesina andina      Verbesina andina - No info. available               Endemic              
+7 Weinmania nubigena    Weinmania nubigena - Not endemic                    Not endemic   
 ```
 
 If you intend to access the information provided for each of the species
