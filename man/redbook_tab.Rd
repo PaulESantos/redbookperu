@@ -40,11 +40,11 @@ The database encompasses essential information for research and conservation
 efforts related to Peru's endemic flora, providing access to the data presented in the corresponding book.
 }
 \examples{
-\dontrun{
+
 # Example illustrating how to load and explore the database
 data(redbook_tab)
 head(redbook_tab)
-}
+
 }
 \references{
 \href{https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153}{Red Book of Endemic Plants of Peru}

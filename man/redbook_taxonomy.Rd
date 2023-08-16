@@ -29,9 +29,9 @@ Resolution Service (TNRS) and the World Checklist of Vascular Plants (WCVP)
 to ensure consistency and accuracy.
 }
 \examples{
-\dontrun{
+
 data(redbook_taxonomy)
 head(redbook_taxonomy)
-}
+
 }
 \keyword{dataset}

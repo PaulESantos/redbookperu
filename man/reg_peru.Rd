@@ -33,3 +33,4 @@ data(reg_peru)
 
 }
 \keyword{dataset}
+\keyword{internal}

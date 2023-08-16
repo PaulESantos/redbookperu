@@ -36,10 +36,9 @@
 #' @docType data
 #'
 #' @examples
-#' \dontrun{
+#'
 #' # Example illustrating how to load and explore the database
 #' data(redbook_tab)
 #' head(redbook_tab)
-#' }
-
+#'
 "redbook_tab"

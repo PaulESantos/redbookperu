@@ -25,6 +25,6 @@
 #' data(reg_peru)
 #'
 #'
-#' @keywords dataset
+#' @keywords dataset internal
 #'
 "reg_peru"

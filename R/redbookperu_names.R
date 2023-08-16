@@ -28,8 +28,8 @@
 #' @docType data
 #'
 #' @examples
-#' \dontrun{
+#'
 #' data(redbook_taxonomy)
 #' head(redbook_taxonomy)
-#' }
+#'
 "redbook_taxonomy"
