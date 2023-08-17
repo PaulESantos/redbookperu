@@ -1,5 +1,5 @@
 Package: redbookperu
-Title: A Package to Access and Analyze the Data from the Red Book of Endemic Plants of Peru
+Title: Access and Analyze the Data from the Red Book of Endemic Plants of Peru
 Version: 0.0.1
 Authors@R: 
       c(person(given = "Paul E.",
@@ -12,7 +12,7 @@ Authors@R:
                  role = "aut",
                  email = "vilca.lu01@gmail.com",
                  comment = c(ORCID = "0000-0002-5559-1296"))) 
-Description: Access and analysis of data from "The Red Book of Endemic Plants of Peru," providing taxonomic, geographic, and conservation information about Peru's endemic plant species. The package offers functions to check species inclusion, obtain updated taxonomic details, and explore the dataset.
+Description: Access and analysis of data from "The Red Book of Endemic Plants of Peru," <doi:10.15381/rpb.v13i2.1782> providing taxonomic, geographic, and conservation information about Peru's endemic plant species. The package offers functions to check species inclusion, obtain updated taxonomic details, and explore the dataset.
 License: MIT + file LICENSE
 Suggests: 
     knitr,
