@@ -42,6 +42,16 @@ information that we provide.
 
 ### Installation
 
+You can install the ppendemic package from CRAN using:
+
+``` r
+install.packages("redbookperu")
+
+# or
+
+pak::pak("redbookperu")
+```
+
 You can install the development version of `redbookperu` from GitHub:
 
 ``` r
