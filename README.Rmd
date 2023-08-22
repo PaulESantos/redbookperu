@@ -20,6 +20,8 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/redbookperu)](https://CRAN.R-project.org/package=redbookperu)
 [![Codecov test coverage](https://codecov.io/gh/PaulESantos/redbookperu/branch/main/graph/badge.svg)](https://app.codecov.io/gh/PaulESantos/redbookperu?branch=main)
 [![R-CMD-check](https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/redbookperu?color=green)](https://cran.r-project.org/package=redbookperu)
+[![](http://cranlogs.r-pkg.org/badges/last-week/redbookperu?color=green)](https://cran.r-project.org/package=redbookperu)
 <!-- badges: end -->
 
 The R package `redbookperu` provides convenient access to the information contained in the [Red Book of Endemic Plants of Peru](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153). This book represents a comprehensive compilation of data on Peru's endemic plant species, encompassing records of 5,508 distinct taxa. Although this document marked a milestone by consolidating an ambitious initiative focused on understanding the diversity of Peru's endemic plant species at the time of its publication, it currently requires a review and update of the presented taxonomic information.
@@ -30,7 +32,7 @@ The information included in the `redbookperu` package is built with the support 
 
 ### Installation
 
-You can install the ppendemic package from CRAN using:
+You can install the `redbookperu` package from CRAN using:
 
 ```r
 install.packages("redbookperu")

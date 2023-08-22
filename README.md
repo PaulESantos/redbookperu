@@ -12,6 +12,8 @@ status](https://www.r-pkg.org/badges/version/redbookperu)](https://CRAN.R-projec
 [![Codecov test
 coverage](https://codecov.io/gh/PaulESantos/redbookperu/branch/main/graph/badge.svg)](https://app.codecov.io/gh/PaulESantos/redbookperu?branch=main)
 [![R-CMD-check](https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/redbookperu?color=green)](https://cran.r-project.org/package=redbookperu)
+[![](http://cranlogs.r-pkg.org/badges/last-week/redbookperu?color=green)](https://cran.r-project.org/package=redbookperu)
 <!-- badges: end -->
 
 The R package `redbookperu` provides convenient access to the
@@ -42,7 +44,7 @@ information that we provide.
 
 ### Installation
 
-You can install the ppendemic package from CRAN using:
+You can install the `redbookperu` package from CRAN using:
 
 ``` r
 install.packages("redbookperu")
