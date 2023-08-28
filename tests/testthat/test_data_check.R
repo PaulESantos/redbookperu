@@ -8,7 +8,7 @@ test_that("Loading redbook_taxonomy dataset", {
   expect_s3_class(redbookperu::redbook_taxonomy, "data.frame")
 
   # Verificar si redbook_taxonomy tiene el número de filas esperado
-  expect_equal(nrow(redbookperu::redbook_taxonomy), 6351)
+  expect_equal(nrow(redbookperu::redbook_taxonomy), 5507)
 
   # Verificar si las columnas requeridas están presentes en redbook_taxonomy
   expected_columns <- c("redbook_id", "redbook_name", "accepted_name",
