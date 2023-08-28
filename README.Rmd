@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 [![](http://cranlogs.r-pkg.org/badges/last-week/redbookperu?color=green)](https://cran.r-project.org/package=redbookperu)
 <!-- badges: end -->
 
-The R package `redbookperu` provides convenient access to the information contained in the [Red Book of Endemic Plants of Peru](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153). This book represents a comprehensive compilation of data on Peru's endemic plant species, encompassing records of 5,508 distinct taxa. Although this document marked a milestone by consolidating an ambitious initiative focused on understanding the diversity of Peru's endemic plant species at the time of its publication, it currently requires a review and update of the presented taxonomic information.
+The R package `redbookperu` provides convenient access to the information contained in the [Red Book of Endemic Plants of Peru](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153). This book represents a comprehensive compilation of data on Peru's endemic plant species, encompassing records of 5,507 distinct taxa. Although this document marked a milestone by consolidating an ambitious initiative focused on understanding the diversity of Peru's endemic plant species at the time of its publication, it currently requires a review and update of the presented taxonomic information.
 
 The process of accessing data from the original publication can pose challenges for researchers, particularly due to the large number of taxa presented within it. The `redbookperu` package has the primary objective of addressing these challenges by providing updated taxonomic information. Additionally, it introduces functions designed to enhance the accessibility and usefulness of the data presented in the Red Book of Endemic Plants of Peru.
 
@@ -83,25 +83,11 @@ Both functions indicate the presence of partial matches (fuzzy match) when the n
 
 `check_redbook()` function is designed to work seamlessly with tibbles, allowing users to easily analyze species data within a tabular format.
 
-```{r, eval=FALSE}
+```{r echo=TRUE, eval=TRUE}
 tibble::tibble(splist = splist) |> 
   dplyr::mutate(endemic_tax_status = check_redbook(splist, tax_status = TRUE),
                 endemic = check_redbook(splist, tax_status = FALSE))
 ```
-
-```r
-# A tibble: 7 × 3
-  splist                endemic_tax_status                                  endemic              
-  <chr>                 <chr>                                               <chr>                
-1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy match Endemic - fuzzy match
-2 Sanchezia capitata    Sanchezia ovata - Updated name                      Endemic              
-3 Sanchezia ovata       Sanchezia ovata - Accepted name                     Endemic              
-4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match          Endemic - fuzzy match
-5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy match Endemic - fuzzy match
-6 Verbesina andina      Verbesina andina - No info. available               Endemic              
-7 Weinmania nubigena    Weinmania nubigena - Not endemic                    Not endemic   
-```
-
 
 If you intend to access the information provided for each of the species listed in the Red Book of Endemic Plants of Peru, you have the option to use the `get_redbook_data()` function. This function facilitates the association of updated taxonomic information with the details concerning conservation status, distribution, and descriptions presented in the original publication.
 

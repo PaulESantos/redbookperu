@@ -20,7 +20,7 @@ The R package `redbookperu` provides convenient access to the
 information contained in the [Red Book of Endemic Plants of
 Peru](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153).
 This book represents a comprehensive compilation of data on Peru’s
-endemic plant species, encompassing records of 5,508 distinct taxa.
+endemic plant species, encompassing records of 5,507 distinct taxa.
 Although this document marked a milestone by consolidating an ambitious
 initiative focused on understanding the diversity of Peru’s endemic
 plant species at the time of its publication, it currently requires a
@@ -67,7 +67,7 @@ session using:
 
 ``` r
 library(redbookperu)
-#> This is redbookperu 0.0.0.2
+#> This is redbookperu 0.0.2
 ```
 
 To determine if a species of interest is listed in the Red Book of
@@ -98,7 +98,7 @@ splist <- c("Aphelandra cuscoenses", "Sanchezia capitata",
 check_redbook(splist, tax_status = TRUE)
 #> [1] "Aphelandra cuscoensis - Accepted name - Fuzzy match"
 #> [2] "Sanchezia ovata - Updated name"                     
-#> [3] "Sanchezia ovata - Accepted name"                    
+#> [3] "Sanchezia ovata - Not endemic"                      
 #> [4] "Piper stevensii - No opinion - Fuzzy match"         
 #> [5] "Verbesina andina - No info. available - Fuzzy match"
 #> [6] "Verbesina andina - No info. available"              
@@ -111,7 +111,7 @@ check_redbook(splist, tax_status = TRUE)
 
 ``` r
 check_redbook(splist, tax_status = FALSE)
-#> [1] "Endemic - fuzzy match" "Endemic"               "Endemic"              
+#> [1] "Endemic - fuzzy match" "Endemic"               "Not endemic"          
 #> [4] "Endemic - fuzzy match" "Endemic - fuzzy match" "Endemic"              
 #> [7] "Not endemic"
 ```
@@ -127,19 +127,16 @@ allowing users to easily analyze species data within a tabular format.
 tibble::tibble(splist = splist) |> 
   dplyr::mutate(endemic_tax_status = check_redbook(splist, tax_status = TRUE),
                 endemic = check_redbook(splist, tax_status = FALSE))
-```
-
-``` r
-# A tibble: 7 × 3
-  splist                endemic_tax_status                                  endemic              
-  <chr>                 <chr>                                               <chr>                
-1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy match Endemic - fuzzy match
-2 Sanchezia capitata    Sanchezia ovata - Updated name                      Endemic              
-3 Sanchezia ovata       Sanchezia ovata - Accepted name                     Endemic              
-4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match          Endemic - fuzzy match
-5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy match Endemic - fuzzy match
-6 Verbesina andina      Verbesina andina - No info. available               Endemic              
-7 Weinmania nubigena    Weinmania nubigena - Not endemic                    Not endemic   
+#> # A tibble: 7 × 3
+#>   splist                endemic_tax_status                               endemic
+#>   <chr>                 <chr>                                            <chr>  
+#> 1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy m… Endemi…
+#> 2 Sanchezia capitata    Sanchezia ovata - Updated name                   Endemic
+#> 3 Sanchezia ovata       Sanchezia ovata - Not endemic                    Not en…
+#> 4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match       Endemi…
+#> 5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy m… Endemi…
+#> 6 Verbesina andina      Verbesina andina - No info. available            Endemic
+#> 7 Weinmania nubigena    Weinmania nubigena - Not endemic                 Not en…
 ```
 
 If you intend to access the information provided for each of the species
