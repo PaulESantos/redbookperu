@@ -68,13 +68,13 @@ splist <- c("Aphelandra cuscoenses", "Sanchezia capitata",
             "Sanchezia ovata", "Piper stevensi",
             "Verbesina andinaa", "Verbesina andina", "Weinmania nubigena")
 
-check_redbook(splist, tax_status = TRUE)
+redbookperu::check_redbook(splist, tax_status = TRUE)
 ```
 
 - `check_redbook(splist, tax_status == FALSE)`: The result indicates whether the species is endemic or not, based on its match with the species present in the database.
 
 ```{r}
-check_redbook(splist, tax_status = FALSE)
+redbookperu::check_redbook(splist, tax_status = FALSE)
 ```
 
 
@@ -83,17 +83,17 @@ Both functions indicate the presence of partial matches (fuzzy match) when the n
 
 `check_redbook()` function is designed to work seamlessly with tibbles, allowing users to easily analyze species data within a tabular format.
 
-```{r echo=TRUE, eval=TRUE}
+```{r }
 tibble::tibble(splist = splist) |> 
-  dplyr::mutate(endemic_tax_status = check_redbook(splist, tax_status = TRUE),
-                endemic = check_redbook(splist, tax_status = FALSE))
+  dplyr::mutate(endemic_tax_status = redbookperu::check_redbook(splist, tax_status = FALSE),
+                endemic = redbookperu::check_redbook(splist, tax_status = TRUE))
 ```
 
 If you intend to access the information provided for each of the species listed in the Red Book of Endemic Plants of Peru, you have the option to use the `get_redbook_data()` function. This function facilitates the association of updated taxonomic information with the details concerning conservation status, distribution, and descriptions presented in the original publication.
 
 
 ```{r}
-get_redbook_data(c("Sanchecia capitata",
+redbookperu::get_redbook_data(c("Sanchecia capitata",
                    "Weinmania nubigena",
                    "Macroclinium christensonii",
                    "Weberbauera violacea"))

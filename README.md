@@ -95,7 +95,7 @@ splist <- c("Aphelandra cuscoenses", "Sanchezia capitata",
             "Sanchezia ovata", "Piper stevensi",
             "Verbesina andinaa", "Verbesina andina", "Weinmania nubigena")
 
-check_redbook(splist, tax_status = TRUE)
+redbookperu::check_redbook(splist, tax_status = TRUE)
 #> [1] "Aphelandra cuscoensis - Accepted name - Fuzzy match"
 #> [2] "Sanchezia ovata - Updated name"                     
 #> [3] "Sanchezia ovata - Not endemic"                      
@@ -110,7 +110,7 @@ check_redbook(splist, tax_status = TRUE)
   species present in the database.
 
 ``` r
-check_redbook(splist, tax_status = FALSE)
+redbookperu::check_redbook(splist, tax_status = FALSE)
 #> [1] "Endemic - fuzzy match" "Endemic"               "Not endemic"          
 #> [4] "Endemic - fuzzy match" "Endemic - fuzzy match" "Endemic"              
 #> [7] "Not endemic"
@@ -125,18 +125,18 @@ allowing users to easily analyze species data within a tabular format.
 
 ``` r
 tibble::tibble(splist = splist) |> 
-  dplyr::mutate(endemic_tax_status = check_redbook(splist, tax_status = TRUE),
-                endemic = check_redbook(splist, tax_status = FALSE))
+  dplyr::mutate(endemic_tax_status = redbookperu::check_redbook(splist, tax_status = FALSE),
+                endemic = redbookperu::check_redbook(splist, tax_status = TRUE))
 #> # A tibble: 7 × 3
-#>   splist                endemic_tax_status                               endemic
-#>   <chr>                 <chr>                                            <chr>  
-#> 1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy m… Endemi…
-#> 2 Sanchezia capitata    Sanchezia ovata - Updated name                   Endemic
-#> 3 Sanchezia ovata       Sanchezia ovata - Not endemic                    Not en…
-#> 4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match       Endemi…
-#> 5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy m… Endemi…
-#> 6 Verbesina andina      Verbesina andina - No info. available            Endemic
-#> 7 Weinmania nubigena    Weinmania nubigena - Not endemic                 Not en…
+#>   splist                endemic_tax_status    endemic                           
+#>   <chr>                 <chr>                 <chr>                             
+#> 1 Aphelandra cuscoenses Endemic - fuzzy match Aphelandra cuscoensis - Accepted …
+#> 2 Sanchezia capitata    Endemic               Sanchezia ovata - Updated name    
+#> 3 Sanchezia ovata       Not endemic           Sanchezia ovata - Not endemic     
+#> 4 Piper stevensi        Endemic - fuzzy match Piper stevensii - No opinion - Fu…
+#> 5 Verbesina andinaa     Endemic - fuzzy match Verbesina andina - No info. avail…
+#> 6 Verbesina andina      Endemic               Verbesina andina - No info. avail…
+#> 7 Weinmania nubigena    Not endemic           Weinmania nubigena - Not endemic
 ```
 
 If you intend to access the information provided for each of the species
@@ -147,7 +147,7 @@ conservation status, distribution, and descriptions presented in the
 original publication.
 
 ``` r
-get_redbook_data(c("Sanchecia capitata",
+redbookperu::get_redbook_data(c("Sanchecia capitata",
                    "Weinmania nubigena",
                    "Macroclinium christensonii",
                    "Weberbauera violacea"))
