@@ -63,7 +63,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The R package <code>redbookperu</code> provides convenient access to the information contained in the <a href="https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153" class="external-link">Red Book of Endemic Plants of Peru</a>. This book represents a comprehensive compilation of data on Peru’s endemic plant species, encompassing records of 5,508 distinct taxa. Although this document marked a milestone by consolidating an ambitious initiative focused on understanding the diversity of Peru’s endemic plant species at the time of its publication, it currently requires a review and update of the presented taxonomic information.</p>
+<p>The R package <code>redbookperu</code> provides convenient access to the information contained in the <a href="https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153" class="external-link">Red Book of Endemic Plants of Peru</a>. This book represents a comprehensive compilation of data on Peru’s endemic plant species, encompassing records of 5,507 distinct taxa. Although this document marked a milestone by consolidating an ambitious initiative focused on understanding the diversity of Peru’s endemic plant species at the time of its publication, it currently requires a review and update of the presented taxonomic information.</p>
 <p>The process of accessing data from the original publication can pose challenges for researchers, particularly due to the large number of taxa presented within it. The <code>redbookperu</code> package has the primary objective of addressing these challenges by providing updated taxonomic information. Additionally, it introduces functions designed to enhance the accessibility and usefulness of the data presented in the Red Book of Endemic Plants of Peru.</p>
 <p>The information included in the <code>redbookperu</code> package is built with the support of the <a href="https://tnrs.biendata.org/" class="external-link">Taxonomic Name Resolution Service TNRS</a>, in collaboration with the <a href="https://powo.science.kew.org/about-wcvp" class="external-link">World Checklist of Vascular Plants WCVP</a> database. These resources are utilized to ensure the validity and standardization of the taxonomic information that we provide.</p>
 <div class="section level3">
@@ -86,7 +86,7 @@
 <p>After installing the <code>redbookperu</code> package, you can load it into your R session using:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PaulESantos/redbookperu" class="external-link">redbookperu</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; This is redbookperu 0.0.0.2</span></span></code></pre></div>
+<span><span class="co">#&gt; This is redbookperu 0.0.2</span></span></code></pre></div>
 <p>To determine if a species of interest is listed in the Red Book of Endemic Plants of Peru, we provide the <code><a href="reference/check_redbook.html">check_redbook()</a></code> function. This function verifies whether the species of interest is included in the book’s species list. The function comes in two variations:</p>
 <ul>
 <li>
@@ -106,7 +106,7 @@
 <span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Aphelandra cuscoensis - Accepted name - Fuzzy match"</span></span>
 <span><span class="co">#&gt; [2] "Sanchezia ovata - Updated name"                     </span></span>
-<span><span class="co">#&gt; [3] "Sanchezia ovata - Accepted name"                    </span></span>
+<span><span class="co">#&gt; [3] "Sanchezia ovata - Not endemic"                      </span></span>
 <span><span class="co">#&gt; [4] "Piper stevensii - No opinion - Fuzzy match"         </span></span>
 <span><span class="co">#&gt; [5] "Verbesina andina - No info. available - Fuzzy match"</span></span>
 <span><span class="co">#&gt; [6] "Verbesina andina - No info. available"              </span></span>
@@ -117,7 +117,7 @@
 </ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Endemic - fuzzy match" "Endemic"               "Endemic"              </span></span>
+<span><span class="co">#&gt; [1] "Endemic - fuzzy match" "Endemic"               "Not endemic"          </span></span>
 <span><span class="co">#&gt; [4] "Endemic - fuzzy match" "Endemic - fuzzy match" "Endemic"              </span></span>
 <span><span class="co">#&gt; [7] "Not endemic"</span></span></code></pre></div>
 <p>Both functions indicate the presence of partial matches (fuzzy match) when the name of the species of interest varies compared to the information present in the database.</p>
@@ -125,19 +125,19 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>splist <span class="op">=</span> <span class="va">splist</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">mutate</span><span class="op">(</span>endemic_tax_status <span class="op">=</span> <span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>                endemic <span class="op">=</span> <span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A tibble: 7 × 3</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  splist                endemic_tax_status                                  endemic              </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>                 <span class="er">&lt;</span>chr<span class="sc">&gt;</span>                                               <span class="er">&lt;</span>chr<span class="sc">&gt;</span>                </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> Aphelandra cuscoenses Aphelandra cuscoensis <span class="sc">-</span> Accepted name <span class="sc">-</span> Fuzzy match Endemic <span class="sc">-</span> fuzzy match</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> Sanchezia capitata    Sanchezia ovata <span class="sc">-</span> Updated name                      Endemic              </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span> Sanchezia ovata       Sanchezia ovata <span class="sc">-</span> Accepted name                     Endemic              </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> Piper stevensi        Piper stevensii <span class="sc">-</span> No opinion <span class="sc">-</span> Fuzzy match          Endemic <span class="sc">-</span> fuzzy match</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> Verbesina andinaa     Verbesina andina <span class="sc">-</span> No info. available <span class="sc">-</span> Fuzzy match Endemic <span class="sc">-</span> fuzzy match</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="dv">6</span> Verbesina andina      Verbesina andina <span class="sc">-</span> No info. available               Endemic              </span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="dv">7</span> Weinmania nubigena    Weinmania nubigena <span class="sc">-</span> Not endemic                    Not endemic   </span></code></pre></div>
+<span>                endemic <span class="op">=</span> <span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 7 × 3</span></span>
+<span><span class="co">#&gt;   splist                endemic_tax_status                               endemic</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                 &lt;chr&gt;                                            &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy m… Endemi…</span></span>
+<span><span class="co">#&gt; 2 Sanchezia capitata    Sanchezia ovata - Updated name                   Endemic</span></span>
+<span><span class="co">#&gt; 3 Sanchezia ovata       Sanchezia ovata - Not endemic                    Not en…</span></span>
+<span><span class="co">#&gt; 4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match       Endemi…</span></span>
+<span><span class="co">#&gt; 5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy m… Endemi…</span></span>
+<span><span class="co">#&gt; 6 Verbesina andina      Verbesina andina - No info. available            Endemic</span></span>
+<span><span class="co">#&gt; 7 Weinmania nubigena    Weinmania nubigena - Not endemic                 Not en…</span></span></code></pre></div>
 <p>If you intend to access the information provided for each of the species listed in the Red Book of Endemic Plants of Peru, you have the option to use the <code><a href="reference/get_redbook_data.html">get_redbook_data()</a></code> function. This function facilitates the association of updated taxonomic information with the details concerning conservation status, distribution, and descriptions presented in the original publication.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_redbook_data.html">get_redbook_data</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sanchecia capitata"</span>,</span>
 <span>                   <span class="st">"Weinmania nubigena"</span>,</span>
 <span>                   <span class="st">"Macroclinium christensonii"</span>,</span>
