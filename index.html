@@ -103,7 +103,7 @@
 <span>            <span class="st">"Sanchezia ovata"</span>, <span class="st">"Piper stevensi"</span>,</span>
 <span>            <span class="st">"Verbesina andinaa"</span>, <span class="st">"Verbesina andina"</span>, <span class="st">"Weinmania nubigena"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Aphelandra cuscoensis - Accepted name - Fuzzy match"</span></span>
 <span><span class="co">#&gt; [2] "Sanchezia ovata - Updated name"                     </span></span>
 <span><span class="co">#&gt; [3] "Sanchezia ovata - Not endemic"                      </span></span>
@@ -116,7 +116,7 @@
 <code>check_redbook(splist, tax_status == FALSE)</code>: The result indicates whether the species is endemic or not, based on its match with the species present in the database.</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Endemic - fuzzy match" "Endemic"               "Not endemic"          </span></span>
 <span><span class="co">#&gt; [4] "Endemic - fuzzy match" "Endemic - fuzzy match" "Endemic"              </span></span>
 <span><span class="co">#&gt; [7] "Not endemic"</span></span></code></pre></div>
@@ -124,21 +124,21 @@
 <p><code><a href="reference/check_redbook.html">check_redbook()</a></code> function is designed to work seamlessly with tibbles, allowing users to easily analyze species data within a tabular format.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>splist <span class="op">=</span> <span class="va">splist</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">mutate</span><span class="op">(</span>endemic_tax_status <span class="op">=</span> <span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>                endemic <span class="op">=</span> <span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">mutate</span><span class="op">(</span>endemic_tax_status <span class="op">=</span> <span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>                endemic <span class="op">=</span> <span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 7 × 3</span></span>
-<span><span class="co">#&gt;   splist                endemic_tax_status                               endemic</span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;                 &lt;chr&gt;                                            &lt;chr&gt;  </span></span>
-<span><span class="co">#&gt; 1 Aphelandra cuscoenses Aphelandra cuscoensis - Accepted name - Fuzzy m… Endemi…</span></span>
-<span><span class="co">#&gt; 2 Sanchezia capitata    Sanchezia ovata - Updated name                   Endemic</span></span>
-<span><span class="co">#&gt; 3 Sanchezia ovata       Sanchezia ovata - Not endemic                    Not en…</span></span>
-<span><span class="co">#&gt; 4 Piper stevensi        Piper stevensii - No opinion - Fuzzy match       Endemi…</span></span>
-<span><span class="co">#&gt; 5 Verbesina andinaa     Verbesina andina - No info. available - Fuzzy m… Endemi…</span></span>
-<span><span class="co">#&gt; 6 Verbesina andina      Verbesina andina - No info. available            Endemic</span></span>
-<span><span class="co">#&gt; 7 Weinmania nubigena    Weinmania nubigena - Not endemic                 Not en…</span></span></code></pre></div>
+<span><span class="co">#&gt;   splist                endemic_tax_status    endemic                           </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                 &lt;chr&gt;                 &lt;chr&gt;                             </span></span>
+<span><span class="co">#&gt; 1 Aphelandra cuscoenses Endemic - fuzzy match Aphelandra cuscoensis - Accepted …</span></span>
+<span><span class="co">#&gt; 2 Sanchezia capitata    Endemic               Sanchezia ovata - Updated name    </span></span>
+<span><span class="co">#&gt; 3 Sanchezia ovata       Not endemic           Sanchezia ovata - Not endemic     </span></span>
+<span><span class="co">#&gt; 4 Piper stevensi        Endemic - fuzzy match Piper stevensii - No opinion - Fu…</span></span>
+<span><span class="co">#&gt; 5 Verbesina andinaa     Endemic - fuzzy match Verbesina andina - No info. avail…</span></span>
+<span><span class="co">#&gt; 6 Verbesina andina      Endemic               Verbesina andina - No info. avail…</span></span>
+<span><span class="co">#&gt; 7 Weinmania nubigena    Not endemic           Weinmania nubigena - Not endemic</span></span></code></pre></div>
 <p>If you intend to access the information provided for each of the species listed in the Red Book of Endemic Plants of Peru, you have the option to use the <code><a href="reference/get_redbook_data.html">get_redbook_data()</a></code> function. This function facilitates the association of updated taxonomic information with the details concerning conservation status, distribution, and descriptions presented in the original publication.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/get_redbook_data.html">get_redbook_data</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sanchecia capitata"</span>,</span>
+<code class="sourceCode R"><span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/get_redbook_data.html">get_redbook_data</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sanchecia capitata"</span>,</span>
 <span>                   <span class="st">"Weinmania nubigena"</span>,</span>
 <span>                   <span class="st">"Macroclinium christensonii"</span>,</span>
 <span>                   <span class="st">"Weberbauera violacea"</span><span class="op">)</span><span class="op">)</span></span>
