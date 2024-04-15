@@ -66,6 +66,8 @@ check_redbook <- function(splist, tax_status = FALSE, max_distance = 0.1) {
   for (i in seq_along(splist_std)) {
     # Standardise max distance value
     max_distance_fixed <- max(ceiling(nchar(splist_std[i]) * max_distance))
+    # fix bugg
+    max_distance_fixed <- ceiling(max_distance_fixed/nchar(splist_std[i]))
 
     # Fuzzy and exact match
 

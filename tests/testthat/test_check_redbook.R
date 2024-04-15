@@ -27,6 +27,6 @@ test_that("check_redbook returns correct output for tax_status = FALSE", {
                        "Endemic" )
 
   actual_output <- check_redbook(splist, tax_status = FALSE)
-
+  actual_output
   expect_equal(actual_output, expected_output)
 })
