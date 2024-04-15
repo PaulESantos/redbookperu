@@ -50,7 +50,7 @@
 #' @name check_redbook
 #'
 #' @export
-check_redbook <- function(splist, tax_status = FALSE, max_distance = 0.1) {
+check_redbook <- function(splist, tax_status = FALSE, max_distance = 0) {
   # review text class
   if (is.factor(splist)) {
     splist <- as.character(splist)
@@ -65,10 +65,8 @@ check_redbook <- function(splist, tax_status = FALSE, max_distance = 0.1) {
   # Loop code to find the matching string
   for (i in seq_along(splist_std)) {
     # Standardise max distance value
-    max_distance_fixed <- max(ceiling(nchar(splist_std[i]) * max_distance))
-    # fix bugg
-    max_distance_fixed <- ceiling(max_distance_fixed/nchar(splist_std[i]))
-
+    #max_distance_fixed <- max(ceiling(nchar(splist_std[i]) * max_distance))
+    max_distance_fixed <- max_distance
     # Fuzzy and exact match
 
     matches <- agrep(splist_std[i],
