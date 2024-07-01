@@ -67,76 +67,56 @@ session using:
 
 ``` r
 library(redbookperu)
-#> This is redbookperu 0.0.2
+#> This is redbookperu 0.0.3
 ```
 
 To determine if a species of interest is listed in the Red Book of
-Endemic Plants of Peru, we provide the `check_redbook()` function. This
-function verifies whether the species of interest is included in the
-book’s species list. The function comes in two variations:
-
-- `check_redbook(splist, tax_status == TRUE)`: The resulting information
-  is structured as follows: “species name” - “taxonomic status” -
-  “validation information”.
-  - Species Name: Provides the currently accepted name for the species.
-  - Taxonomic Status: Includes the following categories: “Accepted name”
-    when the species name recorded remains valid currently, “Updated
-    name” for species whose scientific name recorded at the time of
-    publication is now considered synonymous, “No opinion” for species
-    whose name presents difficulties in determining their current
-    taxonomic status, and “Non info. available” for species for which
-    updated information hasn’t been found in the WCVP database. When the
-    species of interest doesn’t match the species list, the response is
-    “Not endemic”.
+Endemic Plants of Peru, we provide the `check_redbooklist()` function.
+This function verifies whether the species of interest is included in
+the book’s species list.When the species of interest doesn’t match the
+species list, the response is “Not endemic”.
 
 ``` r
 
-splist <- c("Aphelandra cuscoenses", "Sanchezia capitata",
-            "Sanchezia ovata", "Piper stevensi",
-            "Verbesina andinaa", "Verbesina andina", "Weinmania nubigena")
+splist <- c("Aphelandra cuscoenses", 
+            "Sanchezia capitata",
+            "Sanchezia ovata", 
+            "Piper stevensi",
+            "Verbesina andinaa", 
+            "Verbesina andina", 
+            "Weinmania nubigena")
 
-redbookperu::check_redbook(splist, tax_status = TRUE)
-#> [1] "Aphelandra cuscoensis - Accepted name - Fuzzy match"
-#> [2] "Sanchezia ovata - Updated name"                     
-#> [3] "Sanchezia ovata - Not endemic"                      
-#> [4] "Piper stevensii - No opinion - Fuzzy match"         
-#> [5] "Verbesina andina - No info. available - Fuzzy match"
-#> [6] "Verbesina andina - No info. available"              
-#> [7] "Weinmania nubigena - Not endemic"
+redbookperu::check_redbooklist(splist, dist = 0.2)
+#> Total exact matches: 2
+#> Total fuzzy matches: 3
+#> [1] "endemic"     "endemic"     "not endemic" "endemic"     "endemic"    
+#> [6] "endemic"     "not endemic"
 ```
 
-- `check_redbook(splist, tax_status == FALSE)`: The result indicates
-  whether the species is endemic or not, based on its match with the
-  species present in the database.
+Function indicate the presence of partial matches (fuzzy match) when the
+name of the species of interest varies compared to the information
+present in the database.
 
-``` r
-redbookperu::check_redbook(splist, tax_status = FALSE)
-#> [1] "Endemic - fuzzy match" "Endemic"               "Not endemic"          
-#> [4] "Endemic - fuzzy match" "Endemic - fuzzy match" "Endemic"              
-#> [7] "Not endemic"
-```
-
-Both functions indicate the presence of partial matches (fuzzy match)
-when the name of the species of interest varies compared to the
-information present in the database.
-
-`check_redbook()` function is designed to work seamlessly with tibbles,
-allowing users to easily analyze species data within a tabular format.
+`check_redbooklist()` function is designed to work seamlessly with
+tibble, allowing users to easily analyze species data within a tabular
+format.
 
 ``` r
 tibble::tibble(splist = splist) |> 
-  dplyr::mutate(endemic_tax_status = redbookperu::check_redbook(splist, tax_status = FALSE),
-                endemic = redbookperu::check_redbook(splist, tax_status = TRUE))
-#> # A tibble: 7 × 3
-#>   splist                endemic_tax_status    endemic                           
-#>   <chr>                 <chr>                 <chr>                             
-#> 1 Aphelandra cuscoenses Endemic - fuzzy match Aphelandra cuscoensis - Accepted …
-#> 2 Sanchezia capitata    Endemic               Sanchezia ovata - Updated name    
-#> 3 Sanchezia ovata       Not endemic           Sanchezia ovata - Not endemic     
-#> 4 Piper stevensi        Endemic - fuzzy match Piper stevensii - No opinion - Fu…
-#> 5 Verbesina andinaa     Endemic - fuzzy match Verbesina andina - No info. avail…
-#> 6 Verbesina andina      Endemic               Verbesina andina - No info. avail…
-#> 7 Weinmania nubigena    Not endemic           Weinmania nubigena - Not endemic
+  dplyr::mutate(endemic = redbookperu::check_redbooklist(splist,
+                                                         dist = 0.2))
+#> Total exact matches: 2
+#> Total fuzzy matches: 3
+#> # A tibble: 7 × 2
+#>   splist                endemic    
+#>   <chr>                 <chr>      
+#> 1 Aphelandra cuscoenses endemic    
+#> 2 Sanchezia capitata    endemic    
+#> 3 Sanchezia ovata       not endemic
+#> 4 Piper stevensi        endemic    
+#> 5 Verbesina andinaa     endemic    
+#> 6 Verbesina andina      endemic    
+#> 7 Weinmania nubigena    not endemic
 ```
 
 If you intend to access the information provided for each of the species
@@ -150,35 +130,43 @@ original publication.
 redbookperu::get_redbook_data(c("Sanchecia capitata",
                    "Weinmania nubigena",
                    "Macroclinium christensonii",
-                   "Weberbauera violacea"))
-#>                name_subitted              accepted_name accepted_family
-#> 1         Sanchecia capitata            Sanchezia ovata     Acanthaceae
-#> 2         Weinmania nubigena                       nill            nill
-#> 3 Macroclinium christensonii Macroclinium christensonii     Orchidaceae
-#> 4       Weberbauera violacea       Weberbauera violacea    Brassicaceae
-#>   accepted_name_author               redbook_name        iucn
-#> 1          Ruiz & Pav.         Sanchezia capitata          DD
-#> 2                 nill                       nill        nill
-#> 3            D.E.Benn. Macroclinium christensonii CR, B1abiii
-#> 4           Al-Shehbaz       Weberbauera violacea          DD
-#>                                   publication
-#> 1 Bull. Herb. Boissier, ser. 2, 4: 315. 1904.
-#> 2                                        nill
-#> 3    Brittonia 46(3): 249 - 251, f. 13. 1994.
-#> 4         Novon 14(3): 266 - 268, f. 3. 2004.
-#>                              collector herbariums  common_name dep_registry
-#> 1                  A. Mathews 1230 (K)       <NA> Desconocido.      JU - PA
-#> 2                                 nill       nill         nill         nill
-#> 3 O. del Castillo ex D.E. Bennett 5160        NY. Desconocido.           JU
-#> 4        A. Sagástegui A. et al. 11175  MO; HUT!. Desconocido.           CA
-#>                ecological_regions      sinampe peruvian_herbariums
-#> 1 BMHP, BHA; altitud desconocida. Sin registro            Ninguno.
-#> 2                            nill         nill                nill
-#> 3                   BMHM; 1800 m. Sin registro            Ninguno.
-#> 4                    PAR; 3800 m. Sin registro      HUT (isotipo).
+                   "Weberbauera violacea"), 
+                   dist = 0.2)
+#>                name_subitted              accepted_name accepted_name_author
+#> 1         Sanchecia capitata                        ---                  ---
+#> 2         Weinmania nubigena                        ---                  ---
+#> 3 Macroclinium christensonii Macroclinium christensonii            D.E.Benn.
+#> 4       Weberbauera violacea       Weberbauera violacea           Al-Shehbaz
+#>   accepted_family               redbook_name        iucn
+#> 1             ---                        ---         ---
+#> 2             ---                        ---         ---
+#> 3     Orchidaceae Macroclinium christensonii CR, B1abiii
+#> 4    Brassicaceae       Weberbauera violacea          DD
+#>                                publication                            collector
+#> 1                                      ---                                  ---
+#> 2                                      ---                                  ---
+#> 3 Brittonia 46(3): 249 - 251, f. 13. 1994. O. del Castillo ex D.E. Bennett 5160
+#> 4      Novon 14(3): 266 - 268, f. 3. 2004.        A. Sagástegui A. et al. 11175
+#>   herbariums  common_name dep_registry ecological_regions      sinampe
+#> 1        ---          ---          ---                ---          ---
+#> 2        ---          ---          ---                ---          ---
+#> 3        NY. Desconocido.           JU      BMHM; 1800 m. Sin registro
+#> 4  MO; HUT!. Desconocido.           CA       PAR; 3800 m. Sin registro
+#>   peruvian_herbariums
+#> 1                 ---
+#> 2                 ---
+#> 3            Ninguno.
+#> 4      HUT (isotipo).
 #>                                                                                                                                                                                                                                             remarks
-#> 1               Esta especie arbustiva es conocida de dos localidades. La colección tipo fue recolectada en la cuenca del Pangoa en el siglo XVIII. Probablemente la expansión urbana y las actividades agrícolas sean problemas para esta especie.
-#> 2                                                                                                                                                                                                                                              nill
+#> 1                                                                                                                                                                                                                                               ---
+#> 2                                                                                                                                                                                                                                               ---
 #> 3 Esta hierba epífita es conocida sólo de la colección tipo, proveniente del valle de Chanchamayo, en una subcuenca del Perené. Esta región ha sufrido continuas reducciones de sus áreas naturales debido a la ampliación de la frontera agrícola.
 #> 4                                                            Esta hierba paramuna es conocida de la localidad tipo, en la cuenca del Crisnejas, un tributario del Marañón. El ejemplar tipo fue recolectado en 1983, de una jalca poco herborizada.
 ```
+
+### Note:
+
+The code for the new version of the `redbookperu` package is based on
+the [`lcvplants`](https://idiv-biodiversity.github.io/lcvplants/)
+package, with modifications specifically tailored to work with the data
+from the Red Book of Endemic Plants of Peru.

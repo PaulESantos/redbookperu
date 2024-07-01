@@ -56,37 +56,31 @@ After installing the `redbookperu` package, you can load it into your R session 
 library(redbookperu)
 ```
 
-To determine if a species of interest is listed in the Red Book of Endemic Plants of Peru, we provide the `check_redbook()` function. This function verifies whether the species of interest is included in the book's species list. The function comes in two variations:
-
-- `check_redbook(splist, tax_status == TRUE)`: The resulting information is structured as follows: "species name" - "taxonomic status" - "validation information".
-  - Species Name: Provides the currently accepted name for the species.
-  - Taxonomic Status: Includes the following categories: "Accepted name" when the           species name recorded remains valid currently, "Updated name" for species whose         scientific name recorded at the time of publication is now considered synonymous,       "No opinion" for species whose name presents difficulties in determining their          current taxonomic status, and "Non info. available" for species for which updated       information hasn't been found in the WCVP database. When the species of interest        doesn't match the species list, the response is "Not endemic".
+To determine if a species of interest is listed in the Red Book of Endemic Plants of Peru, we provide the `check_redbooklist()` function. This function verifies whether the species of interest is included in the book's species list.When the species of interest doesn't match the species list, the response is "Not endemic".
   
 ```{r}
 
-splist <- c("Aphelandra cuscoenses", "Sanchezia capitata",
-            "Sanchezia ovata", "Piper stevensi",
-            "Verbesina andinaa", "Verbesina andina", "Weinmania nubigena")
+splist <- c("Aphelandra cuscoenses", 
+            "Sanchezia capitata",
+            "Sanchezia ovata", 
+            "Piper stevensi",
+            "Verbesina andinaa", 
+            "Verbesina andina", 
+            "Weinmania nubigena")
 
-redbookperu::check_redbook(splist, tax_status = TRUE)
+redbookperu::check_redbooklist(splist, dist = 0.2)
 ```
 
-- `check_redbook(splist, tax_status == FALSE)`: The result indicates whether the species is endemic or not, based on its match with the species present in the database.
 
-```{r}
-redbookperu::check_redbook(splist, tax_status = FALSE)
-```
+Function indicate the presence of partial matches (fuzzy match) when the name of the species of interest varies compared to the information present in the database.
 
 
-Both functions indicate the presence of partial matches (fuzzy match) when the name of the species of interest varies compared to the information present in the database.
-
-
-`check_redbook()` function is designed to work seamlessly with tibbles, allowing users to easily analyze species data within a tabular format.
+`check_redbooklist()` function is designed to work seamlessly with tibble, allowing users to easily analyze species data within a tabular format.
 
 ```{r }
 tibble::tibble(splist = splist) |> 
-  dplyr::mutate(endemic_tax_status = redbookperu::check_redbook(splist, tax_status = FALSE),
-                endemic = redbookperu::check_redbook(splist, tax_status = TRUE))
+  dplyr::mutate(endemic = redbookperu::check_redbooklist(splist,
+                                                         dist = 0.2))
 ```
 
 If you intend to access the information provided for each of the species listed in the Red Book of Endemic Plants of Peru, you have the option to use the `get_redbook_data()` function. This function facilitates the association of updated taxonomic information with the details concerning conservation status, distribution, and descriptions presented in the original publication.
@@ -96,7 +90,9 @@ If you intend to access the information provided for each of the species listed 
 redbookperu::get_redbook_data(c("Sanchecia capitata",
                    "Weinmania nubigena",
                    "Macroclinium christensonii",
-                   "Weberbauera violacea"))
+                   "Weberbauera violacea"), 
+                   dist = 0.2)
 
 ```
-
+### Note: 
+The code for the new version of the `redbookperu` package is based on the [`lcvplants`](https://idiv-biodiversity.github.io/lcvplants/) package, with modifications specifically tailored to work with the data from the Red Book of Endemic Plants of Peru.
