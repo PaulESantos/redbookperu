@@ -16,7 +16,10 @@
     <loc>https://paulesantos.github.io/redbookperu/index.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/reference/check_redbook.html</loc>
+    <loc>https://paulesantos.github.io/redbookperu/reference/check_redbooklist.html</loc>
+  </url>
+  <url>
+    <loc>https://paulesantos.github.io/redbookperu/reference/dot-match_algorithm.html</loc>
   </url>
   <url>
     <loc>https://paulesantos.github.io/redbookperu/reference/get_redbook_data.html</loc>
@@ -25,12 +28,18 @@
     <loc>https://paulesantos.github.io/redbookperu/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://paulesantos.github.io/redbookperu/reference/redbook_position.html</loc>
+  </url>
+  <url>
+    <loc>https://paulesantos.github.io/redbookperu/reference/redbook_sp_data.html</loc>
+  </url>
+  <url>
+    <loc>https://paulesantos.github.io/redbookperu/reference/redbook_sps_class.html</loc>
+  </url>
+  <url>
     <loc>https://paulesantos.github.io/redbookperu/reference/redbook_tab.html</loc>
   </url>
   <url>
-    <loc>https://paulesantos.github.io/redbookperu/reference/redbook_taxonomy.html</loc>
-  </url>
-  <url>
-    <loc>https://paulesantos.github.io/redbookperu/reference/reg_peru.html</loc>
+    <loc>https://paulesantos.github.io/redbookperu/reference/search_redbook.html</loc>
   </url>
 </urlset>

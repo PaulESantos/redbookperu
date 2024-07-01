@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Access and analysis of data from `The Red Book of Endemic Plants of Peru` León, B., Roque, J., Ulloa, C., Jorgensen, P.M., Pitman, N., Cano, A. (2006)&lt;doi:10.15381/rpb.v13i2.1782&gt; providing taxonomic, geographic, and conservation information about Peru's endemic plant species. The package offers functions to check species inclusion, obtain updated taxonomic details, and explore the dataset.">
-<title>Access and Analyze the Data from the Red Book of Endemic Plants of Peru • redbookperu</title>
+<meta name="description" content="Provides access to and analysis of data from &quot;The Red Book of Endemic Plants of Peru&quot; (León, B., Roque, J., Ulloa, C., Jorgensen, P.M., Pitman, N., Cano, A. 2006) &lt;doi:10.15381/rpb.v13i2.1782&gt;. This package offers comprehensive taxonomic, geographic, and conservation information about Peru's endemic plant species. It includes functions to verify species inclusion, obtain updated taxonomic details, and explore the dataset.">
+<title>Access and Analyze Data from the Red Book of Endemic Plants of Peru • redbookperu</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Access and Analyze the Data from the Red Book of Endemic Plants of Peru">
-<meta property="og:description" content="Access and analysis of data from `The Red Book of Endemic Plants of Peru` León, B., Roque, J., Ulloa, C., Jorgensen, P.M., Pitman, N., Cano, A. (2006)&lt;doi:10.15381/rpb.v13i2.1782&gt; providing taxonomic, geographic, and conservation information about Peru's endemic plant species. The package offers functions to check species inclusion, obtain updated taxonomic details, and explore the dataset.">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Access and Analyze Data from the Red Book of Endemic Plants of Peru">
+<meta property="og:description" content="Provides access to and analysis of data from &quot;The Red Book of Endemic Plants of Peru&quot; (León, B., Roque, J., Ulloa, C., Jorgensen, P.M., Pitman, N., Cano, A. 2006) &lt;doi:10.15381/rpb.v13i2.1782&gt;. This package offers comprehensive taxonomic, geographic, and conservation information about Peru's endemic plant species. It includes functions to verify species inclusion, obtain updated taxonomic details, and explore the dataset.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">redbookperu</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.3</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,7 +87,7 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PaulESantos/redbookperu" class="external-link">redbookperu</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; This is redbookperu 0.0.2</span></span></code></pre></div>
-<p>To determine if a species of interest is listed in the Red Book of Endemic Plants of Peru, we provide the <code><a href="reference/check_redbook.html">check_redbook()</a></code> function. This function verifies whether the species of interest is included in the book’s species list. The function comes in two variations:</p>
+<p>To determine if a species of interest is listed in the Red Book of Endemic Plants of Peru, we provide the <code>check_redbook()</code> function. This function verifies whether the species of interest is included in the book’s species list. The function comes in two variations:</p>
 <ul>
 <li>
 <code>check_redbook(splist, tax_status == TRUE)</code>: The resulting information is structured as follows: “species name” - “taxonomic status” - “validation information”.
@@ -103,7 +103,7 @@
 <span>            <span class="st">"Sanchezia ovata"</span>, <span class="st">"Piper stevensi"</span>,</span>
 <span>            <span class="st">"Verbesina andinaa"</span>, <span class="st">"Verbesina andina"</span>, <span class="st">"Weinmania nubigena"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu">check_redbook</span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Aphelandra cuscoensis - Accepted name - Fuzzy match"</span></span>
 <span><span class="co">#&gt; [2] "Sanchezia ovata - Updated name"                     </span></span>
 <span><span class="co">#&gt; [3] "Sanchezia ovata - Not endemic"                      </span></span>
@@ -116,16 +116,16 @@
 <code>check_redbook(splist, tax_status == FALSE)</code>: The result indicates whether the species is endemic or not, based on its match with the species present in the database.</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu">check_redbook</span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Endemic - fuzzy match" "Endemic"               "Not endemic"          </span></span>
 <span><span class="co">#&gt; [4] "Endemic - fuzzy match" "Endemic - fuzzy match" "Endemic"              </span></span>
 <span><span class="co">#&gt; [7] "Not endemic"</span></span></code></pre></div>
 <p>Both functions indicate the presence of partial matches (fuzzy match) when the name of the species of interest varies compared to the information present in the database.</p>
-<p><code><a href="reference/check_redbook.html">check_redbook()</a></code> function is designed to work seamlessly with tibbles, allowing users to easily analyze species data within a tabular format.</p>
+<p><code>check_redbook()</code> function is designed to work seamlessly with tibbles, allowing users to easily analyze species data within a tabular format.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>splist <span class="op">=</span> <span class="va">splist</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">mutate</span><span class="op">(</span>endemic_tax_status <span class="op">=</span> <span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
-<span>                endemic <span class="op">=</span> <span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/check_redbook.html">check_redbook</a></span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">mutate</span><span class="op">(</span>endemic_tax_status <span class="op">=</span> <span class="fu">redbookperu</span><span class="fu">::</span><span class="fu">check_redbook</span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
+<span>                endemic <span class="op">=</span> <span class="fu">redbookperu</span><span class="fu">::</span><span class="fu">check_redbook</span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 7 × 3</span></span>
 <span><span class="co">#&gt;   splist                endemic_tax_status    endemic                           </span></span>
 <span><span class="co">#&gt;   &lt;chr&gt;                 &lt;chr&gt;                 &lt;chr&gt;                             </span></span>
@@ -224,13 +224,11 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p>
-<p>Developed by Paul E. Santos Andrade, Lucely L. Vilca Bustamante.</p>
+  <p>Developed by Paul E. Santos Andrade, Lucely L. Vilca Bustamante.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.8.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.</p>
 </div>
 
     </footer>
