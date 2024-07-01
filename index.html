@@ -86,92 +86,83 @@
 <p>After installing the <code>redbookperu</code> package, you can load it into your R session using:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PaulESantos/redbookperu" class="external-link">redbookperu</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; This is redbookperu 0.0.2</span></span></code></pre></div>
-<p>To determine if a species of interest is listed in the Red Book of Endemic Plants of Peru, we provide the <code>check_redbook()</code> function. This function verifies whether the species of interest is included in the book’s species list. The function comes in two variations:</p>
-<ul>
-<li>
-<code>check_redbook(splist, tax_status == TRUE)</code>: The resulting information is structured as follows: “species name” - “taxonomic status” - “validation information”.
-<ul>
-<li>Species Name: Provides the currently accepted name for the species.</li>
-<li>Taxonomic Status: Includes the following categories: “Accepted name” when the species name recorded remains valid currently, “Updated name” for species whose scientific name recorded at the time of publication is now considered synonymous, “No opinion” for species whose name presents difficulties in determining their current taxonomic status, and “Non info. available” for species for which updated information hasn’t been found in the WCVP database. When the species of interest doesn’t match the species list, the response is “Not endemic”.</li>
-</ul>
-</li>
-</ul>
+<span><span class="co">#&gt; This is redbookperu 0.0.3</span></span></code></pre></div>
+<p>To determine if a species of interest is listed in the Red Book of Endemic Plants of Peru, we provide the <code><a href="reference/check_redbooklist.html">check_redbooklist()</a></code> function. This function verifies whether the species of interest is included in the book’s species list.When the species of interest doesn’t match the species list, the response is “Not endemic”.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="va">splist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aphelandra cuscoenses"</span>, <span class="st">"Sanchezia capitata"</span>,</span>
-<span>            <span class="st">"Sanchezia ovata"</span>, <span class="st">"Piper stevensi"</span>,</span>
-<span>            <span class="st">"Verbesina andinaa"</span>, <span class="st">"Verbesina andina"</span>, <span class="st">"Weinmania nubigena"</span><span class="op">)</span></span>
+<span><span class="va">splist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aphelandra cuscoenses"</span>, </span>
+<span>            <span class="st">"Sanchezia capitata"</span>,</span>
+<span>            <span class="st">"Sanchezia ovata"</span>, </span>
+<span>            <span class="st">"Piper stevensi"</span>,</span>
+<span>            <span class="st">"Verbesina andinaa"</span>, </span>
+<span>            <span class="st">"Verbesina andina"</span>, </span>
+<span>            <span class="st">"Weinmania nubigena"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu">check_redbook</span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Aphelandra cuscoensis - Accepted name - Fuzzy match"</span></span>
-<span><span class="co">#&gt; [2] "Sanchezia ovata - Updated name"                     </span></span>
-<span><span class="co">#&gt; [3] "Sanchezia ovata - Not endemic"                      </span></span>
-<span><span class="co">#&gt; [4] "Piper stevensii - No opinion - Fuzzy match"         </span></span>
-<span><span class="co">#&gt; [5] "Verbesina andina - No info. available - Fuzzy match"</span></span>
-<span><span class="co">#&gt; [6] "Verbesina andina - No info. available"              </span></span>
-<span><span class="co">#&gt; [7] "Weinmania nubigena - Not endemic"</span></span></code></pre></div>
-<ul>
-<li>
-<code>check_redbook(splist, tax_status == FALSE)</code>: The result indicates whether the species is endemic or not, based on its match with the species present in the database.</li>
-</ul>
+<span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/check_redbooklist.html">check_redbooklist</a></span><span class="op">(</span><span class="va">splist</span>, dist <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Total exact matches: 2</span></span>
+<span><span class="co">#&gt; Total fuzzy matches: 3</span></span>
+<span><span class="co">#&gt; [1] "endemic"     "endemic"     "not endemic" "endemic"     "endemic"    </span></span>
+<span><span class="co">#&gt; [6] "endemic"     "not endemic"</span></span></code></pre></div>
+<p>Function indicate the presence of partial matches (fuzzy match) when the name of the species of interest varies compared to the information present in the database.</p>
+<p><code><a href="reference/check_redbooklist.html">check_redbooklist()</a></code> function is designed to work seamlessly with tibble, allowing users to easily analyze species data within a tabular format.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu">check_redbook</span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Endemic - fuzzy match" "Endemic"               "Not endemic"          </span></span>
-<span><span class="co">#&gt; [4] "Endemic - fuzzy match" "Endemic - fuzzy match" "Endemic"              </span></span>
-<span><span class="co">#&gt; [7] "Not endemic"</span></span></code></pre></div>
-<p>Both functions indicate the presence of partial matches (fuzzy match) when the name of the species of interest varies compared to the information present in the database.</p>
-<p><code>check_redbook()</code> function is designed to work seamlessly with tibbles, allowing users to easily analyze species data within a tabular format.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>splist <span class="op">=</span> <span class="va">splist</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">mutate</span><span class="op">(</span>endemic_tax_status <span class="op">=</span> <span class="fu">redbookperu</span><span class="fu">::</span><span class="fu">check_redbook</span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,</span>
-<span>                endemic <span class="op">=</span> <span class="fu">redbookperu</span><span class="fu">::</span><span class="fu">check_redbook</span><span class="op">(</span><span class="va">splist</span>, tax_status <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 7 × 3</span></span>
-<span><span class="co">#&gt;   splist                endemic_tax_status    endemic                           </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;                 &lt;chr&gt;                 &lt;chr&gt;                             </span></span>
-<span><span class="co">#&gt; 1 Aphelandra cuscoenses Endemic - fuzzy match Aphelandra cuscoensis - Accepted …</span></span>
-<span><span class="co">#&gt; 2 Sanchezia capitata    Endemic               Sanchezia ovata - Updated name    </span></span>
-<span><span class="co">#&gt; 3 Sanchezia ovata       Not endemic           Sanchezia ovata - Not endemic     </span></span>
-<span><span class="co">#&gt; 4 Piper stevensi        Endemic - fuzzy match Piper stevensii - No opinion - Fu…</span></span>
-<span><span class="co">#&gt; 5 Verbesina andinaa     Endemic - fuzzy match Verbesina andina - No info. avail…</span></span>
-<span><span class="co">#&gt; 6 Verbesina andina      Endemic               Verbesina andina - No info. avail…</span></span>
-<span><span class="co">#&gt; 7 Weinmania nubigena    Not endemic           Weinmania nubigena - Not endemic</span></span></code></pre></div>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu">mutate</span><span class="op">(</span>endemic <span class="op">=</span> <span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/check_redbooklist.html">check_redbooklist</a></span><span class="op">(</span><span class="va">splist</span>,</span>
+<span>                                                         dist <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Total exact matches: 2</span></span>
+<span><span class="co">#&gt; Total fuzzy matches: 3</span></span>
+<span><span class="co">#&gt; # A tibble: 7 × 2</span></span>
+<span><span class="co">#&gt;   splist                endemic    </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                 &lt;chr&gt;      </span></span>
+<span><span class="co">#&gt; 1 Aphelandra cuscoenses endemic    </span></span>
+<span><span class="co">#&gt; 2 Sanchezia capitata    endemic    </span></span>
+<span><span class="co">#&gt; 3 Sanchezia ovata       not endemic</span></span>
+<span><span class="co">#&gt; 4 Piper stevensi        endemic    </span></span>
+<span><span class="co">#&gt; 5 Verbesina andinaa     endemic    </span></span>
+<span><span class="co">#&gt; 6 Verbesina andina      endemic    </span></span>
+<span><span class="co">#&gt; 7 Weinmania nubigena    not endemic</span></span></code></pre></div>
 <p>If you intend to access the information provided for each of the species listed in the Red Book of Endemic Plants of Peru, you have the option to use the <code><a href="reference/get_redbook_data.html">get_redbook_data()</a></code> function. This function facilitates the association of updated taxonomic information with the details concerning conservation status, distribution, and descriptions presented in the original publication.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/get_redbook_data.html">get_redbook_data</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sanchecia capitata"</span>,</span>
 <span>                   <span class="st">"Weinmania nubigena"</span>,</span>
 <span>                   <span class="st">"Macroclinium christensonii"</span>,</span>
-<span>                   <span class="st">"Weberbauera violacea"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                name_subitted              accepted_name accepted_family</span></span>
-<span><span class="co">#&gt; 1         Sanchecia capitata            Sanchezia ovata     Acanthaceae</span></span>
-<span><span class="co">#&gt; 2         Weinmania nubigena                       nill            nill</span></span>
-<span><span class="co">#&gt; 3 Macroclinium christensonii Macroclinium christensonii     Orchidaceae</span></span>
-<span><span class="co">#&gt; 4       Weberbauera violacea       Weberbauera violacea    Brassicaceae</span></span>
-<span><span class="co">#&gt;   accepted_name_author               redbook_name        iucn</span></span>
-<span><span class="co">#&gt; 1          Ruiz &amp; Pav.         Sanchezia capitata          DD</span></span>
-<span><span class="co">#&gt; 2                 nill                       nill        nill</span></span>
-<span><span class="co">#&gt; 3            D.E.Benn. Macroclinium christensonii CR, B1abiii</span></span>
-<span><span class="co">#&gt; 4           Al-Shehbaz       Weberbauera violacea          DD</span></span>
-<span><span class="co">#&gt;                                   publication</span></span>
-<span><span class="co">#&gt; 1 Bull. Herb. Boissier, ser. 2, 4: 315. 1904.</span></span>
-<span><span class="co">#&gt; 2                                        nill</span></span>
-<span><span class="co">#&gt; 3    Brittonia 46(3): 249 - 251, f. 13. 1994.</span></span>
-<span><span class="co">#&gt; 4         Novon 14(3): 266 - 268, f. 3. 2004.</span></span>
-<span><span class="co">#&gt;                              collector herbariums  common_name dep_registry</span></span>
-<span><span class="co">#&gt; 1                  A. Mathews 1230 (K)       &lt;NA&gt; Desconocido.      JU - PA</span></span>
-<span><span class="co">#&gt; 2                                 nill       nill         nill         nill</span></span>
-<span><span class="co">#&gt; 3 O. del Castillo ex D.E. Bennett 5160        NY. Desconocido.           JU</span></span>
-<span><span class="co">#&gt; 4        A. Sagástegui A. et al. 11175  MO; HUT!. Desconocido.           CA</span></span>
-<span><span class="co">#&gt;                ecological_regions      sinampe peruvian_herbariums</span></span>
-<span><span class="co">#&gt; 1 BMHP, BHA; altitud desconocida. Sin registro            Ninguno.</span></span>
-<span><span class="co">#&gt; 2                            nill         nill                nill</span></span>
-<span><span class="co">#&gt; 3                   BMHM; 1800 m. Sin registro            Ninguno.</span></span>
-<span><span class="co">#&gt; 4                    PAR; 3800 m. Sin registro      HUT (isotipo).</span></span>
+<span>                   <span class="st">"Weberbauera violacea"</span><span class="op">)</span>, </span>
+<span>                   dist <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                name_subitted              accepted_name accepted_name_author</span></span>
+<span><span class="co">#&gt; 1         Sanchecia capitata                        ---                  ---</span></span>
+<span><span class="co">#&gt; 2         Weinmania nubigena                        ---                  ---</span></span>
+<span><span class="co">#&gt; 3 Macroclinium christensonii Macroclinium christensonii            D.E.Benn.</span></span>
+<span><span class="co">#&gt; 4       Weberbauera violacea       Weberbauera violacea           Al-Shehbaz</span></span>
+<span><span class="co">#&gt;   accepted_family               redbook_name        iucn</span></span>
+<span><span class="co">#&gt; 1             ---                        ---         ---</span></span>
+<span><span class="co">#&gt; 2             ---                        ---         ---</span></span>
+<span><span class="co">#&gt; 3     Orchidaceae Macroclinium christensonii CR, B1abiii</span></span>
+<span><span class="co">#&gt; 4    Brassicaceae       Weberbauera violacea          DD</span></span>
+<span><span class="co">#&gt;                                publication                            collector</span></span>
+<span><span class="co">#&gt; 1                                      ---                                  ---</span></span>
+<span><span class="co">#&gt; 2                                      ---                                  ---</span></span>
+<span><span class="co">#&gt; 3 Brittonia 46(3): 249 - 251, f. 13. 1994. O. del Castillo ex D.E. Bennett 5160</span></span>
+<span><span class="co">#&gt; 4      Novon 14(3): 266 - 268, f. 3. 2004.        A. Sagástegui A. et al. 11175</span></span>
+<span><span class="co">#&gt;   herbariums  common_name dep_registry ecological_regions      sinampe</span></span>
+<span><span class="co">#&gt; 1        ---          ---          ---                ---          ---</span></span>
+<span><span class="co">#&gt; 2        ---          ---          ---                ---          ---</span></span>
+<span><span class="co">#&gt; 3        NY. Desconocido.           JU      BMHM; 1800 m. Sin registro</span></span>
+<span><span class="co">#&gt; 4  MO; HUT!. Desconocido.           CA       PAR; 3800 m. Sin registro</span></span>
+<span><span class="co">#&gt;   peruvian_herbariums</span></span>
+<span><span class="co">#&gt; 1                 ---</span></span>
+<span><span class="co">#&gt; 2                 ---</span></span>
+<span><span class="co">#&gt; 3            Ninguno.</span></span>
+<span><span class="co">#&gt; 4      HUT (isotipo).</span></span>
 <span><span class="co">#&gt;                                                                                                                                                                                                                                             remarks</span></span>
-<span><span class="co">#&gt; 1               Esta especie arbustiva es conocida de dos localidades. La colección tipo fue recolectada en la cuenca del Pangoa en el siglo XVIII. Probablemente la expansión urbana y las actividades agrícolas sean problemas para esta especie.</span></span>
-<span><span class="co">#&gt; 2                                                                                                                                                                                                                                              nill</span></span>
+<span><span class="co">#&gt; 1                                                                                                                                                                                                                                               ---</span></span>
+<span><span class="co">#&gt; 2                                                                                                                                                                                                                                               ---</span></span>
 <span><span class="co">#&gt; 3 Esta hierba epífita es conocida sólo de la colección tipo, proveniente del valle de Chanchamayo, en una subcuenca del Perené. Esta región ha sufrido continuas reducciones de sus áreas naturales debido a la ampliación de la frontera agrícola.</span></span>
 <span><span class="co">#&gt; 4                                                            Esta hierba paramuna es conocida de la localidad tipo, en la cuenca del Crisnejas, un tributario del Marañón. El ejemplar tipo fue recolectado en 1983, de una jalca poco herborizada.</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="note">Note:<a class="anchor" aria-label="anchor" href="#note"></a>
+</h3>
+<p>The code for the new version of the <code>redbookperu</code> package is based on the <a href="https://idiv-biodiversity.github.io/lcvplants/" class="external-link"><code>lcvplants</code></a> package, with modifications specifically tailored to work with the data from the Red Book of Endemic Plants of Peru.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
