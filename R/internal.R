@@ -30,3 +30,7 @@ show_progress <- function() {
 
 
 # -------------------------------------------------------------------------
+utils::globalVariables(c("progress_bar",
+"redbook_sps_class",
+"redbook_tab",
+"standardize_names"))

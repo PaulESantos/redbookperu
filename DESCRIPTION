@@ -1,18 +1,18 @@
 Package: redbookperu
-Title: Access and Analyze the Data from the Red Book of Endemic Plants of Peru
-Version: 0.0.2
+Title: Access and Analyze Data from the Red Book of Endemic Plants of Peru
+Version: 0.0.3
 Authors@R: 
-      c(person(given = "Paul E.",
-                 family = "Santos Andrade",
-                 role = c("aut", "cre"),
-                 email = "paulefrens@gmail.com",
-                 comment = c(ORCID = "0000-0002-6635-0375")),
-          person(given = "Lucely L.",
-                 family = "Vilca Bustamante",
-                 role = "aut",
-                 email = "vilca.lu01@gmail.com",
-                 comment = c(ORCID = "0000-0002-5559-1296"))) 
-Description: Access and analysis of data from `The Red Book of Endemic Plants of Peru` León, B., Roque, J., Ulloa, C., Jorgensen, P.M., Pitman, N., Cano, A. (2006)<doi:10.15381/rpb.v13i2.1782> providing taxonomic, geographic, and conservation information about Peru's endemic plant species. The package offers functions to check species inclusion, obtain updated taxonomic details, and explore the dataset.
+    c(person(given = "Paul E.",
+             family = "Santos Andrade",
+             role = c("aut", "cre"),
+             email = "paulefrens@gmail.com",
+             comment = c(ORCID = "0000-0002-6635-0375")),
+      person(given = "Lucely L.",
+             family = "Vilca Bustamante",
+             role = "aut",
+             email = "vilca.lu01@gmail.com",
+             comment = c(ORCID = "0000-0002-5559-1296"))) 
+Description: Provides access to and analysis of data from "The Red Book of Endemic Plants of Peru" (León, B., Roque, J., Ulloa, C., Jorgensen, P.M., Pitman, N., Cano, A. 2006) <doi:10.15381/rpb.v13i2.1782>. This package offers comprehensive taxonomic, geographic, and conservation information about Peru's endemic plant species. It includes functions to verify species inclusion, obtain updated taxonomic details, and explore the dataset.
 License: MIT + file LICENSE
 Suggests: 
     knitr,
@@ -23,7 +23,7 @@ LazyData: true
 LazyDataCompression: xz
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 URL: https://github.com/PaulESantos/redbookperu, https://paulesantos.github.io/redbookperu/
 BugReports: https://github.com/PaulESantos/redbookperu/issues
 Depends: 

@@ -10,3 +10,4 @@
 ^pkgdown$
 ^vignettes/articles$
 ^build/vignettes.rds$
+^endemic_2006

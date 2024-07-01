@@ -4,37 +4,35 @@
 \alias{get_redbook_data}
 \title{Get Red Book Data for Given Species List}
 \usage{
-get_redbook_data(splist, max_distance = 0.1)
+get_redbook_data(splist, dist = 0.1)
 }
 \arguments{
 \item{splist}{A character vector containing the species names to be queried.}
 
-\item{max_distance}{Maximum allowed distance for fuzzy matching of species names.}
+\item{dist}{Maximum allowed distance for fuzzy matching of species names.}
 }
 \value{
 A data frame containing comprehensive information about the provided
 species, including updated taxonomic details and descriptions.
 }
 \description{
-This function retrieves information from the Red Book of Endemic Plants
+This function retrieves comprehensive information from the Red Book of Endemic Plants
 of Peru database for a provided list of species. It associates the provided
 species names with their corresponding updated taxonomic information and
 descriptions recorded in the original publication.
 }
 \details{
 This function checks each species name in the provided list against the
-Red Book of Endemic Plants of Peru database. It performs fuzzy matching
-based on the specified maximum distance. The output includes information
-such as the updated taxonomic details (accepted name, accepted family,
-and accepted name author) complemented with the information recorded
-in the original publication (IUCN conservation category, bibliographic
-reference, collector, herbariums, common name, departmental registrations,
-ecological regions, protected natural areas (SINANPE), Peruvian herbaria,
-and additional remarks).
+Red Book of Endemic Plants of Peru database using fuzzy matching based on
+the specified maximum distance (\code{dist}). For each species, it retrieves and
+combines taxonomic information (accepted name, accepted family, accepted name author)
+with additional descriptive data recorded in the original publication, such as
+IUCN conservation category, bibliographic reference, collector, herbariums,
+common name, departmental registrations, ecological regions, protected natural
+areas (SINANPE), Peruvian herbaria, and additional remarks.
 }
 \examples{
-
-# Example illustrating how to use the get_redbook function
+# Example illustrating how to use the get_redbook_data function
 species_list <- c("Aphelandra cuscoensis", "Sanchezia ovata", "Piper stevensii")
 redbook_data <- get_redbook_data(species_list)
 head(redbook_data)
@@ -47,5 +45,5 @@ head(redbook_data)
 \href{http://www.plantsoftheworldonline.org/}{Plants of the World Online - Facilitated by the Royal Botanic Gardens - Kew.}
 }
 \seealso{
-\code{\link{check_redbook}} function for a more detailed check of individual species.
+\code{\link{check_redbooklist}} function for a more focused check of species endemic status.
 }
