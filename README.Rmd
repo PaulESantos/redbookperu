@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# redbookperu <a href='https://github.com/PaulESantos/redbookperu'><img src='man/figures/cover_ppendemic.jpg' align="right" height="250" width="170" /></a>
+# redbookperu <a href='https://github.com/PaulESantos/redbookperu'><img src='man/figures/redbookperu_logo.png' align="right" height="250" width="220" /></a>
 
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# redbookperu <a href='https://github.com/PaulESantos/redbookperu'><img src='man/figures/cover_ppendemic.jpg' align="right" height="250" width="170" /></a>
+# redbookperu <a href='https://github.com/PaulESantos/redbookperu'><img src='man/figures/redbookperu_logo.png' align="right" height="250" width="220" /></a>
 
 <!-- badges: start -->
 
