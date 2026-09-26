@@ -2,3 +2,4 @@
 
 export(check_redbooklist)
 export(get_redbook_data)
+export(match_redbook_names)

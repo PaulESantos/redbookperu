@@ -215,8 +215,8 @@
     res_fuzzy <- matrix(nrow = n_pos_genus, ncol = n_class + 1)
 
     for (i in seq_len(n_pos_genus)) {
-      res_fuzzy[1, ] <- .exact_match(splist_class_i,
-                                     pos_genus,
+      res_fuzzy[i, ] <- .exact_match(splist_class_i,
+                                     pos_genus[i],
                                      n_class,
                                      fuzzy = TRUE)
     }

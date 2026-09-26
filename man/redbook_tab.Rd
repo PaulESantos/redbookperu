@@ -21,6 +21,15 @@ A tibble with the following columns:
 \item{genus_ephitethon_wcvp}{A character vector. The genus part of the name according to the WCVP.}
 \item{species_ephitethon_wcvp}{A character vector. The specific epithet part of the name according to the WCVP.}
 \item{subspecies_ephitethon_wcvp}{A character vector. The infraspecific epithet part of the name according to the WCVP, if applicable.}
+\item{wcvp_matched_name}{The taxon name matched in the WCVP backbone.}
+\item{wcvp_matched_author}{The authors of the matched WCVP taxon.}
+\item{wcvp_taxon_status}{The WCVP taxonomic status of the matched taxon.}
+\item{wcvp_matched_plant_name_id}{The WCVP identifier of the matched taxon.}
+\item{accepted_plant_name_id}{The WCVP identifier of the accepted taxon.}
+\item{wcvp_is_accepted_name}{Whether the matched WCVP name is accepted.}
+\item{wcvp_matched}{Whether WCVP returned a match.}
+\item{taxonomy_source}{The source and reconciliation method used for the update.}
+\item{taxonomy_updated_at}{UTC timestamp of the taxonomy update.}
 }
 }
 \usage{

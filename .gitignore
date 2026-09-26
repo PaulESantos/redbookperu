@@ -1,9 +1,8 @@
 .Rproj.user
 .Rhistory
-.Rdata
-.httr-oauth
-.DS_Store
-^code_preparation.R
-inst/doc
-.quarto
-docs
+.RData
+.Ruserdata
+.venv/
+cache/
+artifacts/
+__pycache__/

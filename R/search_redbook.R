@@ -53,7 +53,8 @@ search_redbook <- function(splist,
                       max_distance = 0.2,
                       show_correct = FALSE,
                       genus_fuzzy = FALSE,
-                      grammar_check = FALSE) {
+                      grammar_check = FALSE,
+                      progress_bar = show_progress()) {
   #hasData() # Check if LCVP is installed
   # Defensive function here, check for user input errors
   if (is.factor(splist)) {
@@ -141,4 +142,3 @@ search_redbook <- function(splist,
 
   return(result_final)
 }
-

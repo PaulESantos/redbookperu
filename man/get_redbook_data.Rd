@@ -4,12 +4,22 @@
 \alias{get_redbook_data}
 \title{Get Red Book Data for Given Species List}
 \usage{
-get_redbook_data(splist, dist = 0.1)
+get_redbook_data(
+  splist,
+  dist = 0.1,
+  unmatched = c("NA", "placeholder"),
+  quiet = FALSE
+)
 }
 \arguments{
 \item{splist}{A character vector containing the species names to be queried.}
 
 \item{dist}{Maximum allowed distance for fuzzy matching of species names.}
+
+\item{unmatched}{How unmatched or invalid rows are represented. \code{"NA"} uses
+missing values; \code{"placeholder"} uses the historical \code{"---"} placeholder.}
+
+\item{quiet}{If \code{TRUE}, suppresses summary messages.}
 }
 \value{
 A data frame containing comprehensive information about the provided

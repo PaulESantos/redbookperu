@@ -7,6 +7,9 @@
 #'
 #' @param splist A character vector containing the species names to be queried.
 #' @param dist Maximum allowed distance for fuzzy matching of species names.
+#' @param unmatched How unmatched or invalid rows are represented. `"NA"` uses
+#'   missing values; `"placeholder"` uses the historical `"---"` placeholder.
+#' @param quiet If `TRUE`, suppresses summary messages.
 #'
 #' @return A data frame containing comprehensive information about the provided
 #' species, including updated taxonomic details and descriptions.
@@ -36,61 +39,78 @@
 #'
 #' @name get_redbook_data
 #' @export
-get_redbook_data <- function(splist, dist = 0.1) {
-  output_names <- c( "name_subitted",
-                     "accepted_name",
-                     "accepted_name_author",
-                     "accepted_family",
-                     "redbook_name",
-                     "iucn",
-                     "publication",
-                     "collector",
-                     "herbariums",
-                     "common_name",
-                     "dep_registry",
-                     "ecological_regions",
-                     "sinampe",
-                     "peruvian_herbariums",
-                     "remarks")
-  if (is.factor(splist)) {
-    splist <- as.character(splist)
+get_redbook_data <- function(splist,
+                             dist = 0.1,
+                             unmatched = c("NA", "placeholder"),
+                             quiet = FALSE) {
+  unmatched <- match.arg(unmatched)
+
+  matching <- match_redbook_names(splist = splist,
+                                  dist = dist,
+                                  parser = "wcvpmatch",
+                                  output = "detailed")
+
+  book_data <- as.data.frame(redbookperu::redbook_sp_data,
+                             stringsAsFactors = FALSE)
+  book_data <- book_data[, c("redbook_id",
+                             "iucn",
+                             "publication",
+                             "collector",
+                             "herbariums",
+                             "common_name",
+                             "dep_registry",
+                             "ecological_regions",
+                             "sinampe",
+                             "peruvian_herbariums",
+                             "remarks")]
+
+  output <- merge(matching[, c("input_index",
+                               "name_submitted",
+                               "accepted_name",
+                               "accepted_name_author",
+                               "accepted_family",
+                               "redbook_id",
+                               "redbook_name")],
+                  book_data,
+                  by = "redbook_id",
+                  all.x = TRUE,
+                  sort = FALSE)
+  output <- output[order(output$input_index), , drop = FALSE]
+
+  output$name_subitted <- output$name_submitted
+  output <- output[, c("name_submitted",
+                       "name_subitted",
+                       "accepted_name",
+                       "accepted_name_author",
+                       "accepted_family",
+                       "redbook_name",
+                       "iucn",
+                       "publication",
+                       "collector",
+                       "herbariums",
+                       "common_name",
+                       "dep_registry",
+                       "ecological_regions",
+                       "sinampe",
+                       "peruvian_herbariums",
+                       "remarks"), drop = FALSE]
+
+  if (identical(unmatched, "placeholder")) {
+    data_cols <- setdiff(names(output), c("name_submitted", "name_subitted"))
+    output[data_cols] <- lapply(output[data_cols], function(x) {
+      x[is.na(x)] <- "---"
+      x
+    })
   }
 
-  # Remueve valores NA y strings vacíos de splist
-  splist_clean <- splist[!is.na(splist) & nchar(splist) > 0]
+  if (!isTRUE(quiet)) {
+    message(paste("Total exact matches:",
+                  sum(matching$match_status == "exact", na.rm = TRUE)))
+    message(paste("Total fuzzy matches:",
+                  sum(matching$match_status %in% c("fuzzy", "ambiguous"),
+                      na.rm = TRUE)))
+  }
 
-  # Mensaje sobre observaciones eliminadas o strings vacíos
-  if (length(splist) != length(splist_clean)) {
-    deleted_obs <- length(splist) - length(splist_clean)
-    message(paste0(as.numeric(deleted_obs),
-                   " missing observation(s) or empty string(s) were removed."))
-  }
-  # Create an output data container
-  output_list <- list()
-  # Loop code to find the matching string
-  for (i in seq_along(splist_clean)) {
-    result <- search_redbook(splist = splist_clean[i],
-                             max_distance = dist)
-    # Output selection
-    if (is.null(result)) {
-      output <- matrix(c(splist_clean[i],
-                         rep("---", 14)), nrow = 1)
-      #colnames(output) <- output_names
-    } else if (!is.null(result)) {
-      ids <- result$redbook_id
-      row_data <- redbookperu::redbook_tab[redbookperu::redbook_tab$redbook_id == ids, ]
-      book_data <- redbookperu::redbook_sp_data[redbookperu::redbook_sp_data$redbook_id == ids,]
-      outputmatrix <- cbind(row_data[, c("accepted_name",
-                                         "accepted_name_author",
-                                         "accepted_family")],
-                            book_data[, -c(1)])
-      output <- as.matrix(cbind(name_submitted = splist_clean[i],
-                      outputmatrix))
-    }
-    output_list[[i]] <- output
-  }
-  output_df <- as.data.frame(do.call(rbind, output_list))
-  colnames(output_df) <- output_names
-  row.names(output_df) <- NULL
-  return(output_df)
+  row.names(output) <- NULL
+  output
 }

@@ -4,12 +4,22 @@
 \alias{check_redbooklist}
 \title{Check Species Names in the Red Book of Endemic Plants of Peru}
 \usage{
-check_redbooklist(splist, dist = 0.02)
+check_redbooklist(
+  splist,
+  dist = 0.02,
+  output = c("status", "detailed"),
+  quiet = FALSE
+)
 }
 \arguments{
 \item{splist}{A character vector containing the species names to be checked.}
 
 \item{dist}{Maximum allowed distance for fuzzy matching of species names.}
+
+\item{output}{Output type. \code{"status"} returns the legacy character vector;
+\code{"detailed"} returns row-level matching diagnostics.}
+
+\item{quiet}{If \code{TRUE}, suppresses summary messages.}
 }
 \value{
 A character vector indicating if each input species name is listed as "endemic"

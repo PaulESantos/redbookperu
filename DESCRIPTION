@@ -1,6 +1,6 @@
 Package: redbookperu
 Title: Access and Analyze Data from the Red Book of Endemic Plants of Peru
-Version: 0.0.3
+Version: 0.1.0
 Authors@R: 
     c(person(given = "Paul E.",
              family = "Santos Andrade",
@@ -17,15 +17,19 @@ License: MIT + file LICENSE
 Suggests: 
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    arrow,
+    wcvpmatch,
+    wcvpdata
+VignetteBuilder: knitr
 Config/testthat/edition: 3
 LazyData: true
 LazyDataCompression: xz
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
 URL: https://github.com/PaulESantos/redbookperu, https://paulesantos.github.io/redbookperu/
 BugReports: https://github.com/PaulESantos/redbookperu/issues
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5.0)
 Maintainer: Paul E. Santos Andrade <paulefrens@gmail.com>
+Config/roxygen2/version: 8.1.0
