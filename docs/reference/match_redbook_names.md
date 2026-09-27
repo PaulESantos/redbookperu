@@ -53,4 +53,4 @@ match_redbook_names(
 
 ## Value
 
-A data frame with one row per input name.
+A tibble with one row per input name.

@@ -22,7 +22,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -35,8 +35,19 @@ jobs:
           extra-packages: any::pkgdown, local::.
           needs: website
 
-      - name: Build site
-        run: pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE)
+      - name: Build release site
+        # Preserve the historical article in docs/: it has no source vignette
+        # in this repository and would otherwise be removed by a clean build.
+        run: |
+          Sys.setenv(PKGDOWN_DEV_MODE = "release")
+          pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE, clean = FALSE)
+        shell: Rscript {0}
+
+      - name: Build development site
+        # This creates docs/dev/ and enables pkgdown's "Dev status" sidebar.
+        run: |
+          Sys.setenv(PKGDOWN_DEV_MODE = "devel")
+          pkgdown::build_site_github_pages(new_process = FALSE, install = FALSE, clean = FALSE)
         shell: Rscript {0}
 
       - name: Deploy to GitHub pages 🚀

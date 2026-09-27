@@ -1,4 +1,54 @@
 url: https://paulesantos.github.io/redbookperu/
+title: redbookperu
 template:
   bootstrap: 5
+  bslib:
+    bg: '#fffdf8'
+    fg: '#26352e'
+    primary: '#9e2a3a'
+development:
+  mode: auto
 
+home:
+  sidebar:
+    structure: [links, license, community, citation, authors, dev]
+navbar:
+  bg: primary
+  type: dark
+  structure:
+    left:
+    - home
+    - reference
+    - articles
+    right: [dev, github]
+  components:
+    home:
+      text: Inicio
+      icon: fa-home
+      href: index.html
+    reference:
+      text: Referencia
+      href: reference/index.html
+    articles:
+      text: Guias
+      menu:
+      - text: Evaluacion de endemicidad
+        href: articles/evaluacion-endemismo.html
+    dev:
+      text: Desarrollo
+      href: https://paulesantos.github.io/redbookperu/dev/
+    github:
+      icon: fa-github
+      href: https://github.com/PaulESantos/redbookperu
+      aria-label: Repositorio en GitHub
+reference:
+- title: Consultar taxones
+  desc: Funciones para comprobar endemicidad, recuperar informacion y revisar coincidencias
+    taxonomicas.
+  contents:
+  - check_redbooklist
+  - get_redbook_data
+  - match_redbook_names
+- title: Datos incluidos
+  desc: Conjuntos de datos distribuidos con el paquete.
+  contents: has_keyword("datasets")

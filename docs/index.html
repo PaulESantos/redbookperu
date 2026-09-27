@@ -10,7 +10,8 @@
 <link href="deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Access and Analyze Data from the Red Book of Endemic Plants of Peru">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
+<meta property="og:title" content="Access and Analyze Data from the Red Book of Endemic Plants of Peru">
 <meta name="description" content="Provides access to and analysis of data from &quot;The Red Book of Endemic Plants of Peru&quot; (León, B., Roque, J., Ulloa, C., Jorgensen, P.M., Pitman, N., Cano, A. 2006) &lt;doi:10.15381/rpb.v13i2.1782&gt;. This package offers comprehensive taxonomic, geographic, and conservation information about Peru's endemic plant species. It includes functions to verify species inclusion, obtain updated taxonomic details, and explore the dataset.">
 <meta property="og:description" content="Provides access to and analysis of data from &quot;The Red Book of Endemic Plants of Peru&quot; (León, B., Roque, J., Ulloa, C., Jorgensen, P.M., Pitman, N., Cano, A. 2006) &lt;doi:10.15381/rpb.v13i2.1782&gt;. This package offers comprehensive taxonomic, geographic, and conservation information about Peru's endemic plant species. It includes functions to verify species inclusion, obtain updated taxonomic details, and explore the dataset.">
 </head>
@@ -18,11 +19,11 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="index.html">redbookperu</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,19 +32,18 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="active nav-item"><a class="nav-link" href="index.html"><span class="fa fa-home"></span> Inicio</a></li>
+<li class="nav-item"><a class="nav-link" href="reference/index.html">Referencia</a></li>
 <li class="nav-item dropdown">
-  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/evaluacion-endemismo.html">Evaluación actual del endemismo de las plantas del Perú</a></li>
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-guias" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Guias</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-guias">
+<li><a class="dropdown-item" href="articles/evaluacion-endemismo.html">Evaluacion de endemicidad</a></li>
   </ul>
 </li>
       </ul>
 <ul class="navbar-nav">
-<li class="nav-item"><form class="form-inline" role="search">
- <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
-</form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/PaulESantos/redbookperu/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="nav-link" href="https://paulesantos.github.io/redbookperu/dev/">Desarrollo</a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/PaulESantos/redbookperu" aria-label="Repositorio en GitHub"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -57,130 +57,126 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><code>redbookperu</code> provides access to the 5,507 taxa documented in the <a href="https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153" class="external-link">Red Book of Endemic Plants of Peru</a> (Leon et al., 2006), together with taxonomic reconciliation against the World Checklist of Vascular Plants (WCVP), the taxonomic backbone used by Plants of the World Online (POWO).</p>
-<p>The process of accessing data from the original publication can pose challenges for researchers, particularly due to the large number of taxa presented within it. The <code>redbookperu</code> package has the primary objective of addressing these challenges by providing updated taxonomic information. Additionally, it introduces functions designed to enhance the accessibility and usefulness of the data presented in the Red Book of Endemic Plants of Peru.</p>
-<p>The historical name printed in the Red Book is retained in <code>redbook_name</code>. Current accepted names, authors, families, WCVP identifiers, and taxonomic status are stored separately. This preserves the source identity while allowing queries with current names and synonyms.</p>
-<div class="section level3">
-<h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h3>
-<p>You can install the <code>redbookperu</code> package from CRAN using:</p>
+<p><code>redbookperu</code> facilita la consulta de los taxones incluidos en el <em>Libro Rojo de las Plantas Endémicas del Perú</em> (León et al., 2006). Permite comprobar si una lista de nombres científicos corresponde a un taxón registrado como endémico y recuperar su información de conservación y distribución.</p>
+<p>El paquete conserva el nombre histórico publicado en el Libro Rojo y ofrece, cuando está disponible, el nombre taxonómico aceptado. Las búsquedas admiten nombres históricos, nombres aceptados, sinónimos y errores ortográficos menores.</p>
+<div class="section level2">
+<h2 id="instalación">Instalación<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n"></a>
+</h2>
+<p>Instale la versión publicada desde CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"redbookperu"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># or</span></span>
-<span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"redbookperu"</span><span class="op">)</span></span></code></pre></div>
-<p>You can install the development version of <code>redbookperu</code> from GitHub:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"redbookperu"</span><span class="op">)</span></span></code></pre></div>
+<p>O la versión de desarrollo desde GitHub:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"PaulESantos/redbookperu"</span><span class="op">)</span></span></code></pre></div>
-<p>The bundled data can be used without installing the optional <code>wcvpmatch</code> and <code>arrow</code> packages. When available, <code>wcvpmatch</code> provides the preferred parser and <code>arrow</code> reads the bundled Parquet catalogue; the legacy parser and <code>.rda</code> data remain fallbacks.</p>
-</div>
-<div class="section level3">
-<h3 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
-</h3>
-<p>After installing the <code>redbookperu</code> package, you can load it into your R session using:</p>
+<p>Luego cargue el paquete:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PaulESantos/redbookperu" class="external-link">redbookperu</a></span><span class="op">)</span></span></code></pre></div>
-<p>To determine whether a submitted name maps to a taxon in the Red Book, use <code><a href="reference/check_redbooklist.html">check_redbooklist()</a></code>. The function preserves one output value per input name and reports endemicity through historical names, accepted names, and synonyms.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="va">splist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aphelandra cuscoensis"</span>, <span class="st">"Sanchezia capitata"</span>,</span>
-<span>            <span class="st">"Sanchezia ovata"</span>, <span class="st">"Verbesina andinaa"</span>,</span>
-<span>            <span class="st">"Persea americana"</span>, <span class="cn">NA</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/check_redbooklist.html">check_redbooklist</a></span><span class="op">(</span><span class="va">splist</span>, dist <span class="op">=</span> <span class="fl">0.2</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "endemic"     "endemic"     "endemic"     "endemic"     "not endemic"</span></span>
-<span><span class="co">#&gt; [6] NA</span></span></code></pre></div>
-<p>Exact, fuzzy, and synonym matches to a Red Book record return <code>"endemic"</code>; valid names without a Red Book record return <code>"not endemic"</code>; invalid inputs return <code>NA_character_</code>. <code>Sanchezia ovata</code> is the current accepted name associated with the historical Red Book record <code>Sanchezia capitata</code>. Invalid inputs such as <code>NA</code> or empty strings are preserved in the output and returned as <code>NA_character_</code>, which keeps row-wise workflows aligned with the input data.</p>
-<p><code><a href="reference/check_redbooklist.html">check_redbooklist()</a></code> function is designed to work seamlessly with tibble, allowing users to easily analyze species data within a tabular format.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="do">## This is redbookperu 0.1.0</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="uso">Uso<a class="anchor" aria-label="anchor" href="#uso"></a>
+</h2>
+<div class="section level3">
+<h3 id="comprobar-endemicidad">Comprobar endemicidad<a class="anchor" aria-label="anchor" href="#comprobar-endemicidad"></a>
+</h3>
+<p><code><a href="reference/check_redbooklist.html">check_redbooklist()</a></code> devuelve un estado para cada nombre enviado. Es útil para añadir una columna de endemicidad a una tabla de trabajo.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>splist <span class="op">=</span> <span class="va">splist</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>endemic <span class="op">=</span> <span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/check_redbooklist.html">check_redbooklist</a></span><span class="op">(</span><span class="va">splist</span>,</span>
-<span>                                                         dist <span class="op">=</span> <span class="fl">0.2</span>,</span>
-<span>                                                         quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 6 x 2</span></span>
-<span><span class="co">#&gt;   splist                endemic    </span></span>
-<span><span class="co">#&gt;   &lt;chr&gt;                 &lt;chr&gt;      </span></span>
-<span><span class="co">#&gt; 1 Aphelandra cuscoensis endemic</span></span>
-<span><span class="co">#&gt; 2 Sanchezia capitata    endemic    </span></span>
-<span><span class="co">#&gt; 3 Sanchezia ovata       endemic</span></span>
-<span><span class="co">#&gt; 4 Verbesina andinaa     endemic</span></span>
-<span><span class="co">#&gt; 5 Persea americana      not endemic</span></span>
-<span><span class="co">#&gt; 6 &lt;NA&gt;                  &lt;NA&gt;</span></span></code></pre></div>
-<p>For auditable workflows, use <code><a href="reference/match_redbook_names.html">match_redbook_names()</a></code> to return one row per submitted name with the matched Red Book name, accepted taxonomic name, endemicity status, match type, edit distance, and candidate diagnostics.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/match_redbook_names.html">match_redbook_names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sanchezia ovata"</span>,</span>
-<span>                                   <span class="st">"Verbesina andinaa"</span>,</span>
-<span>                                   <span class="st">"Persea americana"</span>,</span>
-<span>                                   <span class="cn">NA</span><span class="op">)</span>,</span>
-<span>                                 dist <span class="op">=</span> <span class="fl">0.2</span>,</span>
-<span>                                 output <span class="op">=</span> <span class="st">"summary"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   input_index    name_submitted input_valid redbook_id       redbook_name</span></span>
-<span><span class="co">#&gt; 1           1   Sanchezia ovata        TRUE     32SACA Sanchezia capitata</span></span>
-<span><span class="co">#&gt; 2           2 Verbesina andinaa        TRUE    979VEAN   Verbesina andina</span></span>
-<span><span class="co">#&gt; 3           3  Persea americana        TRUE       &lt;NA&gt;               &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4           4              &lt;NA&gt;       FALSE       &lt;NA&gt;               &lt;NA&gt;</span></span>
-<span><span class="co">#&gt;     accepted_name   matched_via name_update_status endemic_status  match_status</span></span>
-<span><span class="co">#&gt; 1 Sanchezia ovata accepted_name       updated_name        endemic         exact</span></span>
-<span><span class="co">#&gt; 2            &lt;NA&gt;  redbook_name    historical_name        endemic         fuzzy</span></span>
-<span><span class="co">#&gt; 3            &lt;NA&gt;          &lt;NA&gt;               &lt;NA&gt;    not_endemic      no_match</span></span>
-<span><span class="co">#&gt; 4            &lt;NA&gt;          &lt;NA&gt;               &lt;NA&gt;  invalid_input invalid_input</span></span>
-<span><span class="co">#&gt;   match_distance</span></span>
-<span><span class="co">#&gt; 1              0</span></span>
-<span><span class="co">#&gt; 2              1</span></span>
-<span><span class="co">#&gt; 3             NA</span></span>
-<span><span class="co">#&gt; 4             NA</span></span></code></pre></div>
-<p>The detailed output includes <code>matched_via</code>, <code>name_update_status</code>, <code>taxon_status</code>, <code>accepted_name</code>, and <code>accepted_family</code>, so a current name matched through synonymy can be distinguished from a historical or fuzzy match.</p>
-<p>If you intend to access the information provided for each of the species listed in the Red Book of Endemic Plants of Peru, you have the option to use the <code><a href="reference/get_redbook_data.html">get_redbook_data()</a></code> function. This function facilitates the association of updated taxonomic information with the details concerning conservation status, distribution, and descriptions presented in the original publication.</p>
+<code class="sourceCode R"><span><span class="va">species</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aphelandra cuscoensis"</span>, <span class="st">"Sanchezia ovata"</span>, <span class="st">"Persea americana"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/check_redbooklist.html">check_redbooklist</a></span><span class="op">(</span><span class="va">species</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="do">## [1] "endemic"     "endemic"     "not endemic"</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">redbookperu</span><span class="fu">::</span><span class="fu"><a href="reference/get_redbook_data.html">get_redbook_data</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sanchecia capitata"</span>,</span>
-<span>                   <span class="st">"Weinmania nubigena"</span>,</span>
-<span>                   <span class="st">"Macroclinium christensonii"</span>,</span>
-<span>                   <span class="st">"Weberbauera violacea"</span><span class="op">)</span>, </span>
-<span>                   dist <span class="op">=</span> <span class="fl">0.2</span>,</span>
-<span>                   unmatched <span class="op">=</span> <span class="st">"placeholder"</span>,</span>
-<span>                   quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;               name_submitted              name_subitted</span></span>
-<span><span class="co">#&gt; 1         Sanchecia capitata         Sanchecia capitata</span></span>
-<span><span class="co">#&gt; 2         Weinmania nubigena         Weinmania nubigena</span></span>
-<span><span class="co">#&gt; 3 Macroclinium christensonii Macroclinium christensonii</span></span>
-<span><span class="co">#&gt; 4       Weberbauera violacea       Weberbauera violacea</span></span>
-<span><span class="co">#&gt;                accepted_name accepted_name_author accepted_family</span></span>
-<span><span class="co">#&gt; 1            Sanchezia ovata          Ruiz &amp; Pav.     Acanthaceae</span></span>
-<span><span class="co">#&gt; 2          Werneria nubigena                Kunth      Asteraceae</span></span>
-<span><span class="co">#&gt; 3 Macroclinium christensonii            D.E.Benn.     Orchidaceae</span></span>
-<span><span class="co">#&gt; 4       Weberbauera violacea           Al-Shehbaz    Brassicaceae</span></span>
-<span><span class="co">#&gt;                            redbook_name        iucn</span></span>
-<span><span class="co">#&gt; 1                    Sanchezia capitata          DD</span></span>
-<span><span class="co">#&gt; 2 Werneria orbignyana var. breviradiata          DD</span></span>
-<span><span class="co">#&gt; 3            Macroclinium christensonii CR, B1abiii</span></span>
-<span><span class="co">#&gt; 4                  Weberbauera violacea          DD</span></span>
-<span><span class="co">#&gt;                                   publication</span></span>
-<span><span class="co">#&gt; 1 Bull. Herb. Boissier, ser. 2, 4: 315. 1904.</span></span>
-<span><span class="co">#&gt; 2        Proc. Amer. Acad. Arts 5: 139. 1861.</span></span>
-<span><span class="co">#&gt; 3    Brittonia 46(3): 249 - 251, f. 13. 1994.</span></span>
-<span><span class="co">#&gt; 4         Novon 14(3): 266 - 268, f. 3. 2004.</span></span>
-<span><span class="co">#&gt;                              collector herbariums  common_name dep_registry</span></span>
-<span><span class="co">#&gt; 1                  A. Mathews 1230 (K)        --- Desconocido.      JU - PA</span></span>
-<span><span class="co">#&gt; 2          C. Wilkes, Exped. Expl. US.        US. Desconocido.           HU</span></span>
-<span><span class="co">#&gt; 3 O. del Castillo ex D.E. Bennett 5160        NY. Desconocido.           JU</span></span>
-<span><span class="co">#&gt; 4 A. Sag&lt;U+00E1&gt;stegui A. et al. 11175  MO; HUT!. Desconocido.           CA</span></span>
-<span><span class="co">#&gt;                ecological_regions      sinampe peruvian_herbariums</span></span>
-<span><span class="co">#&gt; 1 BMHP, BHA; altitud desconocida. Sin registro            Ninguno.</span></span>
-<span><span class="co">#&gt; 2       PSH; altitud desconocida. Sin registro            Ninguno.</span></span>
-<span><span class="co">#&gt; 3                   BMHM; 1800 m. Sin registro            Ninguno.</span></span>
-<span><span class="co">#&gt; 4                    PAR; 3800 m. Sin registro      HUT (isotipo).</span></span>
-<span><span class="co">#&gt;                                                                                                                                                                                                                                                                                                     remarks</span></span>
-<span><span class="co">#&gt; 1                                                  Esta especie arbustiva es conocida de dos localidades. La colecci&lt;U+00F3&gt;n tipo fue recolectada en la cuenca del Pangoa en el siglo XVIII. Probablemente la expansi&lt;U+00F3&gt;n urbana y las actividades agr&lt;U+00ED&gt;colas sean problemas para esta especie.</span></span>
-<span><span class="co">#&gt; 2                                                                                                                                                                            Hierba aparentemente conocida s&lt;U+00F3&gt;lo de la colecci&lt;U+00F3&gt;n tipo, recolectada en una subcuenca alta del Mantaro, en 1839.</span></span>
-<span><span class="co">#&gt; 3 Esta hierba ep&lt;U+00ED&gt;fita es conocida s&lt;U+00F3&gt;lo de la colecci&lt;U+00F3&gt;n tipo, proveniente del valle de Chanchamayo, en una subcuenca del Peren&lt;U+00E9&gt;. Esta regi&lt;U+00F3&gt;n ha sufrido continuas reducciones de sus &lt;U+00E1&gt;reas naturales debido a la ampliaci&lt;U+00F3&gt;n de la frontera agr&lt;U+00ED&gt;cola.</span></span>
-<span><span class="co">#&gt; 4                                                                                                      Esta hierba paramuna es conocida de la localidad tipo, en la cuenca del Crisnejas, un tributario del Mara&lt;U+00F1&gt;&lt;U+00F3&gt;n. El ejemplar tipo fue recolectado en 1983, de una jalca poco herborizada.</span></span></code></pre></div>
-<p>Missing values from <code><a href="reference/get_redbook_data.html">get_redbook_data()</a></code> are <code>NA</code> by default. The historical <code>"---"</code> representation remains available with <code>unmatched = "placeholder"</code>.</p>
+<code class="sourceCode R"><span><span class="co">#</span></span>
+<span><span class="co"># tibble</span></span>
+<span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aphelandra cuscoensis"</span>,</span>
+<span>                           <span class="st">"Sanchezia ovata"</span>, </span>
+<span>                           <span class="st">"Persea americana"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>endemic <span class="op">=</span> <span class="fu"><a href="reference/check_redbooklist.html">check_redbooklist</a></span><span class="op">(</span><span class="va">species</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="do">## Total exact matches: 1</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="do">## Total fuzzy matches: 1</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="do">## # A tibble: 3 × 2</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">##   species               endemic    </span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                 &lt;chr&gt;      </span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="do">## 1 Aphelandra cuscoensis endemic    </span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="do">## 2 Sanchezia ovata       endemic    </span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="do">## 3 Persea americana      not endemic</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="taxonomy-update-workflow">Taxonomy update workflow<a class="anchor" aria-label="anchor" href="#taxonomy-update-workflow"></a>
+<h3 id="recuperar-la-ficha-de-los-taxones">Recuperar la ficha de los taxones<a class="anchor" aria-label="anchor" href="#recuperar-la-ficha-de-los-taxones"></a>
 </h3>
-<p>The reproducible update script is <a href="data-raw/update_taxonomy.R"><code>data-raw/update_taxonomy.R</code></a>. It runs <code><a href="https://paulesantos.github.io/wcvpmatch/reference/classify_spnames.html" class="external-link">wcvpmatch::classify_spnames()</a></code> followed by <code>wcvpmatch::wcvp_matching(allow_duplicates = TRUE)</code> for every historical <code>redbook_name</code>, joins accepted WCVP IDs to the WCVP backbone to recover the accepted family, and writes <code>inst/extdata/redbook_taxonomy.parquet</code>, the fallback <code>data/redbook_tab.rda</code>, and a dated snapshot under <code>data-raw/snapshots/</code>. See the <a href="specs/taxonomy-update-plan.html">taxonomy update plan</a> for the periodic tasks and data contract.</p>
+<p><code><a href="reference/get_redbook_data.html">get_redbook_data()</a></code> devuelve un tibble con la información del Libro Rojo para cada nombre consultado. Los nombres no encontrados se conservan y sus campos de información se representan como valores ausentes.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/get_redbook_data.html">get_redbook_data</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sanchezia ovata"</span>, <span class="st">"Macroclinium christensonii"</span>, <span class="st">"Persea americana"</span><span class="op">)</span>,</span>
+<span>  quiet <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="do">##               name_submitted              name_subitted</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="do">## 1            Sanchezia ovata            Sanchezia ovata</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="do">## 2 Macroclinium christensonii Macroclinium christensonii</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="do">## 3           Persea americana           Persea americana</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="do">##                accepted_name accepted_name_author accepted_family</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="do">## 1            Sanchezia ovata          Ruiz &amp; Pav.     Acanthaceae</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="do">## 2 Macroclinium christensonii            D.E.Benn.     Orchidaceae</span></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="do">## 3                       &lt;NA&gt;                 &lt;NA&gt;            &lt;NA&gt;</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="do">##                 redbook_name        iucn</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="do">## 1         Sanchezia capitata          DD</span></span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="do">## 2 Macroclinium christensonii CR, B1abiii</span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="do">## 3                       &lt;NA&gt;        &lt;NA&gt;</span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="do">##                                   publication</span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="do">## 1 Bull. Herb. Boissier, ser. 2, 4: 315. 1904.</span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="do">## 2    Brittonia 46(3): 249 - 251, f. 13. 1994.</span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="do">## 3                                        &lt;NA&gt;</span></span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="do">##                              collector herbariums  common_name dep_registry</span></span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="do">## 1                  A. Mathews 1230 (K)       &lt;NA&gt; Desconocido.      JU - PA</span></span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="do">## 2 O. del Castillo ex D.E. Bennett 5160        NY. Desconocido.           JU</span></span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a><span class="do">## 3                                 &lt;NA&gt;       &lt;NA&gt;         &lt;NA&gt;         &lt;NA&gt;</span></span>
+<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a><span class="do">##                ecological_regions      sinampe peruvian_herbariums</span></span>
+<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a><span class="do">## 1 BMHP, BHA; altitud desconocida. Sin registro            Ninguno.</span></span>
+<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a><span class="do">## 2                   BMHM; 1800 m. Sin registro            Ninguno.</span></span>
+<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a><span class="do">## 3                            &lt;NA&gt;         &lt;NA&gt;                &lt;NA&gt;</span></span>
+<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a><span class="do">##                                                                                                                                                                                                                                             remarks</span></span>
+<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a><span class="do">## 1               Esta especie arbustiva es conocida de dos localidades. La colección tipo fue recolectada en la cuenca del Pangoa en el siglo XVIII. Probablemente la expansión urbana y las actividades agrícolas sean problemas para esta especie.</span></span>
+<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a><span class="do">## 2 Esta hierba epífita es conocida sólo de la colección tipo, proveniente del valle de Chanchamayo, en una subcuenca del Perené. Esta región ha sufrido continuas reducciones de sus áreas naturales debido a la ampliación de la frontera agrícola.</span></span>
+<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a><span class="do">## 3                                                                                                                                                                                                                                              &lt;NA&gt;</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="revisar-cómo-se-resolvió-cada-nombre">Revisar cómo se resolvió cada nombre<a class="anchor" aria-label="anchor" href="#revisar-c%C3%B3mo-se-resolvi%C3%B3-cada-nombre"></a>
+</h3>
+<p>Cuando sea importante auditar una búsqueda, use <code><a href="reference/match_redbook_names.html">match_redbook_names()</a></code>. El resultado es un tibble con una fila por nombre de entrada e indica, entre otros datos, el nombre del Libro Rojo que se encontró, el estado de coincidencia y la distancia de edición.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/match_redbook_names.html">match_redbook_names</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Sanchezia ovata"</span>, <span class="st">"Verbesina andinaa"</span>, <span class="st">"Persea americana"</span><span class="op">)</span>,</span>
+<span>  dist <span class="op">=</span> <span class="fl">0.2</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="do">##   input_index    name_submitted input_valid invalid_reason standardized_name</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="do">## 1           1   Sanchezia ovata        TRUE           &lt;NA&gt;   Sanchezia ovata</span></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="do">## 2           2 Verbesina andinaa        TRUE           &lt;NA&gt; Verbesina andinaa</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="do">## 3           3  Persea americana        TRUE           &lt;NA&gt;  Persea americana</span></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="do">##   redbook_id       redbook_name   accepted_name accepted_family</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="do">## 1     32SACA Sanchezia capitata Sanchezia ovata     Acanthaceae</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="do">## 2    979VEAN   Verbesina andina            &lt;NA&gt;            &lt;NA&gt;</span></span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="do">## 3       &lt;NA&gt;               &lt;NA&gt;            &lt;NA&gt;            &lt;NA&gt;</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="do">##   accepted_name_author taxon_status   matched_via name_update_status</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="do">## 1          Ruiz &amp; Pav.      synonym accepted_name       updated_name</span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="do">## 2                 &lt;NA&gt;     unplaced  redbook_name    historical_name</span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="do">## 3                 &lt;NA&gt;         &lt;NA&gt;          &lt;NA&gt;               &lt;NA&gt;</span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="do">##   endemic_status match_status   match_stage match_distance candidate_count</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="do">## 1        endemic        exact    exact_name              0               1</span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="do">## 2        endemic        fuzzy fuzzy_species              1               1</span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="do">## 3    not_endemic     no_match          none             NA               0</span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="do">##   ambiguous_candidates</span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="do">## 1                 &lt;NA&gt;</span></span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="do">## 2                 &lt;NA&gt;</span></span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a><span class="do">## 3                 &lt;NA&gt;</span></span></code></pre></div>
+<p>Las funciones que generan resultados tabulares devuelven tibbles, por lo que se integran directamente con flujos de trabajo basados en <code>dplyr</code> y <code>tidyr</code>.</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="referencia">Referencia<a class="anchor" aria-label="anchor" href="#referencia"></a>
+</h2>
+<p>León, B., Roque, J., Ulloa Ulloa, C., Jørgensen, P. M., Pitman, N. y Cano, A. (2006). <em>El Libro Rojo de las Plantas Endémicas del Perú</em>. Revista Peruana de Biología, 13(2), 9s–22s. <a href="https://doi.org/10.15381/rpb.v13i2.1782" class="external-link uri">https://doi.org/10.15381/rpb.v13i2.1782</a></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -200,6 +196,14 @@
 </ul>
 </div>
 
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+<li><a href="SUPPORT.html">Getting help</a></li>
+</ul>
+</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
@@ -216,17 +220,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-green.svg" alt="Lifecycle: stable"></a></li>
-<li><a href="https://CRAN.R-project.org/package=redbookperu" class="external-link"><img src="https://www.r-pkg.org/badges/version/redbookperu" alt="CRAN status"></a></li>
-<li><a href="https://app.codecov.io/gh/PaulESantos/redbookperu?branch=main" class="external-link"><img src="https://codecov.io/gh/PaulESantos/redbookperu/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://cran.r-project.org/package=redbookperu" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/grand-total/redbookperu?color=green"></a></li>
-<li><a href="https://cran.r-project.org/package=redbookperu" class="external-link"><img src="http://cranlogs.r-pkg.org/badges/last-week/redbookperu?color=green"></a></li>
-</ul>
-</div>
+
 
   </aside>
 </div>

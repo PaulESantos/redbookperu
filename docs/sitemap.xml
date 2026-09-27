@@ -1,11 +1,12 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://paulesantos.github.io/redbookperu/404.html</loc></url>
-<url><loc>https://paulesantos.github.io/redbookperu/articles/evaluacion-endemismo.html</loc></url>
-<url><loc>https://paulesantos.github.io/redbookperu/articles/index.html</loc></url>
 <url><loc>https://paulesantos.github.io/redbookperu/authors.html</loc></url>
+<url><loc>https://paulesantos.github.io/redbookperu/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://paulesantos.github.io/redbookperu/CONTRIBUTING.html</loc></url>
 <url><loc>https://paulesantos.github.io/redbookperu/index.html</loc></url>
 <url><loc>https://paulesantos.github.io/redbookperu/LICENSE-text.html</loc></url>
 <url><loc>https://paulesantos.github.io/redbookperu/LICENSE.html</loc></url>
+<url><loc>https://paulesantos.github.io/redbookperu/PROJECT_STRUCTURE.html</loc></url>
 <url><loc>https://paulesantos.github.io/redbookperu/reference/check_redbooklist.html</loc></url>
 <url><loc>https://paulesantos.github.io/redbookperu/reference/dot-match_algorithm.html</loc></url>
 <url><loc>https://paulesantos.github.io/redbookperu/reference/get_redbook_data.html</loc></url>
@@ -16,5 +17,6 @@
 <url><loc>https://paulesantos.github.io/redbookperu/reference/redbook_sp_data.html</loc></url>
 <url><loc>https://paulesantos.github.io/redbookperu/reference/redbook_tab.html</loc></url>
 <url><loc>https://paulesantos.github.io/redbookperu/reference/search_redbook.html</loc></url>
+<url><loc>https://paulesantos.github.io/redbookperu/SUPPORT.html</loc></url>
 </urlset>
 

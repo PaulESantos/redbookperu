@@ -12,5 +12,6 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^_pkgdown\.yml$
+^pkgdown$
 ^codecov\.yml$
 ^cran-comments\.md$

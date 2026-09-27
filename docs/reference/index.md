@@ -1,6 +1,9 @@
 # Package index
 
-## All functions
+## Consultar taxones
+
+Funciones para comprobar endemicidad, recuperar informacion y revisar
+coincidencias taxonomicas.
 
 - [`check_redbooklist()`](https://paulesantos.github.io/redbookperu/reference/check_redbooklist.md)
   : Check Species Names in the Red Book of Endemic Plants of Peru
@@ -8,6 +11,11 @@
   : Get Red Book Data for Given Species List
 - [`match_redbook_names()`](https://paulesantos.github.io/redbookperu/reference/match_redbook_names.md)
   : Match Submitted Names Against the Red Book of Endemic Plants of Peru
+
+## Datos incluidos
+
+Conjuntos de datos distribuidos con el paquete.
+
 - [`redbook_position`](https://paulesantos.github.io/redbookperu/reference/redbook_position.md)
   : List of the number positions of the first 3 letters of the species
   name in the redbook_tab
