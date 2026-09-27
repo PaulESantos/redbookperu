@@ -4,7 +4,7 @@ test_that("get_redbook_data devuelve campos del catálogo y conserva los no enco
     quiet = TRUE
   )
 
-  expect_s3_class(result, "data.frame")
+  expect_s3_class(result, "tbl_df")
   expect_identical(result$name_submitted, c("Sanchezia ovata", "Persea americana"))
   expect_named(
     result,

@@ -22,9 +22,9 @@ check_redbooklist(
 \item{quiet}{If \code{TRUE}, suppresses summary messages.}
 }
 \value{
-A character vector indicating if each input species name is listed as "endemic"
-in the Red Book of Endemic Plants of Peru database. Returns "endemic" if the species name
-is listed and "not endemic" if no matching entry is found.
+With \code{output = "status"}, a character vector indicating whether each
+input name is listed as endemic. With \code{output = "detailed"}, a tibble with
+row-level matching diagnostics.
 }
 \description{
 This function checks a list of species names against the Red Book of Endemic Plants

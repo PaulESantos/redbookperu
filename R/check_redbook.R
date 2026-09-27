@@ -10,9 +10,9 @@
 #'   `"detailed"` returns row-level matching diagnostics.
 #' @param quiet If `TRUE`, suppresses summary messages.
 #'
-#' @return A character vector indicating if each input species name is listed as "endemic"
-#' in the Red Book of Endemic Plants of Peru database. Returns "endemic" if the species name
-#' is listed and "not endemic" if no matching entry is found.
+#' @return With `output = "status"`, a character vector indicating whether each
+#' input name is listed as endemic. With `output = "detailed"`, a tibble with
+#' row-level matching diagnostics.
 #'
 #' @details
 #' This function checks each species name in the provided list against the

@@ -3,7 +3,7 @@ test_that("match_redbook_names conserva el orden y reconoce coincidencias", {
 
   result <- match_redbook_names(submitted, parser = "legacy")
 
-  expect_s3_class(result, "data.frame")
+  expect_s3_class(result, "tbl_df")
   expect_identical(result$name_submitted, submitted)
   expect_identical(result$input_index, seq_along(submitted))
   expect_identical(result$endemic_status, c("endemic", "endemic", "not_endemic"))

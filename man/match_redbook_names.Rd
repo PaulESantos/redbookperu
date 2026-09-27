@@ -34,7 +34,7 @@ inputs are preserved in all cases.}
 table. \code{"summary"} returns a compact subset.}
 }
 \value{
-A data frame with one row per input name.
+A tibble with one row per input name.
 }
 \description{
 \code{match_redbook_names()} returns one row per submitted name with matching

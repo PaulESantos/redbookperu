@@ -16,7 +16,7 @@ test_that("check_redbooklist devuelve diagnósticos detallados cuando se solicit
     quiet = TRUE
   )
 
-  expect_s3_class(result, "data.frame")
+  expect_s3_class(result, "tbl_df")
   expect_identical(result$endemic_status, "endemic")
   expect_identical(result$redbook_name, "Sanchezia capitata")
 })

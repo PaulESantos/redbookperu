@@ -22,7 +22,7 @@ missing values; \code{"placeholder"} uses the historical \code{"---"} placeholde
 \item{quiet}{If \code{TRUE}, suppresses summary messages.}
 }
 \value{
-A data frame containing comprehensive information about the provided
+A tibble containing comprehensive information about the provided
 species, including updated taxonomic details and descriptions.
 }
 \description{

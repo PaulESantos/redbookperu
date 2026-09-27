@@ -11,7 +11,7 @@
 #'   missing values; `"placeholder"` uses the historical `"---"` placeholder.
 #' @param quiet If `TRUE`, suppresses summary messages.
 #'
-#' @return A data frame containing comprehensive information about the provided
+#' @return A tibble containing comprehensive information about the provided
 #' species, including updated taxonomic details and descriptions.
 #'
 #' @details
@@ -111,6 +111,5 @@ get_redbook_data <- function(splist,
                       na.rm = TRUE)))
   }
 
-  row.names(output) <- NULL
-  output
+  tibble::as_tibble(output)
 }

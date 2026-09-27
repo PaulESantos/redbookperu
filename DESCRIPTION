@@ -31,5 +31,7 @@ URL: https://github.com/PaulESantos/redbookperu, https://paulesantos.github.io/r
 BugReports: https://github.com/PaulESantos/redbookperu/issues
 Depends: 
     R (>= 3.5.0)
+Imports:
+    tibble
 Maintainer: Paul E. Santos Andrade <paulefrens@gmail.com>
 Config/roxygen2/version: 8.1.0

@@ -18,7 +18,7 @@
 #' @param output Output detail level. `"detailed"` returns the full diagnostic
 #'   table. `"summary"` returns a compact subset.
 #'
-#' @return A data frame with one row per input name.
+#' @return A tibble with one row per input name.
 #' @export
 match_redbook_names <- function(splist,
                                 dist = 0.1,
@@ -64,8 +64,7 @@ match_redbook_names <- function(splist,
                    "match_distance"), drop = FALSE]
   }
 
-  row.names(out) <- NULL
-  out
+  tibble::as_tibble(out)
 }
 
 .redbook_parse_names <- function(splist, parser = "legacy") {
