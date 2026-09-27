@@ -32,7 +32,7 @@ pak::pak("PaulESantos/redbookperu")
 
 Luego cargue el paquete:
 
-```r
+```{r}
 library(redbookperu)
 ```
 
@@ -42,18 +42,25 @@ library(redbookperu)
 
 `check_redbooklist()` devuelve un estado para cada nombre enviado. Es útil para añadir una columna de endemicidad a una tabla de trabajo.
 
-```{r, eval=FALSE}
+```{r}
 species <- c("Aphelandra cuscoensis", "Sanchezia ovata", "Persea americana")
 
 check_redbooklist(species, quiet = TRUE)
-#> [1] "endemic"     "endemic"     "not endemic"
+#
+# tibble
+tibble::tibble(species = c("Aphelandra cuscoensis",
+                           "Sanchezia ovata", 
+                           "Persea americana")) |> 
+  dplyr::mutate(endemic = check_redbooklist(species))
+
+ 
 ```
 
 ### Recuperar la ficha de los taxones
 
 `get_redbook_data()` devuelve un tibble con la información del Libro Rojo para cada nombre consultado. Los nombres no encontrados se conservan y sus campos de información se representan como valores ausentes.
 
-```{r, eval=FALSE}
+```{r}
 get_redbook_data(
   c("Sanchezia ovata", "Macroclinium christensonii", "Persea americana"),
   quiet = TRUE
@@ -64,7 +71,7 @@ get_redbook_data(
 
 Cuando sea importante auditar una búsqueda, use `match_redbook_names()`. El resultado es un tibble con una fila por nombre de entrada e indica, entre otros datos, el nombre del Libro Rojo que se encontró, el estado de coincidencia y la distancia de edición.
 
-```{r, eval=FALSE}
+```{r}
 match_redbook_names(
   c("Sanchezia ovata", "Verbesina andinaa", "Persea americana"),
   dist = 0.2
