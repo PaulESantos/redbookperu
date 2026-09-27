@@ -6,9 +6,13 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+experimental](https://img.shields.io/badge/lifecycle-experimental-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![Development
+status](https://img.shields.io/badge/development-active-355E3B.svg)](https://github.com/PaulESantos/redbookperu)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/redbookperu)](https://CRAN.R-project.org/package=redbookperu)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/redbookperu?color=green)](https://cran.r-project.org/package=redbookperu)
+[![](https://cranlogs.r-pkg.org/badges/last-week/redbookperu?color=green)](https://cran.r-project.org/package=redbookperu)
 [![R-CMD-check](https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaulESantos/redbookperu/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
