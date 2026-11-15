@@ -41,10 +41,10 @@
 #' plant_list
 #'
 #' @references
-#' [Red Book of Endemic Plants of Peru](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153)
+#' [Red Book of Endemic Plants of Peru](https://www.scielo.org.pe/scielo.php?script=sci_arttext&pid=S1727-99332006000200004)
 #' [The World Checklist of Vascular Plants, a continuously updated resource for exploring global plant diversity.](https://www.nature.com/articles/s41597-021-00997-6#citeas)
 #' [Taxonomic Name Resolution Service - TNRS](https://tnrs.biendata.org/)
-#' [Plants of the World Online - Facilitated by the Royal Botanic Gardens - Kew.](http://www.plantsoftheworldonline.org/)
+#' [Plants of the World Online - Facilitated by the Royal Botanic Gardens - Kew.](https://powo.science.kew.org/)
 #'
 #' @export
 #' @name check_redbooklist

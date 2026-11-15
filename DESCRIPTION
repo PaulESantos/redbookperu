@@ -15,13 +15,9 @@ Authors@R:
 Description: Provides access to and analysis of data from "The Red Book of Endemic Plants of Peru" (León, B., Roque, J., Ulloa, C., Jorgensen, P.M., Pitman, N., Cano, A. 2006) <doi:10.15381/rpb.v13i2.1782>. This package offers comprehensive taxonomic, geographic, and conservation information about Peru's endemic plant species. It includes functions to verify species inclusion, obtain updated taxonomic details, and explore the dataset.
 License: MIT + file LICENSE
 Suggests: 
-    knitr,
-    rmarkdown,
     testthat (>= 3.0.0),
     arrow,
-    wcvpmatch,
-    wcvpdata
-VignetteBuilder: knitr
+    wcvpmatch
 Config/testthat/edition: 3
 LazyData: true
 LazyDataCompression: xz
@@ -34,4 +30,4 @@ Depends:
 Imports:
     tibble
 Maintainer: Paul E. Santos Andrade <paulefrens@gmail.com>
-Config/roxygen2/version: 8.1.0
+Config/roxygen2/version: 8.1.1

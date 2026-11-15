@@ -49,10 +49,10 @@ head(redbook_data)
 
 }
 \references{
-\href{https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153}{Red Book of Endemic Plants of Peru}
+\href{https://www.scielo.org.pe/scielo.php?script=sci_arttext&pid=S1727-99332006000200004}{Red Book of Endemic Plants of Peru}
 \href{https://www.nature.com/articles/s41597-021-00997-6#citeas}{The World Checklist of Vascular Plants, a continuously updated resource for exploring global plant diversity.}
 \href{https://tnrs.biendata.org/}{Taxonomic Name Resolution Service - TNRS}
-\href{http://www.plantsoftheworldonline.org/}{Plants of the World Online - Facilitated by the Royal Botanic Gardens - Kew.}
+\href{https://powo.science.kew.org/}{Plants of the World Online - Facilitated by the Royal Botanic Gardens - Kew.}
 }
 \seealso{
 \code{\link{check_redbooklist}} function for a more focused check of species endemic status.
