@@ -42,6 +42,34 @@ library(redbookperu)
 
 ## Uso
 
+### Resolver nombres de plantas
+
+`match_redbook_names()` es la función principal del paquete. Devuelve una fila
+por nombre enviado e informa si el nombre figura en el Libro Rojo, cómo se
+encontró la coincidencia y cuál es su nombre aceptado cuando está disponible.
+La salida resumida facilita la revisión de una lista; la salida detallada
+permite examinar el contexto taxonómico.
+
+```{r eval=FALSE}
+especies <- c("Sanchezia ovata", "Verbesina andinaa",
+             "Persea americana", NA_character_)
+
+coincidencias <- match_redbook_names(
+  especies, dist = 0.2, parser = "legacy", output = "summary"
+)
+coincidencias[, c("name_submitted", "input_valid", "redbook_name",
+                   "endemic_status", "match_status", "match_distance")]
+
+detalle <- match_redbook_names("Sanchezia ovata", parser = "legacy")
+detalle[, c("name_submitted", "redbook_name", "accepted_name",
+            "matched_via", "name_update_status")]
+```
+
+El primer nombre se resuelve mediante su nombre aceptado, el segundo mediante
+una coincidencia aproximada, el tercero no se encuentra y la entrada ausente
+se marca como inválida. `parser = "legacy"` usa el analizador incluido en el
+paquete para que el ejemplo sea reproducible sin dependencias opcionales.
+
 ### Comprobar endemicidad
 
 `check_redbooklist()` devuelve un estado para cada nombre enviado. Es útil para añadir una columna de endemicidad a una tabla de trabajo.
@@ -68,17 +96,6 @@ tibble::tibble(species = c("Aphelandra cuscoensis",
 get_redbook_data(
   c("Sanchezia ovata", "Macroclinium christensonii", "Persea americana"),
   quiet = TRUE
-)
-```
-
-### Revisar cómo se resolvió cada nombre
-
-Cuando sea importante auditar una búsqueda, use `match_redbook_names()`. El resultado es un tibble con una fila por nombre de entrada e indica, entre otros datos, el nombre del Libro Rojo que se encontró, el estado de coincidencia y la distancia de edición.
-
-```{r}
-match_redbook_names(
-  c("Sanchezia ovata", "Verbesina andinaa", "Persea americana"),
-  dist = 0.2
 )
 ```
 

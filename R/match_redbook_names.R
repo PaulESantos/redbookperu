@@ -19,6 +19,19 @@
 #'   table. `"summary"` returns a compact subset.
 #'
 #' @return A tibble with one row per input name.
+#' @examples
+#' # Accepted name, spelling error, absent name, and missing input.
+#' submitted <- c("Sanchezia ovata", "Verbesina andinaa",
+#'                "Persea americana", NA_character_)
+#' matches <- match_redbook_names(submitted, dist = 0.2,
+#'                                parser = "legacy", output = "summary")
+#' matches[, c("name_submitted", "input_valid", "redbook_name",
+#'             "endemic_status", "match_status", "match_distance")]
+#'
+#' # Inspect the taxonomic context and how an accepted name was matched.
+#' details <- match_redbook_names("Sanchezia ovata", parser = "legacy")
+#' details[, c("name_submitted", "redbook_name", "accepted_name",
+#'             "matched_via", "name_update_status")]
 #' @export
 match_redbook_names <- function(splist,
                                 dist = 0.1,

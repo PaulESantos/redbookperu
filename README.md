@@ -51,6 +51,34 @@ library(redbookperu)
 
 ## Uso
 
+### Resolver nombres de plantas
+
+`match_redbook_names()` es la función principal del paquete. Devuelve una fila
+por nombre enviado e informa si el nombre figura en el Libro Rojo, cómo se
+encontró la coincidencia y cuál es su nombre aceptado cuando está disponible.
+La salida resumida facilita la revisión de una lista; la salida detallada
+permite examinar el contexto taxonómico.
+
+``` r
+especies <- c("Sanchezia ovata", "Verbesina andinaa",
+             "Persea americana", NA_character_)
+
+coincidencias <- match_redbook_names(
+  especies, dist = 0.2, parser = "legacy", output = "summary"
+)
+coincidencias[, c("name_submitted", "input_valid", "redbook_name",
+                   "endemic_status", "match_status", "match_distance")]
+
+detalle <- match_redbook_names("Sanchezia ovata", parser = "legacy")
+detalle[, c("name_submitted", "redbook_name", "accepted_name",
+            "matched_via", "name_update_status")]
+```
+
+El primer nombre se resuelve mediante su nombre aceptado, el segundo mediante
+una coincidencia aproximada, el tercero no se encuentra y la entrada ausente
+se marca como inválida. `parser = "legacy"` usa el analizador incluido en el
+paquete para que el ejemplo sea reproducible sin dependencias opcionales.
+
 ### Comprobar endemicidad
 
 `check_redbooklist()` devuelve un estado para cada nombre enviado. Es
@@ -126,41 +154,6 @@ get_redbook_data(
     ## 1               Esta especie arbustiva es conocida de dos localidades. La colección tipo fue recolectada en la cuenca del Pangoa en el siglo XVIII. Probablemente la expansión urbana y las actividades agrícolas sean problemas para esta especie.
     ## 2 Esta hierba epífita es conocida sólo de la colección tipo, proveniente del valle de Chanchamayo, en una subcuenca del Perené. Esta región ha sufrido continuas reducciones de sus áreas naturales debido a la ampliación de la frontera agrícola.
     ## 3                                                                                                                                                                                                                                              <NA>
-
-### Revisar cómo se resolvió cada nombre
-
-Cuando sea importante auditar una búsqueda, use `match_redbook_names()`.
-El resultado es un tibble con una fila por nombre de entrada e indica,
-entre otros datos, el nombre del Libro Rojo que se encontró, el estado
-de coincidencia y la distancia de edición.
-
-``` r
-match_redbook_names(
-  c("Sanchezia ovata", "Verbesina andinaa", "Persea americana"),
-  dist = 0.2
-)
-```
-
-    ##   input_index    name_submitted input_valid invalid_reason standardized_name
-    ## 1           1   Sanchezia ovata        TRUE           <NA>   Sanchezia ovata
-    ## 2           2 Verbesina andinaa        TRUE           <NA> Verbesina andinaa
-    ## 3           3  Persea americana        TRUE           <NA>  Persea americana
-    ##   redbook_id       redbook_name   accepted_name accepted_family
-    ## 1     32SACA Sanchezia capitata Sanchezia ovata     Acanthaceae
-    ## 2    979VEAN   Verbesina andina            <NA>            <NA>
-    ## 3       <NA>               <NA>            <NA>            <NA>
-    ##   accepted_name_author taxon_status   matched_via name_update_status
-    ## 1          Ruiz & Pav.      synonym accepted_name       updated_name
-    ## 2                 <NA>     unplaced  redbook_name    historical_name
-    ## 3                 <NA>         <NA>          <NA>               <NA>
-    ##   endemic_status match_status   match_stage match_distance candidate_count
-    ## 1        endemic        exact    exact_name              0               1
-    ## 2        endemic        fuzzy fuzzy_species              1               1
-    ## 3    not_endemic     no_match          none             NA               0
-    ##   ambiguous_candidates
-    ## 1                 <NA>
-    ## 2                 <NA>
-    ## 3                 <NA>
 
 Las funciones que generan resultados tabulares devuelven tibbles, por lo
 que se integran directamente con flujos de trabajo basados en `dplyr` y
