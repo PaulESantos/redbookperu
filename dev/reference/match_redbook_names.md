@@ -54,3 +54,32 @@ match_redbook_names(
 ## Value
 
 A tibble with one row per input name.
+
+## Examples
+
+``` r
+# Accepted name, spelling error, absent name, and missing input.
+submitted <- c("Sanchezia ovata", "Verbesina andinaa",
+               "Persea americana", NA_character_)
+matches <- match_redbook_names(submitted, dist = 0.2,
+                               parser = "legacy", output = "summary")
+matches[, c("name_submitted", "input_valid", "redbook_name",
+            "endemic_status", "match_status", "match_distance")]
+#> # A tibble: 4 × 6
+#>   name_submitted    input_valid redbook_name       endemic_status match_status 
+#>   <chr>             <lgl>       <chr>              <chr>          <chr>        
+#> 1 Sanchezia ovata   TRUE        Sanchezia capitata endemic        exact        
+#> 2 Verbesina andinaa TRUE        Verbesina andina   endemic        fuzzy        
+#> 3 Persea americana  TRUE        NA                 not_endemic    no_match     
+#> 4 NA                FALSE       NA                 invalid_input  invalid_input
+#> # ℹ 1 more variable: match_distance <dbl>
+
+# Inspect the taxonomic context and how an accepted name was matched.
+details <- match_redbook_names("Sanchezia ovata", parser = "legacy")
+details[, c("name_submitted", "redbook_name", "accepted_name",
+            "matched_via", "name_update_status")]
+#> # A tibble: 1 × 5
+#>   name_submitted  redbook_name      accepted_name matched_via name_update_status
+#>   <chr>           <chr>             <chr>         <chr>       <chr>             
+#> 1 Sanchezia ovata Sanchezia capita… Sanchezia ov… accepted_n… updated_name      
+```
