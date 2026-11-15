@@ -1,0 +1,156 @@
+/*
+ * Identidad visual: rojo peruano como firma, verdes andinos para lectura
+ * y dorado de quincha como acento. Las fuentes externas son opcionales;
+ * la interfaz conserva fuentes locales legibles si no hay conexion.
+ */
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap");
+
+:root {
+  --peru-red: #9e2a3a;
+  --peru-wine: #711d2b;
+  --andean-green: #28624d;
+  --andean-green-dark: #1c4738;
+  --quincha-gold: #d3a13b;
+  --terracotta: #c96749;
+  --mountain-ink: #26352e;
+  --cloud: #fffdf8;
+  --puna-mist: #edf3ed;
+  --sand: #f7f0e3;
+}
+
+body {
+  background: var(--cloud);
+  color: var(--mountain-ink);
+  font-family: "Source Sans 3", "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6,
+.navbar-brand,
+.template-home h1 {
+  color: var(--andean-green-dark);
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  border-bottom: 3px solid var(--quincha-gold);
+  padding-bottom: 0.4rem;
+}
+
+h2 {
+  border-left: 4px solid var(--terracotta);
+  padding-left: 0.7rem;
+}
+
+h3 {
+  color: var(--andean-green);
+}
+
+a {
+  color: var(--peru-red);
+  font-weight: 500;
+  text-decoration-color: rgba(158, 42, 58, 0.38);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+a:hover, a:focus {
+  color: var(--andean-green-dark);
+  text-decoration-color: var(--andean-green-dark);
+}
+
+.navbar {
+  background: linear-gradient(110deg, var(--peru-wine), var(--peru-red)) !important;
+  border-bottom: 3px solid var(--quincha-gold);
+  box-shadow: 0 2px 12px rgba(38, 53, 46, 0.16);
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: #fffdf8 !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .nav-link.active {
+  background: rgba(255, 253, 248, 0.13);
+  border-radius: 0.4rem;
+  color: #fff4c9 !important;
+}
+
+.navbar-brand {
+  font-size: 1.35rem;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--andean-green);
+  --bs-btn-border-color: var(--andean-green);
+  --bs-btn-hover-bg: var(--andean-green-dark);
+  --bs-btn-hover-border-color: var(--andean-green-dark);
+  --bs-btn-active-bg: var(--andean-green-dark);
+  --bs-btn-active-border-color: var(--andean-green-dark);
+}
+
+pre, code, .sourceCode {
+  font-family: "DM Mono", Consolas, monospace;
+}
+
+pre {
+  background: #e8f1e9;
+  border: 1px solid #c7d9c9;
+  border-left: 5px solid var(--andean-green);
+  border-radius: 0.35rem;
+  box-shadow: 0 4px 12px rgba(38, 53, 46, 0.08);
+  color: #18382c;
+  padding: 1rem 1.15rem;
+}
+
+code {
+  background: var(--sand);
+  border: 1px solid #eadfc9;
+  border-radius: 0.25rem;
+  color: var(--peru-wine);
+  padding: 0.08rem 0.28rem;
+}
+
+pre code {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  padding: 0;
+}
+
+blockquote {
+  background: var(--puna-mist);
+  border-left: 4px solid var(--andean-green);
+  color: var(--andean-green-dark);
+  margin: 1.5rem 0;
+  padding: 0.85rem 1.1rem;
+}
+
+.table > thead {
+  background: var(--andean-green-dark);
+  color: #fffdf8;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-accent-bg: #f3f7f1;
+}
+
+.badge {
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 700;
+}
+
+footer {
+  border-top: 3px solid var(--quincha-gold);
+  color: var(--andean-green-dark);
+}
+
+@media (max-width: 767px) {
+  body { font-size: 1rem; }
+  h1 { font-size: 2rem; }
+}
